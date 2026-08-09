@@ -20,6 +20,14 @@ React Stately and component state libraries are intentionally out of scope. Cons
 use signals, local hooks, or any external store while composing these accessibility
 primitives.
 
+## Reference baseline
+
+The machine-readable runtime API baseline is pinned to `react-aria@3.51.0` in
+[`react-aria-3.51.0-runtime-exports.json`](./react-aria-3.51.0-runtime-exports.json). The
+parity check reports direct name coverage against all 159 upstream runtime exports while
+also verifying Preact-native component exports. A direct-name match is useful inventory,
+not proof of behavioral parity; the family completion rules below remain the release gate.
+
 ## Completion rules
 
 A family is complete only when:

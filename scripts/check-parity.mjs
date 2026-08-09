@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+
 const surfaces = [
   [
     'primitives',
@@ -79,3 +81,21 @@ const failures = await Promise.all(
 );
 
 if (failures.some(Boolean)) process.exitCode = 1;
+
+const baseline = JSON.parse(
+  readFileSync(new URL('../docs/react-aria-3.51.0-runtime-exports.json', import.meta.url), 'utf8'),
+);
+const primitives = await import('../dist/index.js');
+const directMatches = baseline.exports.filter((name) => name in primitives);
+const remaining = baseline.exports.filter((name) => !(name in primitives));
+const nativeExtensions = Object.keys(primitives).filter((name) => !baseline.exports.includes(name));
+
+console.log(
+  `upstream: ${directMatches.length}/${baseline.exports.length} direct runtime names matched against react-aria@${baseline.version}`,
+);
+console.log(
+  `upstream: ${remaining.length} direct names remain; behavior-level mappings are tracked by family`,
+);
+console.log(
+  `native: ${nativeExtensions.length} Preact-specific exports (${nativeExtensions.join(', ')})`,
+);
