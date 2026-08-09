@@ -10,7 +10,15 @@
     "hooks",
     "preact"
   ],
+  "homepage": "https://github.com/preactjs/preact-aria#readme",
+  "bugs": "https://github.com/preactjs/preact-aria/issues",
   "license": "Apache-2.0",
+  "author": "The Preact Authors (https://github.com/preactjs/preact-aria/contributors)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preactjs/preact-aria.git"
+  },
+  "funding": "https://opencollective.com/preact",
   "files": [
     "dist",
     "LICENSE",
@@ -35,9 +43,15 @@
     },
     "./package.json": "./package.json"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm run build && pnpm test:parity && pnpm test:consumer && pnpm test:e2e",
+    "changeset": "changeset",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm run build && pnpm check:package && pnpm test:parity && pnpm test:consumer && pnpm test:e2e",
+    "check:package": "node scripts/check-package.mjs",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint .",
@@ -45,10 +59,14 @@
     "test:e2e": "playwright test",
     "test:consumer": "node scripts/consumer-smoke.mjs",
     "test:parity": "node scripts/check-parity.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "version": "changeset version && pnpm install --lockfile-only",
+    "prepublishOnly": "pnpm run build && pnpm check:package"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
+    "@changesets/changelog-github": "0.5.2",
+    "@changesets/cli": "2.29.7",
     "@playwright/test": "1.62.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/preact": "3.2.4",
@@ -71,5 +89,6 @@
   },
   "engines": {
     "node": ">=20.19.0"
-  }
+  },
+  "packageManager": "pnpm@11.3.0"
 }
