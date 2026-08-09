@@ -29,6 +29,17 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   const email = page.getByRole('textbox', { name: 'Email' });
   await email.fill('person@example.com');
   await expect(email).toHaveValue('person@example.com');
+
+  const toggleButton = page.getByRole('button', { name: 'Pin sidebar' });
+  await toggleButton.press('Space');
+  await expect(toggleButton).toHaveAttribute('aria-pressed', 'true');
+
+  const link = page.getByRole('link', { name: 'Learn more' });
+  await link.focus();
+  await link.press('Space');
+  await expect(page).not.toHaveURL(/#learn-more$/);
+  await link.press('Enter');
+  await expect(page).toHaveURL(/#learn-more$/);
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {

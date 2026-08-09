@@ -56,7 +56,7 @@ export function Settings() {
 ## Current native primitives
 
 - Press, hover, focus, focus-visible, and focus-ring interactions
-- Button, checkbox, switch, radio group, field, and text field hooks
+- Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 

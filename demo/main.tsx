@@ -1,6 +1,15 @@
 import { render } from 'preact';
 import { useState } from 'preact/hooks';
-import { Button, Checkbox, Radio, RadioGroup, Switch, TextField } from '../src/components';
+import {
+  Button,
+  Checkbox,
+  Link,
+  Radio,
+  RadioGroup,
+  Switch,
+  TextField,
+  ToggleButton,
+} from '../src/components';
 import './styles.css';
 
 function App() {
@@ -18,6 +27,11 @@ function App() {
         <Radio value="dark">Dark</Radio>
       </RadioGroup>
       <TextField label="Email" description="We will only use this for accessibility updates" />
+      <ToggleButton>Pin sidebar</ToggleButton>
+      <Link href="#learn-more">Learn more</Link>
+      <section id="learn-more" tabIndex={-1}>
+        Native Preact accessibility primitives.
+      </section>
     </main>
   );
 }

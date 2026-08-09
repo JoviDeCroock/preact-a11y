@@ -2,7 +2,16 @@ import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'preact';
 import { describe, expect, it, vi } from 'vitest';
-import { Button, Checkbox, Radio, RadioGroup, Switch, TextField } from '../src/components';
+import {
+  Button,
+  Checkbox,
+  Link,
+  Radio,
+  RadioGroup,
+  Switch,
+  TextField,
+  ToggleButton,
+} from '../src/components';
 
 describe('native components', () => {
   it('exposes the underlying element through a Preact-native elementRef', () => {
@@ -108,5 +117,34 @@ describe('native components', () => {
     expect(input).toHaveAttribute('aria-invalid', 'true');
     expect(input).toBeRequired();
     expect(onChange).toHaveBeenLastCalledWith('person@example.com');
+  });
+
+  it('activates links with Enter but not Space', async () => {
+    const onPress = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <Link href="#destination" onPress={onPress}>
+        Documentation
+      </Link>,
+    );
+    const link = screen.getByRole('link', { name: 'Documentation' });
+    link.focus();
+
+    await user.keyboard(' ');
+    expect(onPress).not.toHaveBeenCalled();
+    await user.keyboard('{Enter}');
+    expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('supports uncontrolled toggle buttons', async () => {
+    const onChange = vi.fn();
+    const user = userEvent.setup();
+    render(<ToggleButton onChange={onChange}>Pin sidebar</ToggleButton>);
+    const button = screen.getByRole('button', { name: 'Pin sidebar' });
+
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+    await user.click(button);
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+    expect(onChange).toHaveBeenLastCalledWith(true);
   });
 });

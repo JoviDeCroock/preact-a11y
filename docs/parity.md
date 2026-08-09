@@ -7,12 +7,12 @@ automated accessibility coverage before being marked complete.
 | Family                    | Status      | Current scope                                              |
 | ------------------------- | ----------- | ---------------------------------------------------------- |
 | Interactions              | In progress | Press, hover, focus, focus-visible, focus ring             |
-| Buttons                   | Initial     | Button hook and unstyled component                         |
+| Buttons                   | In progress | Button and toggle button hooks and components              |
 | Selection controls        | In progress | Checkbox, switch, and radio group hooks and components     |
 | Forms                     | In progress | Field labeling, help/error association, and text fields    |
 | Overlays                  | Planned     | Dismissal, modal semantics, focus containment, positioning |
 | Collections               | Planned     | Listbox, menu, grid, tree, table keyboard semantics        |
-| Disclosure and navigation | Planned     | Disclosure, tabs, breadcrumbs, links                       |
+| Disclosure and navigation | In progress | Native links; disclosure, tabs, and breadcrumbs planned    |
 | Internationalization      | Planned     | Locale direction, collators, number/date formatting        |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows          |
 

@@ -1,8 +1,14 @@
 export { useButton, type AriaButtonProps } from './hooks/useButton';
 export { useCheckbox, type AriaCheckboxProps } from './hooks/useCheckbox';
+export { useLink, type AriaLinkProps } from './hooks/useLink';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';
 export { useRadioGroup, type AriaRadioGroupProps } from './hooks/useRadioGroup';
 export { useSwitch, type AriaSwitchProps } from './hooks/useSwitch';
+export {
+  useToggleButton,
+  type AriaToggleButtonProps,
+  type ToggleButtonResult,
+} from './hooks/useToggleButton';
 export { useField, type AriaFieldProps } from './forms/useField';
 export { useTextField, type AriaTextFieldProps } from './forms/useTextField';
 export { useFocus, useFocusRing, useFocusVisible, type FocusProps } from './interactions/useFocus';
