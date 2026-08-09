@@ -26,6 +26,10 @@ export function getTextDirection(locale: string): TextDirection {
   }
 }
 
+export function isRTL(locale: string): boolean {
+  return getTextDirection(locale) === 'rtl';
+}
+
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export interface I18nProviderProps {

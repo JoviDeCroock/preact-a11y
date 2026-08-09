@@ -15,6 +15,7 @@ automated accessibility coverage before being marked complete.
 | Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead   |
 | Disclosure and navigation | In progress | Links, disclosures, and keyboard-navigable tabs             |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting    |
+| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state      |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows           |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may

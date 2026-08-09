@@ -39,9 +39,14 @@ export { usePress, type PressResult } from './interactions/usePress';
 export { VisuallyHidden, useVisuallyHidden, type VisuallyHiddenProps } from './visually-hidden';
 export { mergeProps } from './utils/mergeProps';
 export { mergeRefs } from './utils/mergeRefs';
+export { chain } from './utils/chain';
+export { useId } from './utils/useId';
+export { useObjectRef } from './utils/useObjectRef';
+export { SSRProvider, useIsSSR, type SSRProviderProps } from './ssr/SSRProvider';
 export {
   I18nProvider,
   getTextDirection,
+  isRTL,
   useLocale,
   type I18nProviderProps,
   type LocaleContextValue,

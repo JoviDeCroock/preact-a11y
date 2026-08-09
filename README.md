@@ -65,6 +65,7 @@ export function Settings() {
 - Menus with trigger relationships, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Locale direction, locale-aware filtering, and native Intl formatters
+- Stable IDs, object refs, callback chaining, RTL detection, and SSR state
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State
