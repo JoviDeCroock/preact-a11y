@@ -17,6 +17,17 @@ export { usePress, type PressResult } from './interactions/usePress';
 export { VisuallyHidden, useVisuallyHidden, type VisuallyHiddenProps } from './visually-hidden';
 export { mergeProps } from './utils/mergeProps';
 export { mergeRefs } from './utils/mergeRefs';
+export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
+export {
+  useTab,
+  useTabList,
+  useTabPanel,
+  type AriaTabListProps,
+  type AriaTabPanelProps,
+  type AriaTabProps,
+  type KeyboardActivation,
+  type TabOrientation,
+} from './tabs/useTabs';
 export { FocusScope, type FocusScopeProps } from './overlays/FocusScope';
 export { DismissButton, type DismissButtonProps } from './overlays/DismissButton';
 export { ariaHideOutside } from './overlays/ariaHideOutside';

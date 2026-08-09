@@ -12,7 +12,7 @@ automated accessibility coverage before being marked complete.
 | Forms                     | In progress | Field labeling, help/error association, and text fields   |
 | Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration |
 | Collections               | Planned     | Listbox, menu, grid, tree, table keyboard semantics       |
-| Disclosure and navigation | In progress | Native links; disclosure, tabs, and breadcrumbs planned   |
+| Disclosure and navigation | In progress | Links, disclosures, and keyboard-navigable tabs           |
 | Internationalization      | Planned     | Locale direction, collators, number/date formatting       |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows         |
 

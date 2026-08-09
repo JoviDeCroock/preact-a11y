@@ -40,6 +40,16 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await expect(page).not.toHaveURL(/#learn-more$/);
   await link.press('Enter');
   await expect(page).toHaveURL(/#learn-more$/);
+
+  const disclosure = page.getByRole('button', { name: 'Keyboard help' });
+  await disclosure.click();
+  await expect(page.getByRole('region', { name: 'Keyboard help' })).toBeVisible();
+
+  const profileTab = page.getByRole('tab', { name: 'Profile' });
+  await profileTab.focus();
+  await profileTab.press('ArrowRight');
+  await expect(page.getByRole('tab', { name: 'Security' })).toBeFocused();
+  await expect(page.getByRole('tabpanel', { name: 'Security' })).toBeVisible();
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {

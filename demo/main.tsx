@@ -3,11 +3,16 @@ import { useState } from 'preact/hooks';
 import {
   Button,
   Checkbox,
+  Disclosure,
   Link,
   Modal,
   Radio,
   RadioGroup,
   Switch,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
   TextField,
   ToggleButton,
 } from '../src/components';
@@ -28,6 +33,17 @@ function App() {
         <Radio value="light">Light</Radio>
         <Radio value="dark">Dark</Radio>
       </RadioGroup>
+      <Disclosure title="Keyboard help">
+        Use Tab to move between controls and Space or Enter to activate them.
+      </Disclosure>
+      <Tabs defaultSelectedKey="profile">
+        <TabList aria-label="Account sections">
+          <Tab id="profile">Profile</Tab>
+          <Tab id="security">Security</Tab>
+        </TabList>
+        <TabPanel id="profile">Profile settings</TabPanel>
+        <TabPanel id="security">Security settings</TabPanel>
+      </Tabs>
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
