@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
+import { useRef } from 'preact/hooks';
 import { describe, expect, it, vi } from 'vitest';
-import { useFocusRing, usePress } from '../src';
+import { useFocusRing, useFocusWithin, useInteractOutside, useKeyboard, usePress } from '../src';
 
 function CustomButton({ onPress }: { onPress: () => void }) {
   const { pressProps } = usePress({ onPress });
@@ -19,6 +20,22 @@ function Focusable() {
       Focus me
     </button>
   );
+}
+
+function FocusWithinExample({ onChange }: { onChange: (value: boolean) => void }) {
+  const { focusWithinProps, isFocusWithin } = useFocusWithin({ onFocusWithinChange: onChange });
+  return (
+    <div {...focusWithinProps} data-within={isFocusWithin || undefined}>
+      <button>First child</button>
+      <button>Second child</button>
+    </div>
+  );
+}
+
+function OutsideExample({ onOutside }: { onOutside: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useInteractOutside({ ref, onInteractOutside: onOutside });
+  return <div ref={ref}>Inside</div>;
 }
 
 describe('interaction primitives', () => {
@@ -45,5 +62,57 @@ describe('interaction primitives', () => {
 
     await user.click(button);
     expect(button).not.toHaveAttribute('data-focus-visible');
+  });
+
+  it('tracks focus across descendants without false blur transitions', async () => {
+    const onChange = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <>
+        <FocusWithinExample onChange={onChange} />
+        <button>Outside</button>
+      </>,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'First child' }));
+    expect(onChange).toHaveBeenLastCalledWith(true);
+    await user.tab();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    await user.tab();
+    expect(onChange).toHaveBeenLastCalledWith(false);
+  });
+
+  it('reports completed pointer interactions outside a ref', async () => {
+    const onOutside = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <>
+        <OutsideExample onOutside={onOutside} />
+        <button>Outside</button>
+      </>,
+    );
+
+    await user.click(screen.getByText('Inside'));
+    expect(onOutside).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: 'Outside' }));
+    expect(onOutside).toHaveBeenCalledTimes(1);
+  });
+
+  it('suppresses keyboard callbacks while disabled', async () => {
+    const onKeyDown = vi.fn();
+    function KeyboardTarget({ isDisabled }: { isDisabled?: boolean }) {
+      const { keyboardProps } = useKeyboard({ isDisabled, onKeyDown });
+      return <button {...keyboardProps}>Keyboard target</button>;
+    }
+    const user = userEvent.setup();
+    const { rerender } = render(<KeyboardTarget />);
+    const target = screen.getByRole('button', { name: 'Keyboard target' });
+    target.focus();
+    await user.keyboard('{Enter}');
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    rerender(<KeyboardTarget isDisabled />);
+    await user.keyboard('{Enter}');
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
   });
 });

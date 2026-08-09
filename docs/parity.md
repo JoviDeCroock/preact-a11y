@@ -6,7 +6,7 @@ automated accessibility coverage before being marked complete.
 
 | Family                    | Status      | Current scope                                             |
 | ------------------------- | ----------- | --------------------------------------------------------- |
-| Interactions              | In progress | Press, hover, focus, focus-visible, focus ring            |
+| Interactions              | In progress | Press, hover, focus visibility/within, keyboard, outside  |
 | Buttons                   | In progress | Button and toggle button hooks and components             |
 | Selection controls        | In progress | Checkbox, switch, and radio group hooks and components    |
 | Forms                     | In progress | Field labeling, help/error association, and text fields   |
