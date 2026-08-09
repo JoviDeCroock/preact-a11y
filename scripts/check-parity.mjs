@@ -14,6 +14,8 @@ const surfaces = [
       'Focusable',
       'HiddenSelect',
       'I18nProvider',
+      'ListDropTargetDelegate',
+      'ListKeyboardDelegate',
       'ModalProvider',
       'Overlay',
       'OverlayContainer',

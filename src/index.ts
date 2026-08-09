@@ -152,6 +152,18 @@ export {
   type AriaTableSelectionCheckboxProps,
   type SortDirection,
 } from './table/useTable';
+export {
+  ListDropTargetDelegate,
+  ListKeyboardDelegate,
+  type CollectionKey,
+  type CollectionLike,
+  type CollectionNode,
+  type Direction,
+  type DropTarget,
+  type ListDropTargetDelegateOptions,
+  type ListKeyboardDelegateOptions,
+  type Orientation,
+} from './collections/delegates';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,

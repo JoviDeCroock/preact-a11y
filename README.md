@@ -75,6 +75,7 @@ export function Settings() {
 - Hierarchical tree grids with expansion, parent/child navigation, and typeahead
 - Removable tag groups with selection, RTL navigation, live updates, and focus recovery
 - Data tables with two-dimensional navigation, sorting, selection, and column resizing
+- Reusable stack/grid keyboard and pointer drop-target delegates for DOM-backed collections
 - Menus with trigger relationships, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Polite/assertive toast regions with paused timers and safe focus handoff
