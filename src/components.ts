@@ -28,6 +28,7 @@ export {
 export { Modal, type ModalProps } from './components/Modal';
 export { Radio, RadioGroup, type RadioGroupProps, type RadioProps } from './components/RadioGroup';
 export { Switch, type SwitchProps } from './components/Switch';
+export { Select, SelectItem, type SelectItemProps, type SelectProps } from './components/Select';
 export {
   Breadcrumb,
   Breadcrumbs,

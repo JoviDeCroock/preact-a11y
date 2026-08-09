@@ -18,6 +18,8 @@ import {
   Radio,
   RadioGroup,
   SearchField,
+  Select,
+  SelectItem,
   Separator,
   Switch,
   Tab,
@@ -82,6 +84,11 @@ function App() {
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
+      <Select defaultSelectedKey="cat" label="Favorite animal" name="animal">
+        <SelectItem id="cat">Cat</SelectItem>
+        <SelectItem id="dog">Dog</SelectItem>
+        <SelectItem id="kangaroo">Kangaroo</SelectItem>
+      </Select>
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal

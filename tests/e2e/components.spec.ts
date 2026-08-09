@@ -44,6 +44,14 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await seats.press('ArrowUp');
   await expect(seats).toHaveValue('3');
 
+  const selectTrigger = page.getByRole('button', { name: /Favorite animal/ });
+  await selectTrigger.press('ArrowDown');
+  const animalList = page.getByRole('listbox', { name: 'Favorite animal' });
+  await expect(animalList).toBeFocused();
+  await animalList.press('End');
+  await animalList.press('Enter');
+  await expect(selectTrigger).toContainText('Kangaroo');
+
   const toggleButton = page.getByRole('button', { name: 'Pin sidebar' });
   await toggleButton.press('Space');
   await expect(toggleButton).toHaveAttribute('aria-pressed', 'true');

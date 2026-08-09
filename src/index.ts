@@ -92,4 +92,11 @@ export { ariaHideOutside } from './overlays/ariaHideOutside';
 export { useModal, type AriaModalProps } from './overlays/useModal';
 export { useOverlay, type AriaOverlayProps } from './overlays/useOverlay';
 export { usePreventScroll, type PreventScrollOptions } from './overlays/usePreventScroll';
+export { useSelect, type AriaSelectProps } from './select/useSelect';
+export {
+  useHiddenSelect,
+  type AriaHiddenSelectProps,
+  type HiddenSelectOption,
+} from './select/useHiddenSelect';
+export { HiddenSelect, type HiddenSelectProps } from './select/HiddenSelect';
 export type { PointerType, PressEvent, PressProps } from './types';

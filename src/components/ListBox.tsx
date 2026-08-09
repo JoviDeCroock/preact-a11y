@@ -17,9 +17,10 @@ const ListBoxContext = createContext<ListBoxContextValue | null>(null);
 
 export interface ListBoxProps extends Omit<
   JSX.HTMLAttributes<HTMLDivElement>,
-  'aria-label' | 'aria-labelledby' | 'defaultValue' | 'onChange'
+  'aria-label' | 'aria-labelledby' | 'autoFocus' | 'defaultValue' | 'onChange'
 > {
   children: ComponentChildren;
+  autoFocus?: 'first' | 'last';
   selectionMode?: SelectionMode;
   selectedKeys?: Iterable<string>;
   defaultSelectedKeys?: Iterable<string>;
@@ -33,6 +34,7 @@ export interface ListBoxProps extends Omit<
 
 export function ListBox({
   children,
+  autoFocus,
   selectionMode = 'single',
   selectedKeys,
   defaultSelectedKeys,
@@ -73,6 +75,7 @@ export function ListBox({
   const { listBoxProps } = useListBox(
     {
       focusedKey: focusedKey ? `${baseId}-option-${focusedKey}` : undefined,
+      autoFocus,
       selectionMode,
       orientation,
       isDisabled,

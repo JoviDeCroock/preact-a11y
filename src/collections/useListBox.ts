@@ -1,10 +1,11 @@
 import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
-import { useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
 
 export type SelectionMode = 'none' | 'single' | 'multiple';
 
 export interface AriaListBoxProps {
   focusedKey?: string;
+  autoFocus?: 'first' | 'last';
   selectionMode?: SelectionMode;
   orientation?: 'horizontal' | 'vertical';
   isDisabled?: boolean;
@@ -25,6 +26,10 @@ export function useListBox(props: AriaListBoxProps, ref: RefObject<HTMLElement>)
   const lastTypeTime = useRef(0);
   const orientation = props.orientation ?? 'vertical';
   const selectionMode = props.selectionMode ?? 'single';
+
+  useEffect(() => {
+    if (props.autoFocus) ref.current?.focus();
+  }, [props.autoFocus, ref]);
 
   function focusOption(option: HTMLElement | undefined) {
     const key = option?.dataset.key;
@@ -90,7 +95,10 @@ export function useListBox(props: AriaListBoxProps, ref: RefObject<HTMLElement>)
       'aria-orientation': orientation,
       onKeyDown,
       onFocus() {
-        if (!props.focusedKey) focusOption(enabledOptions(ref.current!)[0]);
+        if (!props.focusedKey) {
+          const options = enabledOptions(ref.current!);
+          focusOption(props.autoFocus === 'last' ? options.at(-1) : options[0]);
+        }
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
   };
