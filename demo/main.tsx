@@ -8,10 +8,13 @@ import {
   ListBox,
   MenuItem,
   MenuTrigger,
+  Meter,
   Modal,
   Option,
+  ProgressBar,
   Radio,
   RadioGroup,
+  Separator,
   Switch,
   Tab,
   TabList,
@@ -60,6 +63,9 @@ function App() {
           Delete
         </MenuItem>
       </MenuTrigger>
+      <ProgressBar label="Upload progress" value={65} />
+      <Meter label="Storage used" maxValue={100} value={42} />
+      <Separator />
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>

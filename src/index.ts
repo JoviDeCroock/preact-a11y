@@ -12,6 +12,10 @@ export {
   type ToggleButtonResult,
 } from './hooks/useToggleButton';
 export { useField, type AriaFieldProps } from './forms/useField';
+export { useLabel, type AriaLabelProps } from './forms/useLabel';
+export { useMeter, type AriaMeterProps } from './feedback/useMeter';
+export { useProgressBar, type AriaProgressBarProps } from './feedback/useProgressBar';
+export { useSeparator, type SeparatorProps } from './feedback/useSeparator';
 export { useTextField, type AriaTextFieldProps } from './forms/useTextField';
 export { useFocus, useFocusRing, useFocusVisible, type FocusProps } from './interactions/useFocus';
 export { useHover, type HoverEvent, type HoverProps } from './interactions/useHover';

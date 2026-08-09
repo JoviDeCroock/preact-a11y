@@ -1,6 +1,14 @@
 export { Button, type ButtonProps } from './components/Button';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
 export { Disclosure, type DisclosureProps } from './components/Disclosure';
+export {
+  Meter,
+  ProgressBar,
+  Separator,
+  type MeterProps,
+  type ProgressBarProps,
+  type SeparatorComponentProps,
+} from './components/Feedback';
 export { Link, type LinkProps } from './components/Link';
 export { ListBox, Option, type ListBoxProps, type OptionProps } from './components/ListBox';
 export {
