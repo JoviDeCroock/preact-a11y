@@ -25,6 +25,18 @@ export function writeToDataTransfer(dataTransfer: DataTransfer, items: DragItem[
   if (needsCustomData) dataTransfer.setData(CUSTOM_DRAG_TYPE, JSON.stringify(items));
 }
 
+export function dragItemsToDropItems(items: DragItem[]): TextDropItem[] {
+  return items.map((item) => ({
+    kind: 'text',
+    types: new Set(Object.keys(item)),
+    getText: (type) => Promise.resolve(item[type] ?? ''),
+  }));
+}
+
+export function getDragTypes(items: DragItem[]) {
+  return new Set(items.flatMap((item) => Object.keys(item)));
+}
+
 function fileItem(file: File): FileDropItem {
   return {
     kind: 'file',

@@ -230,12 +230,30 @@ export {
   isFileDropItem,
   isTextDropItem,
   type DirectoryDropItem,
+  type DragEndEvent,
   type DragItem,
+  type DragMoveEvent,
+  type DragStartEvent,
+  type DragTypes,
+  type DropActivateEvent,
+  type DropEnterEvent,
+  type DropEvent,
+  type DropExitEvent,
   type DropItem,
+  type DropMoveEvent,
+  type DropOperation,
   type FileDropItem,
   type TextDropItem,
 } from './dnd/types';
 export { useClipboard, type ClipboardProps, type ClipboardResult } from './dnd/useClipboard';
+export {
+  useDrag,
+  type DragOptions,
+  type DragPreviewRenderer,
+  type DragResult,
+} from './dnd/useDrag';
+export { useDrop, type DropOptions, type DropResult } from './dnd/useDrop';
+export { DragPreview, type DragPreviewProps } from './dnd/DragPreview';
 export {
   UNSTABLE_createLandmarkController,
   useLandmark,

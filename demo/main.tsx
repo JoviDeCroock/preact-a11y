@@ -2,13 +2,18 @@ import { render } from 'preact';
 import { useRef, useState } from 'preact/hooks';
 import {
   FocusRing,
+  DragPreview,
   OverlayContainer,
   OverlayProvider,
   Pressable,
   RouterProvider,
   isTextDropItem,
   useClipboard,
+  useDrag,
+  useDrop,
   useLandmark,
+  type DragPreviewRenderer,
+  type DropEvent,
 } from '../src';
 import {
   Button,
@@ -98,6 +103,68 @@ function ClipboardExample() {
   );
 }
 
+function DropZone({
+  label,
+  onDrop,
+}: {
+  label: string;
+  onDrop: (label: string, event: DropEvent) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const drop = useDrop({
+    ref,
+    getDropOperation: (types, allowed) =>
+      types.has('text/plain') && allowed.includes('move') ? 'move' : 'cancel',
+    onDrop: (event) => onDrop(label, event),
+  });
+  return (
+    <div
+      {...drop.dropProps}
+      aria-label={label}
+      data-drop-target={drop.isDropTarget || undefined}
+      ref={ref}
+      role="region"
+    >
+      {label}
+    </div>
+  );
+}
+
+function DragDropExample() {
+  const [status, setStatus] = useState('Ready');
+  const previewRef = useRef<DragPreviewRenderer>(null);
+  const drag = useDrag({
+    getItems: () => [{ 'text/plain': 'Preact card' }],
+    getAllowedDropOperations: () => ['move'],
+    onDragStart: () => setStatus('Dragging'),
+    onDragEnd: (event) => {
+      if (event.dropOperation === 'cancel') setStatus('Cancelled');
+    },
+    preview: previewRef,
+  });
+  const handleDrop = (label: string, event: DropEvent) => {
+    const item = event.items.find(isTextDropItem);
+    if (item)
+      void item.getText('text/plain').then((text) => setStatus(`Dropped on ${label}: ${text}`));
+  };
+  return (
+    <section aria-label="Drag and drop example">
+      <div
+        {...drag.dragProps}
+        aria-label="Preact card"
+        data-dragging={drag.isDragging || undefined}
+        role="button"
+      >
+        Preact card
+      </div>
+      <DropZone label="Backlog drop zone" onDrop={handleDrop} />
+      <DropZone label="Archive drop zone" onDrop={handleDrop} />
+      <output aria-live="polite">Drag status: {status}</output>
+      <DragPreview previewRef={previewRef}>{() => <div>Preact card preview</div>}</DragPreview>
+    </section>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -129,6 +196,7 @@ function App() {
         <button>Focus ring example</button>
       </FocusRing>
       <ClipboardExample />
+      <DragDropExample />
       <Checkbox>Accept terms</Checkbox>
       <CheckboxGroup label="Permissions" name="permission">
         <CheckboxGroupItem value="read">Read projects</CheckboxGroupItem>

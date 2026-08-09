@@ -50,6 +50,25 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   });
   await expect(clipboard).toContainText('Clipboard status: Pasted: Browser paste');
 
+  const dragSource = page.getByRole('button', { name: 'Preact card' });
+  const backlogDrop = page.getByRole('region', { name: 'Backlog drop zone' });
+  const archiveDrop = page.getByRole('region', { name: 'Archive drop zone' });
+  await dragSource.focus();
+  await dragSource.press('Enter');
+  await expect(backlogDrop).toBeFocused();
+  await expect(backlogDrop).toHaveAttribute('data-drop-target');
+  await backlogDrop.press('ArrowRight');
+  await expect(archiveDrop).toBeFocused();
+  await archiveDrop.press('Enter');
+  await expect(page.getByText(/^Drag status:/)).toHaveText(
+    'Drag status: Dropped on Archive drop zone: Preact card',
+  );
+  await expect(dragSource).toBeFocused();
+  await dragSource.dragTo(backlogDrop);
+  await expect(page.getByText(/^Drag status:/)).toHaveText(
+    'Drag status: Dropped on Backlog drop zone: Preact card',
+  );
+
   const bold = page.getByRole('button', { name: 'Bold' });
   await bold.focus();
   await bold.press('ArrowRight');
