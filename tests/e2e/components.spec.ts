@@ -23,6 +23,10 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await checkbox.press('Space');
   await expect(checkbox).toBeChecked();
 
+  const readProjects = page.getByRole('checkbox', { name: 'Read projects' });
+  await readProjects.check();
+  await expect(readProjects).toBeChecked();
+
   const toggle = page.getByRole('switch', { name: 'Enable notifications' });
   await toggle.press('Space');
   await expect(toggle).toBeChecked();
@@ -61,6 +65,15 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   const toggleButton = page.getByRole('button', { name: 'Pin sidebar' });
   await toggleButton.press('Space');
   await expect(toggleButton).toHaveAttribute('aria-pressed', 'true');
+
+  const alignLeft = page.getByRole('button', { name: 'Align left' });
+  await alignLeft.focus();
+  await alignLeft.press('ArrowRight');
+  const alignCenter = page.getByRole('button', { name: 'Align center' });
+  await expect(alignCenter).toBeFocused();
+  await alignCenter.press('Space');
+  await expect(alignLeft).toHaveAttribute('aria-pressed', 'false');
+  await expect(alignCenter).toHaveAttribute('aria-pressed', 'true');
 
   const link = page.getByRole('link', { name: 'Learn more' });
   await link.focus();

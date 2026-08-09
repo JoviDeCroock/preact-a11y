@@ -19,6 +19,18 @@ export {
   type AriaToggleButtonProps,
   type ToggleButtonResult,
 } from './hooks/useToggleButton';
+export {
+  useCheckboxGroup,
+  useCheckboxGroupItem,
+  type AriaCheckboxGroupItemProps,
+  type AriaCheckboxGroupProps,
+} from './groups/useCheckboxGroup';
+export {
+  useToggleButtonGroup,
+  useToggleButtonGroupItem,
+  type AriaToggleButtonGroupItemProps,
+  type AriaToggleButtonGroupProps,
+} from './groups/useToggleButtonGroup';
 export { useField, type AriaFieldProps } from './forms/useField';
 export { useLabel, type AriaLabelProps } from './forms/useLabel';
 export { useMeter, type AriaMeterProps } from './feedback/useMeter';

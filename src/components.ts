@@ -22,6 +22,16 @@ export {
   type SeparatorComponentProps,
 } from './components/Feedback';
 export { Link, type LinkProps } from './components/Link';
+export {
+  CheckboxGroup,
+  CheckboxGroupItem,
+  ToggleButtonGroup,
+  ToggleButtonGroupItem,
+  type CheckboxGroupItemProps,
+  type CheckboxGroupProps,
+  type ToggleButtonGroupItemProps,
+  type ToggleButtonGroupProps,
+} from './components/Groups';
 export { ListBox, Option, type ListBoxProps, type OptionProps } from './components/ListBox';
 export {
   Menu,

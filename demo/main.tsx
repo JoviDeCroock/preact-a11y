@@ -5,6 +5,8 @@ import {
   Breadcrumb,
   Breadcrumbs,
   Checkbox,
+  CheckboxGroup,
+  CheckboxGroupItem,
   ComboBox,
   ComboBoxItem,
   Disclosure,
@@ -30,6 +32,8 @@ import {
   Tabs,
   TextField,
   ToggleButton,
+  ToggleButtonGroup,
+  ToggleButtonGroupItem,
   Toolbar,
 } from '../src/components';
 import './styles.css';
@@ -52,6 +56,10 @@ function App() {
       <Button onPress={() => setCount((value) => value + 1)}>Increment</Button>
       <output aria-live="polite">Count: {count}</output>
       <Checkbox>Accept terms</Checkbox>
+      <CheckboxGroup label="Permissions" name="permission">
+        <CheckboxGroupItem value="read">Read projects</CheckboxGroupItem>
+        <CheckboxGroupItem value="write">Edit projects</CheckboxGroupItem>
+      </CheckboxGroup>
       <Switch>Enable notifications</Switch>
       <RadioGroup label="Theme" description="Choose an interface theme">
         <Radio value="light">Light</Radio>
@@ -97,6 +105,11 @@ function App() {
         <ComboBoxItem id="web-components">Web Components</ComboBoxItem>
       </ComboBox>
       <ToggleButton>Pin sidebar</ToggleButton>
+      <ToggleButtonGroup aria-label="Text alignment" defaultValue={['left']}>
+        <ToggleButtonGroupItem id="left">Align left</ToggleButtonGroupItem>
+        <ToggleButtonGroupItem id="center">Align center</ToggleButtonGroupItem>
+        <ToggleButtonGroupItem id="right">Align right</ToggleButtonGroupItem>
+      </ToggleButtonGroup>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal
         aria-label="Preferences"
