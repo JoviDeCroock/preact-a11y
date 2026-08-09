@@ -5,7 +5,9 @@ import {
   Checkbox,
   Disclosure,
   Link,
+  ListBox,
   Modal,
+  Option,
   Radio,
   RadioGroup,
   Switch,
@@ -44,6 +46,11 @@ function App() {
         <TabPanel id="profile">Profile settings</TabPanel>
         <TabPanel id="security">Security settings</TabPanel>
       </Tabs>
+      <ListBox aria-label="Favorite city" defaultSelectedKeys={['antwerp']}>
+        <Option id="antwerp">Antwerp</Option>
+        <Option id="brussels">Brussels</Option>
+        <Option id="ghent">Ghent</Option>
+      </ListBox>
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>

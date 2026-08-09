@@ -60,6 +60,7 @@ export function Settings() {
 - Matching unstyled form and selection components
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
+- Single/multiple-selection listboxes with active focus and typeahead
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State

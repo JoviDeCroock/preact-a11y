@@ -11,7 +11,7 @@ automated accessibility coverage before being marked complete.
 | Selection controls        | In progress | Checkbox, switch, and radio group hooks and components    |
 | Forms                     | In progress | Field labeling, help/error association, and text fields   |
 | Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration |
-| Collections               | Planned     | Listbox, menu, grid, tree, table keyboard semantics       |
+| Collections               | In progress | Listbox selection, active focus, disabled skip, typeahead |
 | Disclosure and navigation | In progress | Links, disclosures, and keyboard-navigable tabs           |
 | Internationalization      | Planned     | Locale direction, collators, number/date formatting       |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows         |

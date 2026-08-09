@@ -50,6 +50,15 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await profileTab.press('ArrowRight');
   await expect(page.getByRole('tab', { name: 'Security' })).toBeFocused();
   await expect(page.getByRole('tabpanel', { name: 'Security' })).toBeVisible();
+
+  const cities = page.getByRole('listbox', { name: 'Favorite city' });
+  await cities.focus();
+  await cities.press('End');
+  await cities.press('Enter');
+  await expect(page.getByRole('option', { name: 'Ghent' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {
