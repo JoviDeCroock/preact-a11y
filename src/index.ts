@@ -1,6 +1,8 @@
 export { useButton, type AriaButtonProps } from './hooks/useButton';
 export { useCheckbox, type AriaCheckboxProps } from './hooks/useCheckbox';
 export { useLink, type AriaLinkProps } from './hooks/useLink';
+export { useMenu, useMenuItem, type AriaMenuItemProps, type AriaMenuProps } from './menu/useMenu';
+export { useMenuTrigger, type AriaMenuTriggerProps } from './menu/useMenuTrigger';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';
 export { useRadioGroup, type AriaRadioGroupProps } from './hooks/useRadioGroup';
 export { useSwitch, type AriaSwitchProps } from './hooks/useSwitch';

@@ -59,10 +59,28 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
     'aria-selected',
     'true',
   );
+
+  const menuTrigger = page.getByRole('button', { name: 'More actions' });
+  await menuTrigger.focus();
+  await menuTrigger.press('ArrowDown');
+  const menu = page.getByRole('menu', { name: 'More actions' });
+  await expect(menu).toBeFocused();
+  await expect(menu).toHaveAttribute('aria-activedescendant', /rename/);
+  await menu.press('ArrowDown');
+  await expect(menu).toHaveAttribute('aria-activedescendant', /archive/);
+  await menu.press('Escape');
+  await expect(menu).toBeHidden();
+  await expect(menuTrigger).toBeFocused();
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+
+  await page.getByRole('button', { name: 'More actions' }).click();
+  expect((await new AxeBuilder({ page }).include('[role="menu"]').analyze()).violations).toEqual(
+    [],
+  );
+  await page.keyboard.press('Escape');
 
   const trigger = page.getByRole('button', { name: 'Open preferences' });
   await trigger.click();

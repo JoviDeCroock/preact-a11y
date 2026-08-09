@@ -61,6 +61,7 @@ export function Settings() {
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Single/multiple-selection listboxes with active focus and typeahead
+- Menus with trigger relationships, actions, typeahead, and dismissal
 - Locale direction, locale-aware filtering, and native Intl formatters
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 

@@ -6,6 +6,8 @@ import {
   Disclosure,
   Link,
   ListBox,
+  MenuItem,
+  MenuTrigger,
   Modal,
   Option,
   Radio,
@@ -51,6 +53,13 @@ function App() {
         <Option id="brussels">Brussels</Option>
         <Option id="ghent">Ghent</Option>
       </ListBox>
+      <MenuTrigger label="More actions">
+        <MenuItem id="rename">Rename</MenuItem>
+        <MenuItem id="archive">Archive</MenuItem>
+        <MenuItem id="delete" isDisabled>
+          Delete
+        </MenuItem>
+      </MenuTrigger>
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
