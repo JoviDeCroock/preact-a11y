@@ -13,7 +13,7 @@ automated accessibility coverage before being marked complete.
 | Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration |
 | Collections               | In progress | Listbox selection, active focus, disabled skip, typeahead |
 | Disclosure and navigation | In progress | Links, disclosures, and keyboard-navigable tabs           |
-| Internationalization      | Planned     | Locale direction, collators, number/date formatting       |
+| Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting  |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows         |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may

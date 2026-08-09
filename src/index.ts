@@ -18,6 +18,22 @@ export { VisuallyHidden, useVisuallyHidden, type VisuallyHiddenProps } from './v
 export { mergeProps } from './utils/mergeProps';
 export { mergeRefs } from './utils/mergeRefs';
 export {
+  I18nProvider,
+  getTextDirection,
+  useLocale,
+  type I18nProviderProps,
+  type LocaleContextValue,
+  type TextDirection,
+} from './i18n/I18nProvider';
+export {
+  useCollator,
+  useDateFormatter,
+  useFilter,
+  useListFormatter,
+  useNumberFormatter,
+  type Filter,
+} from './i18n/formatters';
+export {
   useListBox,
   useOption,
   type AriaListBoxProps,

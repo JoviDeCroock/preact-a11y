@@ -61,6 +61,7 @@ export function Settings() {
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Single/multiple-selection listboxes with active focus and typeahead
+- Locale direction, locale-aware filtering, and native Intl formatters
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State
