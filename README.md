@@ -64,6 +64,7 @@ export function Settings() {
 - Checkbox and single/multiple toggle-button groups with shared semantics
 - Single and multi-thumb sliders with form values, constraints, pointer, and keyboard input
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
+- Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Breadcrumbs, titled dialogs, and arrow-key toolbars
 - Single/multiple-selection listboxes with active focus and typeahead

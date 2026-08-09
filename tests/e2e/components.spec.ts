@@ -90,6 +90,25 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await expect(alignLeft).toHaveAttribute('aria-pressed', 'false');
   await expect(alignCenter).toHaveAttribute('aria-pressed', 'true');
 
+  const tooltipTrigger = page.getByRole('button', { name: 'Copy share link' });
+  await tooltipTrigger.focus();
+  let tooltip = page.getByRole('tooltip');
+  await expect(tooltip).toBeVisible();
+  const tooltipId = await tooltip.getAttribute('id');
+  if (!tooltipId) throw new Error('Tooltip has no id.');
+  await expect(tooltipTrigger).toHaveAttribute('aria-describedby', tooltipId);
+  await tooltipTrigger.press('Escape');
+  await expect(tooltip).toBeHidden();
+
+  await tooltipTrigger.hover();
+  tooltip = page.getByRole('tooltip');
+  await expect(tooltip).toBeVisible();
+  await tooltip.hover();
+  await page.waitForTimeout(150);
+  await expect(tooltip).toBeVisible();
+  await page.mouse.move(0, 0);
+  await expect(tooltip).toBeHidden();
+
   const link = page.getByRole('link', { name: 'Learn more' });
   await link.focus();
   await link.press('Space');
@@ -137,6 +156,13 @@ test('fixture has no automatically detectable accessibility violations', async (
     [],
   );
   await page.keyboard.press('Escape');
+
+  const tooltipTrigger = page.getByRole('button', { name: 'Copy share link' });
+  await tooltipTrigger.focus();
+  expect((await new AxeBuilder({ page }).include('[role="tooltip"]').analyze()).violations).toEqual(
+    [],
+  );
+  await tooltipTrigger.press('Escape');
 
   const trigger = page.getByRole('button', { name: 'Open preferences' });
   await trigger.click();

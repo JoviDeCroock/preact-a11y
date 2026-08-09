@@ -119,4 +119,6 @@ export {
   type SliderState,
 } from './slider/useSlider';
 export { useSliderThumb, type AriaSliderThumbProps } from './slider/useSliderThumb';
+export { useTooltip, type AriaTooltipProps } from './tooltip/useTooltip';
+export { useTooltipTrigger, type AriaTooltipTriggerProps } from './tooltip/useTooltipTrigger';
 export type { PointerType, PressEvent, PressProps } from './types';

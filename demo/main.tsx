@@ -36,6 +36,7 @@ import {
   ToggleButtonGroup,
   ToggleButtonGroupItem,
   Toolbar,
+  Tooltip,
 } from '../src/components';
 import './styles.css';
 
@@ -130,6 +131,9 @@ function App() {
         <ToggleButtonGroupItem id="center">Align center</ToggleButtonGroupItem>
         <ToggleButtonGroupItem id="right">Align right</ToggleButtonGroupItem>
       </ToggleButtonGroup>
+      <Tooltip closeDelay={100} content="Copies a shareable link" delay={50}>
+        <Button>Copy share link</Button>
+      </Tooltip>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal
         aria-label="Preferences"

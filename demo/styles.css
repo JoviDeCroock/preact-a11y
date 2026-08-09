@@ -65,6 +65,14 @@ label {
   outline-offset: 2px;
 }
 
+[role='tooltip'] {
+  background: CanvasText;
+  border-radius: 0.25rem;
+  color: Canvas;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
 .modal {
   background: Canvas;
   border: 2px solid currentColor;
