@@ -13,7 +13,7 @@ automated accessibility coverage before being marked complete.
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
 | Overlays                  | In progress | Modal/popover focus, collision positioning, and tooltips     |
-| Collections               | In progress | Listbox/menu/grid/tree/tag focus, selection, actions         |
+| Collections               | In progress | List/menu/grid/tree/tag/table navigation and selection       |
 | Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars     |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting     |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |

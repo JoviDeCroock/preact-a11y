@@ -111,6 +111,26 @@ export {
   type AriaTagProps,
   type TagAria,
 } from './collections/useTagGroup';
+export {
+  useTable,
+  useTableCell,
+  useTableColumnHeader,
+  useTableColumnResize,
+  useTableHeaderRow,
+  useTableRow,
+  useTableRowGroup,
+  useTableSelectAllCheckbox,
+  useTableSelectionCheckbox,
+  type AriaTableCellProps,
+  type AriaTableColumnHeaderProps,
+  type AriaTableColumnResizeProps,
+  type AriaTableHeaderRowProps,
+  type AriaTableProps,
+  type AriaTableRowProps,
+  type AriaTableSelectAllCheckboxProps,
+  type AriaTableSelectionCheckboxProps,
+  type SortDirection,
+} from './table/useTable';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,

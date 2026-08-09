@@ -38,6 +38,14 @@ import {
   Tabs,
   Tag,
   TagGroup,
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+  TableSelectAllCheckbox,
+  TableSelectionCheckbox,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -133,6 +141,56 @@ function App() {
           </Tag>
         ))}
       </TagGroup>
+      <Table aria-label="Contributors" className="data-table" selectionMode="multiple">
+        <TableHeader>
+          <TableColumn id="selection">
+            <TableSelectAllCheckbox />
+          </TableColumn>
+          <TableColumn
+            allowsResizing
+            allowsSorting
+            defaultWidth={120}
+            id="name"
+            resizerClassName="column-resizer"
+          >
+            Name
+          </TableColumn>
+          <TableColumn id="role">Role</TableColumn>
+        </TableHeader>
+        <TableBody>
+          <TableRow id="ada" textValue="Ada Lovelace">
+            <TableCell columnId="selection">
+              <TableSelectionCheckbox />
+            </TableCell>
+            <TableCell columnId="name" isRowHeader>
+              Ada Lovelace
+            </TableCell>
+            <TableCell columnId="role">
+              <Button>Open Ada</Button>
+            </TableCell>
+          </TableRow>
+          <TableRow id="grace" isDisabled textValue="Grace Hopper">
+            <TableCell columnId="selection">
+              <TableSelectionCheckbox />
+            </TableCell>
+            <TableCell columnId="name" isRowHeader>
+              Grace Hopper
+            </TableCell>
+            <TableCell columnId="role">Admiral</TableCell>
+          </TableRow>
+          <TableRow id="margaret" textValue="Margaret Hamilton">
+            <TableCell columnId="selection">
+              <TableSelectionCheckbox />
+            </TableCell>
+            <TableCell columnId="name" isRowHeader>
+              Margaret Hamilton
+            </TableCell>
+            <TableCell columnId="role">
+              <Button>Open Margaret</Button>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
       <MenuTrigger label="More actions">
         <MenuItem id="rename">Rename</MenuItem>
         <MenuItem id="archive">Archive</MenuItem>

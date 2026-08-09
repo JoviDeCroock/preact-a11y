@@ -203,6 +203,33 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await expect(page.getByRole('row', { name: /Accessibility/ })).toBeHidden();
   await expect(topics).toHaveAttribute('aria-activedescendant', /vdom/);
 
+  const contributors = page.getByRole('grid', { name: 'Contributors' });
+  await contributors.focus();
+  await contributors.press('ArrowRight');
+  await contributors.press('Enter');
+  const nameHeader = page.getByRole('columnheader', { name: /Name/ });
+  await expect(nameHeader).toHaveAttribute('aria-sort', 'ascending');
+  await contributors.press('F2');
+  const nameResizer = page.getByRole('slider', { name: 'Resize Name column' });
+  await expect(nameResizer).toBeFocused();
+  await nameResizer.press('ArrowRight');
+  await expect(nameHeader).toHaveCSS('width', '130px');
+  await nameResizer.press('Escape');
+  await expect(contributors).toBeFocused();
+  await contributors.press('ArrowDown');
+  await contributors.press('Space');
+  await expect(page.getByRole('row', { name: /Ada Lovelace/ })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await contributors.press('ArrowDown');
+  await expect(contributors).toHaveAttribute('aria-activedescendant', /margaret-name/);
+  await contributors.press('ArrowRight');
+  await contributors.press('F2');
+  await expect(page.getByRole('button', { name: 'Open Margaret' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(contributors).toBeFocused();
+
   const menuTrigger = page.getByRole('button', { name: 'More actions' });
   await menuTrigger.focus();
   await menuTrigger.press('ArrowDown');

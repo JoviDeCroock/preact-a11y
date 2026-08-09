@@ -60,6 +60,25 @@ label {
   padding: 0.25rem 0.5rem;
 }
 
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid GrayText;
+  padding: 0.5rem;
+}
+
+.column-resizer {
+  cursor: col-resize;
+  display: inline-block;
+  height: 1.5rem;
+  margin-inline-start: 0.5rem;
+  width: 0.35rem;
+}
+
 .slider {
   display: grid;
   gap: 0.5rem;

@@ -73,6 +73,25 @@ export { Tooltip, type TooltipPlacement, type TooltipProps } from './components/
 export { Tree, TreeItem, type TreeItemProps, type TreeProps } from './components/Tree';
 export { Tag, TagGroup, type TagGroupProps, type TagProps } from './components/TagGroup';
 export {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableColumnResizer,
+  TableHeader,
+  TableRow,
+  TableSelectAllCheckbox,
+  TableSelectionCheckbox,
+  type SortDescriptor,
+  type TableBodyProps,
+  type TableCellProps,
+  type TableColumnProps,
+  type TableColumnResizerProps,
+  type TableHeaderProps,
+  type TableProps,
+  type TableRowProps,
+} from './components/Table';
+export {
   Toast,
   ToastRegion,
   type ToastItem,
