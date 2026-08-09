@@ -6,6 +6,12 @@ export {
   type SearchFieldProps,
 } from './components/AdvancedFields';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
+export {
+  ComboBox,
+  ComboBoxItem,
+  type ComboBoxItemProps,
+  type ComboBoxProps,
+} from './components/ComboBox';
 export { Disclosure, type DisclosureProps } from './components/Disclosure';
 export {
   Meter,

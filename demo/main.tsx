@@ -5,6 +5,8 @@ import {
   Breadcrumb,
   Breadcrumbs,
   Checkbox,
+  ComboBox,
+  ComboBoxItem,
   Disclosure,
   Link,
   ListBox,
@@ -89,6 +91,11 @@ function App() {
         <SelectItem id="dog">Dog</SelectItem>
         <SelectItem id="kangaroo">Kangaroo</SelectItem>
       </Select>
+      <ComboBox label="Favorite framework">
+        <ComboBoxItem id="preact">Preact</ComboBoxItem>
+        <ComboBoxItem id="vanilla">Vanilla</ComboBoxItem>
+        <ComboBoxItem id="web-components">Web Components</ComboBoxItem>
+      </ComboBox>
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal

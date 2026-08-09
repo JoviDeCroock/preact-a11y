@@ -99,4 +99,5 @@ export {
   type HiddenSelectOption,
 } from './select/useHiddenSelect';
 export { HiddenSelect, type HiddenSelectProps } from './select/HiddenSelect';
+export { useComboBox, type AriaComboBoxProps } from './combobox/useComboBox';
 export type { PointerType, PressEvent, PressProps } from './types';

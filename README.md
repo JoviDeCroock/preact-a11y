@@ -60,6 +60,7 @@ export function Settings() {
 - Matching unstyled form and selection components
 - Search clearing and locale-aware number fields with keyboard stepping
 - Form-integrated selects with listbox navigation and hidden native controls
+- Filtered comboboxes with active-descendant focus and form synchronization
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Breadcrumbs, titled dialogs, and arrow-key toolbars

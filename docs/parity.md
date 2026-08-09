@@ -8,7 +8,7 @@ automated accessibility coverage before being marked complete.
 | ------------------------- | ----------- | ----------------------------------------------------------- |
 | Interactions              | In progress | Press/long press, move, focus, keyboard, context/outside    |
 | Buttons                   | In progress | Button and toggle button hooks and components               |
-| Selection controls        | In progress | Checkbox, switch, radio, and form-integrated select         |
+| Selection controls        | In progress | Checkbox, radio, select, and filtered combobox              |
 | Forms                     | In progress | Labels, validation, text/search, locale-aware number fields |
 | Feedback                  | In progress | Labels, progress bars, meters, and separators               |
 | Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration   |
