@@ -58,6 +58,7 @@ export function Settings() {
 - Press, hover, focus, focus-visible, and focus-ring interactions
 - Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
+- Search clearing and locale-aware number fields with keyboard stepping
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Single/multiple-selection listboxes with active focus and typeahead

@@ -1,4 +1,10 @@
 export { Button, type ButtonProps } from './components/Button';
+export {
+  NumberField,
+  SearchField,
+  type NumberFieldProps,
+  type SearchFieldProps,
+} from './components/AdvancedFields';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
 export { Disclosure, type DisclosureProps } from './components/Disclosure';
 export {

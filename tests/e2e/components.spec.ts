@@ -30,6 +30,15 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await email.fill('person@example.com');
   await expect(email).toHaveValue('person@example.com');
 
+  const search = page.getByRole('searchbox', { name: 'Search docs' });
+  await search.fill('keyboard');
+  await search.press('Escape');
+  await expect(search).toHaveValue('');
+
+  const seats = page.getByRole('spinbutton', { name: 'Seats' });
+  await seats.press('ArrowUp');
+  await expect(seats).toHaveValue('3');
+
   const toggleButton = page.getByRole('button', { name: 'Pin sidebar' });
   await toggleButton.press('Space');
   await expect(toggleButton).toHaveAttribute('aria-pressed', 'true');

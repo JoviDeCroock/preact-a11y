@@ -17,6 +17,8 @@ export { useMeter, type AriaMeterProps } from './feedback/useMeter';
 export { useProgressBar, type AriaProgressBarProps } from './feedback/useProgressBar';
 export { useSeparator, type SeparatorProps } from './feedback/useSeparator';
 export { useTextField, type AriaTextFieldProps } from './forms/useTextField';
+export { useSearchField, type AriaSearchFieldProps } from './forms/useSearchField';
+export { useNumberField, type AriaNumberFieldProps } from './forms/useNumberField';
 export { useFocus, useFocusRing, useFocusVisible, type FocusProps } from './interactions/useFocus';
 export { useHover, type HoverEvent, type HoverProps } from './interactions/useHover';
 export { useKeyboard, type KeyboardProps } from './interactions/useKeyboard';

@@ -10,10 +10,12 @@ import {
   MenuTrigger,
   Meter,
   Modal,
+  NumberField,
   Option,
   ProgressBar,
   Radio,
   RadioGroup,
+  SearchField,
   Separator,
   Switch,
   Tab,
@@ -67,6 +69,8 @@ function App() {
       <Meter label="Storage used" maxValue={100} value={42} />
       <Separator />
       <TextField label="Email" description="We will only use this for accessibility updates" />
+      <SearchField label="Search docs" />
+      <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
       <ToggleButton>Pin sidebar</ToggleButton>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal
