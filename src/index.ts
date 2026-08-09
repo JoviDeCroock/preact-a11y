@@ -87,6 +87,16 @@ export {
   type AriaOptionProps,
   type SelectionMode,
 } from './collections/useListBox';
+export {
+  useGridList,
+  useGridListItem,
+  useGridListSection,
+  useGridListSelectionCheckbox,
+  type AriaGridListItemProps,
+  type AriaGridListProps,
+  type AriaGridListSectionProps,
+  type AriaGridListSelectionCheckboxProps,
+} from './collections/useGridList';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,

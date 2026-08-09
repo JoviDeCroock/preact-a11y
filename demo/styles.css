@@ -27,6 +27,15 @@ label {
   background: currentColor;
 }
 
+.grid-list [role='row'] {
+  border: 1px solid GrayText;
+  padding: 0.5rem;
+}
+
+.grid-list [role='row'][data-focused] {
+  outline: 2px solid Highlight;
+}
+
 .slider {
   display: grid;
   gap: 0.5rem;

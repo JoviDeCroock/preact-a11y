@@ -32,6 +32,16 @@ export {
   type ToggleButtonGroupItemProps,
   type ToggleButtonGroupProps,
 } from './components/Groups';
+export {
+  GridList,
+  GridListItem,
+  GridListSection,
+  GridListSelectionCheckbox,
+  type GridListItemProps,
+  type GridListProps,
+  type GridListSectionProps,
+  type GridListSelectionCheckboxProps,
+} from './components/GridList';
 export { ListBox, Option, type ListBoxProps, type OptionProps } from './components/ListBox';
 export {
   Menu,

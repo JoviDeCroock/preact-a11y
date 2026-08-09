@@ -157,6 +157,21 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
     'true',
   );
 
+  const environments = page.getByRole('grid', { name: 'Deployment environments' });
+  await environments.focus();
+  await environments.press('ArrowDown');
+  await expect(environments).toHaveAttribute('aria-activedescendant', /preview/);
+  await environments.press('Space');
+  await expect(page.getByRole('row', { name: /Preview/ })).toHaveAttribute('aria-selected', 'true');
+  await environments.press('ArrowRight');
+  const previewCheckbox = page.getByRole('checkbox', { name: 'Select Preview' });
+  await expect(previewCheckbox).toBeFocused();
+  await expect(previewCheckbox).toHaveAttribute('tabindex', '-1');
+  await previewCheckbox.press('ArrowRight');
+  await expect(page.getByRole('button', { name: 'Deploy preview' })).toBeFocused();
+  await page.keyboard.press('ArrowLeft');
+  await expect(previewCheckbox).toBeFocused();
+
   const menuTrigger = page.getByRole('button', { name: 'More actions' });
   await menuTrigger.focus();
   await menuTrigger.press('ArrowDown');

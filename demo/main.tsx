@@ -10,6 +10,10 @@ import {
   ComboBox,
   ComboBoxItem,
   Disclosure,
+  GridList,
+  GridListItem,
+  GridListSection,
+  GridListSelectionCheckbox,
   Link,
   ListBox,
   MenuItem,
@@ -87,6 +91,24 @@ function App() {
         <Option id="brussels">Brussels</Option>
         <Option id="ghent">Ghent</Option>
       </ListBox>
+      <GridList
+        aria-label="Deployment environments"
+        className="grid-list"
+        defaultSelectedKeys={['production']}
+        selectionMode="multiple"
+      >
+        <GridListSection heading="Recent environments" id="recent-environments">
+          <GridListItem id="production" textValue="Production">
+            <GridListSelectionCheckbox /> Production <Button>Deploy production</Button>
+          </GridListItem>
+          <GridListItem id="staging" isDisabled textValue="Staging">
+            Staging
+          </GridListItem>
+          <GridListItem id="preview" textValue="Preview">
+            <GridListSelectionCheckbox /> Preview <Button>Deploy preview</Button>
+          </GridListItem>
+        </GridListSection>
+      </GridList>
       <MenuTrigger label="More actions">
         <MenuItem id="rename">Rename</MenuItem>
         <MenuItem id="archive">Archive</MenuItem>
