@@ -26,3 +26,14 @@ label {
 [data-selected] .box {
   background: currentColor;
 }
+
+.modal {
+  background: Canvas;
+  border: 2px solid currentColor;
+  inset: 20% auto auto 50%;
+  max-width: 24rem;
+  padding: 1.5rem;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 1;
+}

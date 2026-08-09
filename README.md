@@ -58,6 +58,7 @@ export function Settings() {
 - Press, hover, focus, focus-visible, and focus-ring interactions
 - Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
+- Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State

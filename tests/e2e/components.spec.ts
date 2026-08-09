@@ -43,6 +43,18 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {
-  const results = await new AxeBuilder({ page }).analyze();
-  expect(results.violations).toEqual([]);
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+
+  const trigger = page.getByRole('button', { name: 'Open preferences' });
+  await trigger.click();
+  const dialog = page.getByRole('dialog', { name: 'Preferences' });
+  await expect(dialog).toBeVisible();
+  await expect(page.getByRole('textbox', { name: 'Display name' })).toBeFocused();
+  expect((await new AxeBuilder({ page }).include('[role="dialog"]').analyze()).violations).toEqual(
+    [],
+  );
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
 });

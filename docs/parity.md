@@ -4,17 +4,17 @@ React Aria is a behavioral and API reference, not a runtime dependency. Each fam
 implemented natively for Preact and must pass unit, real-browser, keyboard, pointer, and
 automated accessibility coverage before being marked complete.
 
-| Family                    | Status      | Current scope                                              |
-| ------------------------- | ----------- | ---------------------------------------------------------- |
-| Interactions              | In progress | Press, hover, focus, focus-visible, focus ring             |
-| Buttons                   | In progress | Button and toggle button hooks and components              |
-| Selection controls        | In progress | Checkbox, switch, and radio group hooks and components     |
-| Forms                     | In progress | Field labeling, help/error association, and text fields    |
-| Overlays                  | Planned     | Dismissal, modal semantics, focus containment, positioning |
-| Collections               | Planned     | Listbox, menu, grid, tree, table keyboard semantics        |
-| Disclosure and navigation | In progress | Native links; disclosure, tabs, and breadcrumbs planned    |
-| Internationalization      | Planned     | Locale direction, collators, number/date formatting        |
-| Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows          |
+| Family                    | Status      | Current scope                                             |
+| ------------------------- | ----------- | --------------------------------------------------------- |
+| Interactions              | In progress | Press, hover, focus, focus-visible, focus ring            |
+| Buttons                   | In progress | Button and toggle button hooks and components             |
+| Selection controls        | In progress | Checkbox, switch, and radio group hooks and components    |
+| Forms                     | In progress | Field labeling, help/error association, and text fields   |
+| Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration |
+| Collections               | Planned     | Listbox, menu, grid, tree, table keyboard semantics       |
+| Disclosure and navigation | In progress | Native links; disclosure, tabs, and breadcrumbs planned   |
+| Internationalization      | Planned     | Locale direction, collators, number/date formatting       |
+| Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows         |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility

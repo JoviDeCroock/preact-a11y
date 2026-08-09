@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   Link,
+  Modal,
   Radio,
   RadioGroup,
   Switch,
@@ -14,6 +15,7 @@ import './styles.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <main>
@@ -28,6 +30,18 @@ function App() {
       </RadioGroup>
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <ToggleButton>Pin sidebar</ToggleButton>
+      <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
+      <Modal
+        aria-label="Preferences"
+        className="modal"
+        isDismissable
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      >
+        <h2>Preferences</h2>
+        <TextField label="Display name" />
+        <Button onPress={() => setModalOpen(false)}>Save preferences</Button>
+      </Modal>
       <Link href="#learn-more">Learn more</Link>
       <section id="learn-more" tabIndex={-1}>
         Native Preact accessibility primitives.
