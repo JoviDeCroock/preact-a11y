@@ -225,6 +225,18 @@ export { useTooltipTrigger, type AriaTooltipTriggerProps } from './tooltip/useTo
 export { useToast, type AriaToastProps, type ToastPriority } from './toast/useToast';
 export { useToastRegion, type AriaToastRegionProps } from './toast/useToastRegion';
 export {
+  DIRECTORY_DRAG_TYPE,
+  isDirectoryDropItem,
+  isFileDropItem,
+  isTextDropItem,
+  type DirectoryDropItem,
+  type DragItem,
+  type DropItem,
+  type FileDropItem,
+  type TextDropItem,
+} from './dnd/types';
+export { useClipboard, type ClipboardProps, type ClipboardResult } from './dnd/useClipboard';
+export {
   UNSTABLE_createLandmarkController,
   useLandmark,
   type AriaLandmarkProps,

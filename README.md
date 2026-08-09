@@ -56,6 +56,7 @@ export function Settings() {
 ## Current native primitives
 
 - Press, hover, focus, focus-visible, focus-ring, and focusable-child composition
+- Focus-scoped typed clipboard interactions with multi-format item transfer
 - Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
 - Search clearing and locale-aware number fields with keyboard stepping

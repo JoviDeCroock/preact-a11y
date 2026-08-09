@@ -30,6 +30,26 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await focusRingButton.click();
   await expect(focusRingButton).not.toHaveClass(/focus-ring/);
 
+  const clipboard = page.getByRole('textbox', { name: 'Clipboard workspace' });
+  await clipboard.focus();
+  const copied = await clipboard.evaluate((element) => {
+    const transfer = new DataTransfer();
+    const event = new Event('copy', { bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'clipboardData', { value: transfer });
+    element.dispatchEvent(event);
+    return transfer.getData('text/plain');
+  });
+  expect(copied).toBe('Preact Aria copy');
+  await expect(clipboard).toContainText('Clipboard status: Copied');
+  await clipboard.evaluate((element) => {
+    const transfer = new DataTransfer();
+    transfer.setData('text/plain', 'Browser paste');
+    const event = new Event('paste', { bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'clipboardData', { value: transfer });
+    element.dispatchEvent(event);
+  });
+  await expect(clipboard).toContainText('Clipboard status: Pasted: Browser paste');
+
   const bold = page.getByRole('button', { name: 'Bold' });
   await bold.focus();
   await bold.press('ArrowRight');

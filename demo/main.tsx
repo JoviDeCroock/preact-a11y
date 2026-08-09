@@ -6,6 +6,8 @@ import {
   OverlayProvider,
   Pressable,
   RouterProvider,
+  isTextDropItem,
+  useClipboard,
   useLandmark,
 } from '../src';
 import {
@@ -67,6 +69,35 @@ import {
 } from '../src/components';
 import './styles.css';
 
+function ClipboardExample() {
+  const [status, setStatus] = useState('Ready');
+  const { clipboardProps } = useClipboard({
+    getItems: ({ action }) => [
+      {
+        'text/plain': `Preact Aria ${action}`,
+        'application/json': JSON.stringify({ library: 'preact-aria', action }),
+      },
+    ],
+    onCopy: () => setStatus('Copied'),
+    onCut: () => setStatus('Cut'),
+    onPaste: (items) => {
+      const text = items.find(isTextDropItem);
+      if (text) void text.getText('text/plain').then((value) => setStatus(`Pasted: ${value}`));
+    },
+  });
+  return (
+    <div
+      {...clipboardProps}
+      aria-label="Clipboard workspace"
+      aria-readonly="true"
+      role="textbox"
+      tabIndex={0}
+    >
+      Clipboard status: {status}
+    </div>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -97,6 +128,7 @@ function App() {
       <FocusRing focusClass="focused" focusRingClass="focus-ring">
         <button>Focus ring example</button>
       </FocusRing>
+      <ClipboardExample />
       <Checkbox>Accept terms</Checkbox>
       <CheckboxGroup label="Permissions" name="permission">
         <CheckboxGroupItem value="read">Read projects</CheckboxGroupItem>
