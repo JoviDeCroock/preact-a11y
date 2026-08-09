@@ -7,7 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: 'http://127.0.0.1:41737',
     trace: 'on-first-retry',
   },
   projects: [
@@ -15,8 +15,8 @@ export default defineConfig({
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
   ],
   webServer: {
-    command: 'pnpm vite --host 127.0.0.1 --port 4173',
-    port: 4173,
-    reuseExistingServer: !process.env.CI,
+    command: 'pnpm vite --host 127.0.0.1 --port 41737 --strictPort',
+    port: 41737,
+    reuseExistingServer: false,
   },
 });
