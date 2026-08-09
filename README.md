@@ -39,13 +39,15 @@ Optional unstyled components compose the same native hooks. Preact's own ref mod
 kept explicit through `elementRef`; no React-style `forwardRef` shim is installed.
 
 ```tsx
-import { Button, Checkbox } from 'preact-aria/components';
+import { Button, Checkbox, Switch, TextField } from 'preact-aria/components';
 
 export function Settings() {
   return (
     <>
       <Button onPress={() => save()}>Save</Button>
       <Checkbox onChange={(selected) => updateConsent(selected)}>Accept terms</Checkbox>
+      <Switch onChange={(selected) => updateNotifications(selected)}>Notifications</Switch>
+      <TextField label="Email" description="Used for account recovery" type="email" />
     </>
   );
 }
@@ -54,8 +56,8 @@ export function Settings() {
 ## Current native primitives
 
 - Press, hover, focus, focus-visible, and focus-ring interactions
-- Button and checkbox ARIA hooks
-- Unstyled Button and Checkbox components
+- Button, checkbox, switch, radio group, field, and text field hooks
+- Matching unstyled form and selection components
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State

@@ -17,6 +17,18 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   const checkbox = page.getByRole('checkbox', { name: 'Accept terms' });
   await checkbox.press('Space');
   await expect(checkbox).toBeChecked();
+
+  const toggle = page.getByRole('switch', { name: 'Enable notifications' });
+  await toggle.press('Space');
+  await expect(toggle).toBeChecked();
+
+  const darkTheme = page.getByRole('radio', { name: 'Dark' });
+  await darkTheme.check();
+  await expect(darkTheme).toBeChecked();
+
+  const email = page.getByRole('textbox', { name: 'Email' });
+  await email.fill('person@example.com');
+  await expect(email).toHaveValue('person@example.com');
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {

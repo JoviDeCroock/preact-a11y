@@ -8,15 +8,24 @@ const surfaces = [
       'mergeRefs',
       'useButton',
       'useCheckbox',
+      'useField',
       'useFocus',
       'useFocusRing',
       'useFocusVisible',
       'useHover',
       'usePress',
+      'useRadio',
+      'useRadioGroup',
+      'useSwitch',
+      'useTextField',
       'useVisuallyHidden',
     ],
   ],
-  ['components', '../dist/components.js', ['Button', 'Checkbox', 'VisuallyHidden']],
+  [
+    'components',
+    '../dist/components.js',
+    ['Button', 'Checkbox', 'Radio', 'RadioGroup', 'Switch', 'TextField', 'VisuallyHidden'],
+  ],
 ];
 
 const failures = await Promise.all(
