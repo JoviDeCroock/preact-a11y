@@ -13,7 +13,7 @@ automated accessibility coverage before being marked complete.
 | Feedback                  | In progress | Labels, progress bars, meters, and separators               |
 | Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration   |
 | Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead   |
-| Disclosure and navigation | In progress | Links, disclosures, and keyboard-navigable tabs             |
+| Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars    |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting    |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state      |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows           |

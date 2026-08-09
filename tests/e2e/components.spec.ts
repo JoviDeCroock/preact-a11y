@@ -14,6 +14,11 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await button.press('Enter');
   await expect(output).toHaveText('Count: 2');
 
+  const bold = page.getByRole('button', { name: 'Bold' });
+  await bold.focus();
+  await bold.press('ArrowRight');
+  await expect(page.getByRole('button', { name: 'Italic' })).toBeFocused();
+
   const checkbox = page.getByRole('checkbox', { name: 'Accept terms' });
   await checkbox.press('Space');
   await expect(checkbox).toBeChecked();

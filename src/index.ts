@@ -1,6 +1,14 @@
 export { useButton, type AriaButtonProps } from './hooks/useButton';
 export { useCheckbox, type AriaCheckboxProps } from './hooks/useCheckbox';
 export { useLink, type AriaLinkProps } from './hooks/useLink';
+export {
+  useBreadcrumbItem,
+  useBreadcrumbs,
+  type AriaBreadcrumbItemProps,
+  type AriaBreadcrumbsProps,
+} from './navigation/useBreadcrumbs';
+export { useDialog, type AriaDialogProps } from './dialog/useDialog';
+export { useToolbar, type AriaToolbarProps } from './navigation/useToolbar';
 export { useMenu, useMenuItem, type AriaMenuItemProps, type AriaMenuProps } from './menu/useMenu';
 export { useMenuTrigger, type AriaMenuTriggerProps } from './menu/useMenuTrigger';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';

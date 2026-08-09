@@ -1,0 +1,5 @@
+---
+'preact-aria': minor
+---
+
+Add breadcrumbs, non-modal dialog, and orientation-aware toolbar primitives.

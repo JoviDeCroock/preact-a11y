@@ -2,6 +2,8 @@ import { render } from 'preact';
 import { useState } from 'preact/hooks';
 import {
   Button,
+  Breadcrumb,
+  Breadcrumbs,
   Checkbox,
   Disclosure,
   Link,
@@ -24,6 +26,7 @@ import {
   Tabs,
   TextField,
   ToggleButton,
+  Toolbar,
 } from '../src/components';
 import './styles.css';
 
@@ -34,6 +37,14 @@ function App() {
   return (
     <main>
       <h1>Preact Aria browser fixture</h1>
+      <Breadcrumbs>
+        <Breadcrumb href="#home">Home</Breadcrumb>
+        <Breadcrumb isCurrent>Fixture</Breadcrumb>
+      </Breadcrumbs>
+      <Toolbar aria-label="Text formatting">
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+      </Toolbar>
       <Button onPress={() => setCount((value) => value + 1)}>Increment</Button>
       <output aria-live="polite">Count: {count}</output>
       <Checkbox>Accept terms</Checkbox>

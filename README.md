@@ -61,6 +61,7 @@ export function Settings() {
 - Search clearing and locale-aware number fields with keyboard stepping
 - Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
 - Disclosures and automatic/manual keyboard-navigable tabs
+- Breadcrumbs, titled dialogs, and arrow-key toolbars
 - Single/multiple-selection listboxes with active focus and typeahead
 - Menus with trigger relationships, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
