@@ -36,13 +36,16 @@ import {
   ToggleButtonGroup,
   ToggleButtonGroupItem,
   Toolbar,
+  ToastRegion,
   Tooltip,
+  type ToastItem,
 } from '../src/components';
 import './styles.css';
 
 function App() {
   const [count, setCount] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   return (
     <main>
@@ -134,6 +137,25 @@ function App() {
       <Tooltip closeDelay={100} content="Copies a shareable link" delay={50}>
         <Button>Copy share link</Button>
       </Tooltip>
+      <Button
+        onPress={() =>
+          setToasts([
+            {
+              id: 'saved',
+              title: 'Settings saved',
+              description: 'Your preferences are up to date.',
+            },
+          ])
+        }
+      >
+        Show notification
+      </Button>
+      <ToastRegion
+        className="toast-region"
+        onDismiss={(id) => setToasts((items) => items.filter((item) => item.id !== id))}
+        toastClassName="toast"
+        toasts={toasts}
+      />
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal
         aria-label="Preferences"

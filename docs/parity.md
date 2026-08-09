@@ -11,7 +11,7 @@ automated accessibility coverage before being marked complete.
 | Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox         |
 | Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
-| Feedback                  | In progress | Labels, progress bars, meters, and separators                |
+| Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
 | Overlays                  | In progress | Modal focus/dismissal and delayed hover/focus tooltips       |
 | Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead    |
 | Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars     |

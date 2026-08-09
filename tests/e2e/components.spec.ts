@@ -109,6 +109,14 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await page.mouse.move(0, 0);
   await expect(tooltip).toBeHidden();
 
+  const showNotification = page.getByRole('button', { name: 'Show notification' });
+  await showNotification.click();
+  const toast = page.getByRole('alertdialog', { name: 'Settings saved' });
+  await expect(toast).toBeVisible();
+  await toast.getByRole('button', { name: 'Close notification' }).click();
+  await expect(toast).toBeHidden();
+  await expect(showNotification).toBeFocused();
+
   const link = page.getByRole('link', { name: 'Learn more' });
   await link.focus();
   await link.press('Space');
@@ -163,6 +171,14 @@ test('fixture has no automatically detectable accessibility violations', async (
     [],
   );
   await tooltipTrigger.press('Escape');
+
+  const showNotification = page.getByRole('button', { name: 'Show notification' });
+  await showNotification.click();
+  const toastRegion = page.getByRole('region', { name: /Notifications/ });
+  expect((await new AxeBuilder({ page }).include('.toast-region').analyze()).violations).toEqual(
+    [],
+  );
+  await toastRegion.getByRole('button', { name: 'Close notification' }).click();
 
   const trigger = page.getByRole('button', { name: 'Open preferences' });
   await trigger.click();

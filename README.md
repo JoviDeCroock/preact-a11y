@@ -70,6 +70,7 @@ export function Settings() {
 - Single/multiple-selection listboxes with active focus and typeahead
 - Menus with trigger relationships, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
+- Polite/assertive toast regions with paused timers and safe focus handoff
 - Locale direction, locale-aware filtering, and native Intl formatters
 - Stable IDs, object refs, callback chaining, RTL detection, and SSR state
 - VisuallyHidden, mergeProps, and mergeRefs utilities

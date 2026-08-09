@@ -121,4 +121,6 @@ export {
 export { useSliderThumb, type AriaSliderThumbProps } from './slider/useSliderThumb';
 export { useTooltip, type AriaTooltipProps } from './tooltip/useTooltip';
 export { useTooltipTrigger, type AriaTooltipTriggerProps } from './tooltip/useTooltipTrigger';
+export { useToast, type AriaToastProps, type ToastPriority } from './toast/useToast';
+export { useToastRegion, type AriaToastRegionProps } from './toast/useToastRegion';
 export type { PointerType, PressEvent, PressProps } from './types';

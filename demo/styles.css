@@ -73,6 +73,19 @@ label {
   width: fit-content;
 }
 
+.toast-region {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.toast {
+  border: 2px solid currentColor;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr auto;
+  padding: 0.75rem;
+}
+
 .modal {
   background: Canvas;
   border: 2px solid currentColor;
