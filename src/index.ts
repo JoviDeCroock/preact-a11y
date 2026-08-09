@@ -15,6 +15,11 @@ export {
   type RouterProviderProps,
 } from './navigation/RouterProvider';
 export { useMenu, useMenuItem, type AriaMenuItemProps, type AriaMenuProps } from './menu/useMenu';
+export {
+  useMenuSection,
+  type AriaMenuSectionProps,
+  type MenuSectionAria,
+} from './menu/useMenuSection';
 export { useMenuTrigger, type AriaMenuTriggerProps } from './menu/useMenuTrigger';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';
 export { useRadioGroup, type AriaRadioGroupProps } from './hooks/useRadioGroup';
@@ -108,6 +113,11 @@ export {
   type AriaOptionProps,
   type SelectionMode,
 } from './collections/useListBox';
+export {
+  useListBoxSection,
+  type AriaListBoxSectionProps,
+  type ListBoxSectionAria,
+} from './collections/useListBoxSection';
 export {
   useGridList,
   useGridListItem,

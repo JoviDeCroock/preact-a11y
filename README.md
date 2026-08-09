@@ -70,13 +70,13 @@ export function Settings() {
 - Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Breadcrumbs, titled dialogs, arrow-key toolbars, and client-router-aware links
-- Single/multiple-selection listboxes with active focus and typeahead
+- Single/multiple-selection listboxes with active focus, typeahead, and labeled sections
 - Grid lists with row actions, selection checkboxes, sections, and nested controls
 - Hierarchical tree grids with expansion, parent/child navigation, and typeahead
 - Removable tag groups with selection, RTL navigation, live updates, and focus recovery
 - Data tables with two-dimensional navigation, sorting, selection, and column resizing
 - Reusable stack/grid keyboard and pointer drop-target delegates for DOM-backed collections
-- Menus with trigger relationships, actions, typeahead, and dismissal
+- Menus with trigger relationships, labeled sections, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Polite/assertive toast regions with paused timers and safe focus handoff
 - Locale direction, locale-aware filtering, and native Intl formatters
