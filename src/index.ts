@@ -24,6 +24,17 @@ export { useHover, type HoverEvent, type HoverProps } from './interactions/useHo
 export { useKeyboard, type KeyboardProps } from './interactions/useKeyboard';
 export { useFocusWithin, type FocusWithinProps } from './interactions/useFocusWithin';
 export { useInteractOutside, type InteractOutsideProps } from './interactions/useInteractOutside';
+export { useMove, type MoveEvent, type MoveProps } from './interactions/useMove';
+export {
+  useLongPress,
+  type LongPressEvent,
+  type LongPressProps,
+} from './interactions/useLongPress';
+export {
+  useContextMenu,
+  type ContextMenuEvent,
+  type ContextMenuProps,
+} from './interactions/useContextMenu';
 export { usePress, type PressResult } from './interactions/usePress';
 export { VisuallyHidden, useVisuallyHidden, type VisuallyHiddenProps } from './visually-hidden';
 export { mergeProps } from './utils/mergeProps';

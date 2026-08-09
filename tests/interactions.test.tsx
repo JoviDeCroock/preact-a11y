@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/preact';
+import { fireEvent, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { useRef } from 'preact/hooks';
 import { describe, expect, it, vi } from 'vitest';
-import { useFocusRing, useFocusWithin, useInteractOutside, useKeyboard, usePress } from '../src';
+import {
+  useContextMenu,
+  useFocusRing,
+  useFocusWithin,
+  useInteractOutside,
+  useKeyboard,
+  useLongPress,
+  useMove,
+  usePress,
+} from '../src';
 
 function CustomButton({ onPress }: { onPress: () => void }) {
   const { pressProps } = usePress({ onPress });
@@ -114,5 +123,86 @@ describe('interaction primitives', () => {
     rerender(<KeyboardTarget isDisabled />);
     await user.keyboard('{Enter}');
     expect(onKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  it('normalizes pointer and keyboard movement deltas', async () => {
+    const onMove = vi.fn();
+    function MoveTarget() {
+      const { moveProps } = useMove({ onMove });
+      return <div {...moveProps} role="slider" tabIndex={0} aria-label="Position" />;
+    }
+    const user = userEvent.setup();
+    render(<MoveTarget />);
+    const target = screen.getByRole('slider', { name: 'Position' });
+
+    fireEvent.pointerDown(target, {
+      button: 0,
+      clientX: 10,
+      clientY: 20,
+      pointerId: 1,
+      pointerType: 'mouse',
+    });
+    fireEvent.pointerMove(target, { clientX: 14, clientY: 17, pointerId: 1, pointerType: 'mouse' });
+    fireEvent.pointerUp(target, { pointerId: 1, pointerType: 'mouse' });
+    expect(onMove).toHaveBeenCalledWith(expect.objectContaining({ deltaX: 4, deltaY: -3 }));
+
+    target.focus();
+    await user.keyboard('{Shift>}{ArrowRight}{/Shift}');
+    expect(onMove).toHaveBeenLastCalledWith(
+      expect.objectContaining({ deltaX: 10, deltaY: 0, pointerType: 'keyboard' }),
+    );
+  });
+
+  it('recognizes long presses and cancels when pointer movement exceeds tolerance', () => {
+    vi.useFakeTimers();
+    const onLongPress = vi.fn();
+    function LongPressTarget() {
+      const { longPressProps } = useLongPress({ onLongPress, threshold: 400 });
+      return <button {...longPressProps}>Hold</button>;
+    }
+    render(<LongPressTarget />);
+    const target = screen.getByRole('button', { name: 'Hold' });
+
+    fireEvent.pointerDown(target, {
+      button: 0,
+      clientX: 0,
+      clientY: 0,
+      pointerId: 1,
+      pointerType: 'touch',
+    });
+    vi.advanceTimersByTime(400);
+    expect(onLongPress).toHaveBeenCalledTimes(1);
+    fireEvent.pointerUp(target, { pointerId: 1, pointerType: 'touch' });
+
+    fireEvent.pointerDown(target, {
+      button: 0,
+      clientX: 0,
+      clientY: 0,
+      pointerId: 2,
+      pointerType: 'touch',
+    });
+    fireEvent.pointerMove(target, { clientX: 20, clientY: 0, pointerId: 2, pointerType: 'touch' });
+    vi.advanceTimersByTime(400);
+    expect(onLongPress).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
+  });
+
+  it('normalizes mouse and keyboard context menu requests', () => {
+    const onContextMenu = vi.fn();
+    function ContextTarget() {
+      const { contextMenuProps } = useContextMenu({ onContextMenu });
+      return <button {...contextMenuProps}>Open context menu</button>;
+    }
+    render(<ContextTarget />);
+    const target = screen.getByRole('button', { name: 'Open context menu' });
+
+    fireEvent.contextMenu(target, { clientX: 12, clientY: 18 });
+    expect(onContextMenu).toHaveBeenLastCalledWith(
+      expect.objectContaining({ pointerType: 'mouse', x: 12, y: 18 }),
+    );
+    fireEvent.keyDown(target, { key: 'F10', shiftKey: true });
+    expect(onContextMenu).toHaveBeenLastCalledWith(
+      expect.objectContaining({ pointerType: 'keyboard' }),
+    );
   });
 });
