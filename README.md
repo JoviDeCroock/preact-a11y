@@ -71,6 +71,7 @@ export function Settings() {
 - Single/multiple-selection listboxes with active focus and typeahead
 - Grid lists with row actions, selection checkboxes, sections, and nested controls
 - Hierarchical tree grids with expansion, parent/child navigation, and typeahead
+- Removable tag groups with selection, RTL navigation, live updates, and focus recovery
 - Menus with trigger relationships, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Polite/assertive toast regions with paused timers and safe focus handoff

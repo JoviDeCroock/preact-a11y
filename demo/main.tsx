@@ -36,6 +36,8 @@ import {
   TabList,
   TabPanel,
   Tabs,
+  Tag,
+  TagGroup,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -53,6 +55,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const [tags, setTags] = useState(['preact', 'accessibility', 'vdom']);
 
   return (
     <main>
@@ -118,6 +121,18 @@ function App() {
         </TreeItem>
         <TreeItem id="settings" title="Settings" />
       </Tree>
+      <TagGroup
+        className="tag-group"
+        label="Topics"
+        onRemove={(keys) => setTags((items) => items.filter((item) => !keys.has(item)))}
+        selectionMode="multiple"
+      >
+        {tags.map((tag) => (
+          <Tag id={tag} key={tag}>
+            {tag === 'vdom' ? 'VDOM' : tag[0]!.toUpperCase() + tag.slice(1)}
+          </Tag>
+        ))}
+      </TagGroup>
       <MenuTrigger label="More actions">
         <MenuItem id="rename">Rename</MenuItem>
         <MenuItem id="archive">Archive</MenuItem>

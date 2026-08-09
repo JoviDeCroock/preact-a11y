@@ -48,6 +48,18 @@ label {
   outline: 2px solid Highlight;
 }
 
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-group [role='row'] {
+  border: 1px solid currentColor;
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
 .slider {
   display: grid;
   gap: 0.5rem;

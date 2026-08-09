@@ -190,6 +190,19 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   );
   await expect(page.getByRole('button', { name: 'Open package.json' })).toBeHidden();
 
+  const topics = page.getByRole('grid', { name: 'Topics' });
+  await topics.focus();
+  await topics.press('ArrowRight');
+  await expect(topics).toHaveAttribute('aria-activedescendant', /accessibility/);
+  await topics.press('Space');
+  await expect(page.getByRole('row', { name: /Accessibility/ })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await topics.press('Delete');
+  await expect(page.getByRole('row', { name: /Accessibility/ })).toBeHidden();
+  await expect(topics).toHaveAttribute('aria-activedescendant', /vdom/);
+
   const menuTrigger = page.getByRole('button', { name: 'More actions' });
   await menuTrigger.focus();
   await menuTrigger.press('ArrowDown');

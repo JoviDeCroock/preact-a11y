@@ -104,6 +104,13 @@ export {
   type AriaTreeProps,
   type TreeItemAria,
 } from './collections/useTree';
+export {
+  useTag,
+  useTagGroup,
+  type AriaTagGroupProps,
+  type AriaTagProps,
+  type TagAria,
+} from './collections/useTagGroup';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,

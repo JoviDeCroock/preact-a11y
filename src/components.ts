@@ -71,6 +71,7 @@ export { TextField, type TextFieldProps } from './components/TextField';
 export { ToggleButton, type ToggleButtonProps } from './components/ToggleButton';
 export { Tooltip, type TooltipPlacement, type TooltipProps } from './components/Tooltip';
 export { Tree, TreeItem, type TreeItemProps, type TreeProps } from './components/Tree';
+export { Tag, TagGroup, type TagGroupProps, type TagProps } from './components/TagGroup';
 export {
   Toast,
   ToastRegion,
