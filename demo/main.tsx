@@ -1,6 +1,13 @@
 import { render } from 'preact';
 import { useRef, useState } from 'preact/hooks';
-import { FocusRing, OverlayContainer, OverlayProvider, Pressable, useLandmark } from '../src';
+import {
+  FocusRing,
+  OverlayContainer,
+  OverlayProvider,
+  Pressable,
+  RouterProvider,
+  useLandmark,
+} from '../src';
 import {
   Button,
   Breadcrumb,
@@ -315,6 +322,7 @@ function App() {
         </OverlayContainer>
       )}
       <Link href="#learn-more">Learn more</Link>
+      <Link href="/client-settings">Client-routed settings</Link>
       <section id="learn-more" tabIndex={-1}>
         Native Preact accessibility primitives.
       </section>
@@ -323,8 +331,15 @@ function App() {
 }
 
 render(
-  <OverlayProvider>
-    <App />
-  </OverlayProvider>,
+  <RouterProvider
+    navigate={(path, options) => {
+      if (options?.replace) history.replaceState(options.state, '', path);
+      else history.pushState(options?.state, '', path);
+    }}
+  >
+    <OverlayProvider>
+      <App />
+    </OverlayProvider>
+  </RouterProvider>,
   document.querySelector('#app')!,
 );

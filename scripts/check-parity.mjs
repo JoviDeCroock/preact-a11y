@@ -17,6 +17,7 @@ const surfaces = [
       'OverlayContainer',
       'OverlayProvider',
       'Pressable',
+      'RouterProvider',
       'SSRProvider',
       'UNSAFE_PortalProvider',
       'ariaHideOutside',

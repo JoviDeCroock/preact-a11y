@@ -14,7 +14,7 @@ automated accessibility coverage before being marked complete.
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
 | Overlays                  | In progress | Portals/providers, modal/popover focus, positioning, tooltip |
 | Collections               | In progress | List/menu/grid/tree/tag/table navigation and selection       |
-| Disclosure and navigation | In progress | Links, tabs, toolbars, focus managers, and F6 landmarks      |
+| Disclosure and navigation | In progress | Routed links, tabs, toolbars, focus managers, F6 landmarks   |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting     |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows            |

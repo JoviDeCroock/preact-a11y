@@ -9,6 +9,11 @@ export {
 } from './navigation/useBreadcrumbs';
 export { useDialog, type AriaDialogProps } from './dialog/useDialog';
 export { useToolbar, type AriaToolbarProps } from './navigation/useToolbar';
+export {
+  RouterProvider,
+  type RouterOptions,
+  type RouterProviderProps,
+} from './navigation/RouterProvider';
 export { useMenu, useMenuItem, type AriaMenuItemProps, type AriaMenuProps } from './menu/useMenu';
 export { useMenuTrigger, type AriaMenuTriggerProps } from './menu/useMenuTrigger';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';

@@ -67,7 +67,7 @@ export function Settings() {
 - Trigger-linked popovers with collision-aware placement and modal/non-modal behavior
 - Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
-- Breadcrumbs, titled dialogs, and arrow-key toolbars
+- Breadcrumbs, titled dialogs, arrow-key toolbars, and client-router-aware links
 - Single/multiple-selection listboxes with active focus and typeahead
 - Grid lists with row actions, selection checkboxes, sections, and nested controls
 - Hierarchical tree grids with expansion, parent/child navigation, and typeahead

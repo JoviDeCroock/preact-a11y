@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/preact';
+import { fireEvent, render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'preact';
 import { describe, expect, it, vi } from 'vitest';
+import { RouterProvider } from '../src';
 import {
   Button,
   Checkbox,
@@ -134,6 +135,27 @@ describe('native components', () => {
     expect(onPress).not.toHaveBeenCalled();
     await user.keyboard('{Enter}');
     expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('delegates unmodified same-origin links to a client router', async () => {
+    const navigate = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <RouterProvider navigate={navigate} useHref={(href) => `/app${href}`}>
+        <Link href="/settings" routerOptions={{ replace: true }}>
+          Client settings
+        </Link>
+      </RouterProvider>,
+    );
+    const link = screen.getByRole('link', { name: 'Client settings' });
+    expect(link).toHaveAttribute('href', '/app/settings');
+
+    await user.click(link);
+    expect(navigate).toHaveBeenCalledWith('/settings', { replace: true });
+
+    link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+    fireEvent.click(link, { ctrlKey: true });
+    expect(navigate).toHaveBeenCalledTimes(1);
   });
 
   it('supports uncontrolled toggle buttons', async () => {

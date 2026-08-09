@@ -154,6 +154,10 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await link.press('Enter');
   await expect(page).toHaveURL(/#learn-more$/);
 
+  const clientLink = page.getByRole('link', { name: 'Client-routed settings' });
+  await clientLink.click();
+  await expect(page).toHaveURL(/\/client-settings$/);
+
   const disclosure = page.getByRole('button', { name: 'Keyboard help' });
   await disclosure.click();
   await expect(page.getByRole('region', { name: 'Keyboard help' })).toBeVisible();
