@@ -18,6 +18,7 @@ import {
   Modal,
   NumberField,
   Option,
+  Popover,
   ProgressBar,
   Radio,
   RadioGroup,
@@ -156,6 +157,20 @@ function App() {
         toastClassName="toast"
         toasts={toasts}
       />
+      <Popover
+        aria-label="Account help"
+        className="popover"
+        content={
+          <>
+            <h2>Account help</h2>
+            <Button>Read guide</Button>
+          </>
+        }
+        showArrow
+        underlayClassName="popover-underlay"
+      >
+        <Button>Open account help</Button>
+      </Popover>
       <Button onPress={() => setModalOpen(true)}>Open preferences</Button>
       <Modal
         aria-label="Preferences"

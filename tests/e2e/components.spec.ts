@@ -117,6 +117,20 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await expect(toast).toBeHidden();
   await expect(showNotification).toBeFocused();
 
+  const popoverTrigger = page.getByRole('button', { name: 'Open account help' });
+  await popoverTrigger.click();
+  let popover = page.getByRole('dialog', { name: 'Account help' });
+  await expect(popover).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Read guide' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(popover).toBeHidden();
+  await expect(popoverTrigger).toBeFocused();
+
+  await popoverTrigger.click();
+  popover = page.getByRole('dialog', { name: 'Account help' });
+  await page.locator('.popover-underlay').click({ position: { x: 5, y: 5 } });
+  await expect(popover).toBeHidden();
+
   const link = page.getByRole('link', { name: 'Learn more' });
   await link.focus();
   await link.press('Space');
@@ -179,6 +193,13 @@ test('fixture has no automatically detectable accessibility violations', async (
     [],
   );
   await toastRegion.getByRole('button', { name: 'Close notification' }).click();
+
+  const popoverTrigger = page.getByRole('button', { name: 'Open account help' });
+  await popoverTrigger.click();
+  const popover = page.getByRole('dialog', { name: 'Account help' });
+  await expect(popover).toBeVisible();
+  expect((await new AxeBuilder({ page }).include('.popover').analyze()).violations).toEqual([]);
+  await page.keyboard.press('Escape');
 
   const trigger = page.getByRole('button', { name: 'Open preferences' });
   await trigger.click();

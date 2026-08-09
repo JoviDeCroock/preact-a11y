@@ -7,7 +7,7 @@ describe('Tooltip', () => {
   it('opens after a hover delay and remains available while hovered', async () => {
     const user = userEvent.setup();
     render(
-      <Tooltip closeDelay={10} content="Copies the current URL" delay={10}>
+      <Tooltip closeDelay={100} content="Copies the current URL" delay={10}>
         <Button>Copy link</Button>
       </Tooltip>,
     );

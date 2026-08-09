@@ -42,6 +42,7 @@ export {
   type MenuTriggerProps,
 } from './components/Menu';
 export { Modal, type ModalProps } from './components/Modal';
+export { Popover, type PopoverProps } from './components/Popover';
 export { Radio, RadioGroup, type RadioGroupProps, type RadioProps } from './components/RadioGroup';
 export { Switch, type SwitchProps } from './components/Switch';
 export { Select, SelectItem, type SelectItemProps, type SelectProps } from './components/Select';

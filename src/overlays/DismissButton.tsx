@@ -8,7 +8,7 @@ export interface DismissButtonProps {
 export function DismissButton({ onDismiss, label = 'Dismiss' }: DismissButtonProps) {
   return (
     <VisuallyHidden>
-      <button type="button" onClick={onDismiss}>
+      <button data-dismiss-button type="button" onClick={onDismiss}>
         {label}
       </button>
     </VisuallyHidden>

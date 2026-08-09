@@ -12,7 +12,7 @@ automated accessibility coverage before being marked complete.
 | Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
-| Overlays                  | In progress | Modal focus/dismissal and delayed hover/focus tooltips       |
+| Overlays                  | In progress | Modal/popover focus, collision positioning, and tooltips     |
 | Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead    |
 | Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars     |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting     |

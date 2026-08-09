@@ -84,7 +84,11 @@ export function FocusScope({
 
     if (autoFocus) {
       queueMicrotask(() => {
-        if (focusScopes.includes(scope)) focusableElements(scope)[0]?.focus();
+        if (!focusScopes.includes(scope)) return;
+        const elements = focusableElements(scope);
+        (
+          elements.find((element) => !element.hasAttribute('data-dismiss-button')) ?? elements[0]
+        )?.focus();
       });
     }
 

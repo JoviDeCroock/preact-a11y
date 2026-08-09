@@ -103,6 +103,19 @@ export { DismissButton, type DismissButtonProps } from './overlays/DismissButton
 export { ariaHideOutside } from './overlays/ariaHideOutside';
 export { useModal, type AriaModalProps } from './overlays/useModal';
 export { useOverlay, type AriaOverlayProps } from './overlays/useOverlay';
+export {
+  useOverlayPosition,
+  type AriaPositionProps,
+  type Placement,
+  type PlacementAxis,
+} from './overlays/useOverlayPosition';
+export {
+  useOverlayTrigger,
+  type AriaOverlayTriggerProps,
+  type OverlayTriggerType,
+} from './overlays/useOverlayTrigger';
+export { usePopover, type AriaPopoverProps, type PopoverAria } from './overlays/usePopover';
+export { useModalOverlay, type AriaModalOverlayProps } from './overlays/useModalOverlay';
 export { usePreventScroll, type PreventScrollOptions } from './overlays/usePreventScroll';
 export { useSelect, type AriaSelectProps } from './select/useSelect';
 export {
