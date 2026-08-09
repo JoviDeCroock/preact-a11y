@@ -1,0 +1,7 @@
+{
+  "indentWidth": 2,
+  "lineWidth": 100,
+  "semi": true,
+  "singleQuote": true,
+  "sortPackageJson": true
+}

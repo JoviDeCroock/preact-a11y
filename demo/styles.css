@@ -1,0 +1,28 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  margin: 3rem auto;
+  max-width: 32rem;
+}
+
+button,
+label {
+  width: fit-content;
+}
+
+.box {
+  border: 2px solid currentColor;
+  display: inline-block;
+  height: 0.75rem;
+  margin-inline-end: 0.5rem;
+  width: 0.75rem;
+}
+
+[data-selected] .box {
+  background: currentColor;
+}

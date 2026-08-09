@@ -1,0 +1,75 @@
+{
+  "name": "preact-aria",
+  "version": "0.0.0",
+  "description": "Preact-native accessibility and interaction primitives.",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "aria",
+    "components",
+    "hooks",
+    "preact"
+  ],
+  "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js",
+      "require": "./dist/components.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.mjs",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm run build && pnpm test:parity && pnpm test:consumer && pnpm test:e2e",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:consumer": "node scripts/consumer-smoke.mjs",
+    "test:parity": "node scripts/check-parity.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.62.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/preact": "3.2.4",
+    "@testing-library/user-event": "14.6.1",
+    "@types/node": "24.10.1",
+    "@typescript/typescript6": "6.0.2",
+    "jsdom": "27.2.0",
+    "oxfmt": "0.62.0",
+    "oxlint": "1.77.0",
+    "preact": "10.29.8",
+    "rollup": "4.62.4",
+    "rollup-plugin-dts": "6.5.1",
+    "rollup-plugin-esbuild": "6.2.1",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10"
+  },
+  "peerDependencies": {
+    "preact": ">=10.24.0 <12"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

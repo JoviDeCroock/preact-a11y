@@ -1,0 +1,9 @@
+Preact Aria
+Copyright 2026 Preact Aria contributors
+
+This project references the public APIs, documentation, and accessibility behavior of
+the React Spectrum project (https://github.com/adobe/react-spectrum), developed by Adobe
+and contributors and licensed under the Apache License, Version 2.0. React Aria source is
+not bundled or re-exported.
+
+Preact is copyright The Preact Authors and is licensed under the MIT License.
