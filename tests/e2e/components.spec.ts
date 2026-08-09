@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('components support pointer and keyboard interaction', async ({ page }) => {
   const button = page.getByRole('button', { name: 'Increment' });
-  const output = page.getByRole('status');
+  const output = page.getByText(/^Count:/);
 
   await button.click();
   await expect(output).toHaveText('Count: 1');
@@ -47,6 +47,21 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   const seats = page.getByRole('spinbutton', { name: 'Seats' });
   await seats.press('ArrowUp');
   await expect(seats).toHaveValue('3');
+
+  const volume = page.getByRole('slider', { name: 'Volume' });
+  await volume.focus();
+  await volume.press('ArrowRight');
+  await expect(volume).toHaveValue('30');
+  const volumeTrack = page.locator('[data-slider-track]').first();
+  const trackBounds = await volumeTrack.boundingBox();
+  if (!trackBounds) throw new Error('Volume slider track has no layout bounds.');
+  await volumeTrack.click({ position: { x: trackBounds.width * 0.75, y: trackBounds.height / 2 } });
+  await expect(volume).toHaveValue('75');
+
+  const minimumPrice = page.getByRole('slider', { name: 'Minimum Price range' });
+  await minimumPrice.focus();
+  await minimumPrice.press('End');
+  await expect(minimumPrice).toHaveValue('80');
 
   const selectTrigger = page.getByRole('button', { name: /Favorite animal/ });
   await selectTrigger.press('ArrowDown');

@@ -27,6 +27,44 @@ label {
   background: currentColor;
 }
 
+.slider {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.slider-track {
+  background: GrayText;
+  border-radius: 1rem;
+  height: 0.4rem;
+  margin: 0.75rem;
+  position: relative;
+}
+
+.slider-thumb {
+  background: Canvas;
+  border: 2px solid CanvasText;
+  border-radius: 50%;
+  height: 1rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+}
+
+.slider-input {
+  cursor: pointer;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.slider-thumb:focus-within {
+  outline: 2px solid Highlight;
+  outline-offset: 2px;
+}
+
 .modal {
   background: Canvas;
   border: 2px solid currentColor;

@@ -112,4 +112,11 @@ export {
 } from './select/useHiddenSelect';
 export { HiddenSelect, type HiddenSelectProps } from './select/HiddenSelect';
 export { useComboBox, type AriaComboBoxProps } from './combobox/useComboBox';
+export {
+  useSlider,
+  type AriaSliderProps,
+  type SliderOrientation,
+  type SliderState,
+} from './slider/useSlider';
+export { useSliderThumb, type AriaSliderThumbProps } from './slider/useSliderThumb';
 export type { PointerType, PressEvent, PressProps } from './types';

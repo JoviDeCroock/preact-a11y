@@ -25,6 +25,7 @@ import {
   Select,
   SelectItem,
   Separator,
+  Slider,
   Switch,
   Tab,
   TabList,
@@ -94,6 +95,25 @@ function App() {
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
+      <Slider
+        className="slider"
+        defaultValue={25}
+        inputClassName="slider-input"
+        label="Volume"
+        name="volume"
+        step={5}
+        thumbClassName="slider-thumb"
+        trackClassName="slider-track"
+      />
+      <Slider
+        className="slider"
+        defaultValue={[20, 80]}
+        label="Price range"
+        name="price"
+        step={10}
+        thumbClassName="slider-thumb"
+        trackClassName="slider-track"
+      />
       <Select defaultSelectedKey="cat" label="Favorite animal" name="animal">
         <SelectItem id="cat">Cat</SelectItem>
         <SelectItem id="dog">Dog</SelectItem>

@@ -4,19 +4,20 @@ React Aria is a behavioral and API reference, not a runtime dependency. Each fam
 implemented natively for Preact and must pass unit, real-browser, keyboard, pointer, and
 automated accessibility coverage before being marked complete.
 
-| Family                    | Status      | Current scope                                               |
-| ------------------------- | ----------- | ----------------------------------------------------------- |
-| Interactions              | In progress | Press/long press, move, focus, keyboard, context/outside    |
-| Buttons                   | In progress | Button and toggle button hooks and components               |
-| Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox        |
-| Forms                     | In progress | Labels, validation, text/search, locale-aware number fields |
-| Feedback                  | In progress | Labels, progress bars, meters, and separators               |
-| Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration   |
-| Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead   |
-| Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars    |
-| Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting    |
-| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state      |
-| Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows           |
+| Family                    | Status      | Current scope                                                |
+| ------------------------- | ----------- | ------------------------------------------------------------ |
+| Interactions              | In progress | Press/long press, move, focus, keyboard, context/outside     |
+| Buttons                   | In progress | Button and toggle button hooks and components                |
+| Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox         |
+| Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
+| Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
+| Feedback                  | In progress | Labels, progress bars, meters, and separators                |
+| Overlays                  | In progress | Dismissal, modal semantics, focus containment/restoration    |
+| Collections               | In progress | Listbox and menu focus, selection, actions, and typeahead    |
+| Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars     |
+| Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting     |
+| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
+| Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows            |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility
