@@ -172,6 +172,24 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await page.keyboard.press('ArrowLeft');
   await expect(previewCheckbox).toBeFocused();
 
+  const fileTree = page.getByRole('treegrid', { name: 'File browser' });
+  await fileTree.focus();
+  await fileTree.press('ArrowRight');
+  await expect(fileTree).toHaveAttribute('aria-activedescendant', /package/);
+  await fileTree.press('F2');
+  const openPackage = page.getByRole('button', { name: 'Open package.json' });
+  await expect(openPackage).toBeFocused();
+  await openPackage.press('Escape');
+  await expect(fileTree).toBeFocused();
+  await fileTree.press('ArrowLeft');
+  await expect(fileTree).toHaveAttribute('aria-activedescendant', /workspace/);
+  await fileTree.press('ArrowLeft');
+  await expect(page.getByRole('row', { name: 'Workspace' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  );
+  await expect(page.getByRole('button', { name: 'Open package.json' })).toBeHidden();
+
   const menuTrigger = page.getByRole('button', { name: 'More actions' });
   await menuTrigger.focus();
   await menuTrigger.press('ArrowDown');

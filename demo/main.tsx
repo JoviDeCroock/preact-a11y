@@ -42,6 +42,8 @@ import {
   ToggleButtonGroupItem,
   Toolbar,
   ToastRegion,
+  Tree,
+  TreeItem,
   Tooltip,
   type ToastItem,
 } from '../src/components';
@@ -109,6 +111,13 @@ function App() {
           </GridListItem>
         </GridListSection>
       </GridList>
+      <Tree aria-label="File browser" className="tree" defaultExpandedKeys={['workspace']}>
+        <TreeItem id="workspace" title="Workspace">
+          <TreeItem id="package" title={<Button>Open package.json</Button>} />
+          <TreeItem id="secrets" isDisabled title="Secrets" />
+        </TreeItem>
+        <TreeItem id="settings" title="Settings" />
+      </Tree>
       <MenuTrigger label="More actions">
         <MenuItem id="rename">Rename</MenuItem>
         <MenuItem id="archive">Archive</MenuItem>

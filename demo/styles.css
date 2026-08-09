@@ -36,6 +36,18 @@ label {
   outline: 2px solid Highlight;
 }
 
+.tree [role='row'] {
+  padding: 0.35rem;
+}
+
+.tree [role='row'][aria-level='2'] {
+  padding-inline-start: 1.5rem;
+}
+
+.tree [role='row'][data-focused] {
+  outline: 2px solid Highlight;
+}
+
 .slider {
   display: grid;
   gap: 0.5rem;

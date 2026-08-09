@@ -97,6 +97,13 @@ export {
   type AriaGridListSectionProps,
   type AriaGridListSelectionCheckboxProps,
 } from './collections/useGridList';
+export {
+  useTree,
+  useTreeItem,
+  type AriaTreeItemProps,
+  type AriaTreeProps,
+  type TreeItemAria,
+} from './collections/useTree';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,
