@@ -167,7 +167,24 @@ export {
 } from './overlays/FocusScope';
 export { DismissButton, type DismissButtonProps } from './overlays/DismissButton';
 export { ariaHideOutside } from './overlays/ariaHideOutside';
-export { useModal, type AriaModalProps } from './overlays/useModal';
+export {
+  ModalProvider,
+  OverlayContainer,
+  OverlayProvider,
+  useModal,
+  useModalProvider,
+  type AriaModalProps,
+  type ModalProviderAria,
+  type ModalProviderProps,
+  type OverlayContainerProps,
+} from './overlays/useModal';
+export { Overlay, useOverlayFocusContain, type OverlayProps } from './overlays/Overlay';
+export {
+  UNSAFE_PortalProvider,
+  useUNSAFE_PortalContext,
+  type PortalProviderContextValue,
+  type PortalProviderProps,
+} from './overlays/PortalProvider';
 export { useOverlay, type AriaOverlayProps } from './overlays/useOverlay';
 export {
   useOverlayPosition,

@@ -302,4 +302,20 @@ test('fixture has no automatically detectable accessibility violations', async (
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
+
+  const portalTrigger = page.getByRole('button', { name: 'Open portal modal' });
+  await portalTrigger.click();
+  const portalDialog = page.getByRole('dialog', { name: 'Portal preferences' });
+  await expect(portalDialog).toBeVisible();
+  await expect(page.locator('[data-overlay-container]').first()).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
+  expect(
+    (await new AxeBuilder({ page }).include('[aria-label="Portal preferences"]').analyze())
+      .violations,
+  ).toEqual([]);
+  await page.keyboard.press('Escape');
+  await expect(portalDialog).toBeHidden();
+  await expect(portalTrigger).toBeFocused();
 });

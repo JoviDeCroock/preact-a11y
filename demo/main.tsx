@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import { useRef, useState } from 'preact/hooks';
-import { FocusRing, Pressable, useLandmark } from '../src';
+import { FocusRing, OverlayContainer, OverlayProvider, Pressable, useLandmark } from '../src';
 import {
   Button,
   Breadcrumb,
@@ -64,6 +64,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isProviderModalOpen, setProviderModalOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [tags, setTags] = useState(['preact', 'accessibility', 'vdom']);
   const mainRef = useRef<HTMLElement>(null);
@@ -298,6 +299,21 @@ function App() {
         <TextField label="Display name" />
         <Button onPress={() => setModalOpen(false)}>Save preferences</Button>
       </Modal>
+      <Button onPress={() => setProviderModalOpen(true)}>Open portal modal</Button>
+      {isProviderModalOpen && (
+        <OverlayContainer>
+          <Modal
+            aria-label="Portal preferences"
+            className="modal"
+            isDismissable
+            isOpen
+            onClose={() => setProviderModalOpen(false)}
+          >
+            <h2>Portal preferences</h2>
+            <Button onPress={() => setProviderModalOpen(false)}>Close portal modal</Button>
+          </Modal>
+        </OverlayContainer>
+      )}
       <Link href="#learn-more">Learn more</Link>
       <section id="learn-more" tabIndex={-1}>
         Native Preact accessibility primitives.
@@ -306,4 +322,9 @@ function App() {
   );
 }
 
-render(<App />, document.querySelector('#app')!);
+render(
+  <OverlayProvider>
+    <App />
+  </OverlayProvider>,
+  document.querySelector('#app')!,
+);

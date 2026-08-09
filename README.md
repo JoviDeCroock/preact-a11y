@@ -63,7 +63,7 @@ export function Settings() {
 - Filtered comboboxes with active-descendant focus and form synchronization
 - Checkbox and single/multiple toggle-button groups with shared semantics
 - Single and multi-thumb sliders with form values, constraints, pointer, and keyboard input
-- Modal semantics, outside/Escape dismissal, scroll locking, and programmatic focus scopes
+- Modal semantics, Preact-native portals, nested overlay providers, and programmatic focus scopes
 - Trigger-linked popovers with collision-aware placement and modal/non-modal behavior
 - Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
