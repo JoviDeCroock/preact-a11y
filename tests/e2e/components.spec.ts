@@ -6,13 +6,29 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('components support pointer and keyboard interaction', async ({ page }) => {
-  const button = page.getByRole('button', { name: 'Increment' });
+  const main = page.getByRole('main', { name: 'Component demo' });
+  await page.keyboard.press('F6');
+  await expect(main).toBeFocused();
+
+  const button = page.getByRole('button', { name: 'Increment', exact: true });
   const output = page.getByText(/^Count:/);
 
   await button.click();
   await expect(output).toHaveText('Count: 1');
   await button.press('Enter');
   await expect(output).toHaveText('Count: 2');
+
+  const composedButton = page.getByRole('button', { name: 'Composed increment' });
+  await composedButton.press('Enter');
+  await expect(page.getByText(/^Composed count:/)).toHaveText('Composed count: 1');
+
+  const focusRingButton = page.getByRole('button', { name: 'Focus ring example' });
+  await page.keyboard.down('Tab');
+  await focusRingButton.focus();
+  await page.keyboard.up('Tab');
+  await expect(focusRingButton).toHaveClass(/focus-ring/);
+  await focusRingButton.click();
+  await expect(focusRingButton).not.toHaveClass(/focus-ring/);
 
   const bold = page.getByRole('button', { name: 'Bold' });
   await bold.focus();

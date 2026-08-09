@@ -39,7 +39,23 @@ export { useSeparator, type SeparatorProps } from './feedback/useSeparator';
 export { useTextField, type AriaTextFieldProps } from './forms/useTextField';
 export { useSearchField, type AriaSearchFieldProps } from './forms/useSearchField';
 export { useNumberField, type AriaNumberFieldProps } from './forms/useNumberField';
-export { useFocus, useFocusRing, useFocusVisible, type FocusProps } from './interactions/useFocus';
+export {
+  useFocus,
+  useFocusRing,
+  useFocusVisible,
+  type FocusProps,
+  type FocusRingAria,
+  type FocusRingOptions,
+} from './interactions/useFocus';
+export {
+  Focusable,
+  useFocusable,
+  type FocusableAria,
+  type FocusableOptions,
+  type FocusableProps,
+} from './interactions/useFocusable';
+export { FocusRing, type FocusRingProps } from './interactions/FocusRing';
+export { Pressable, type PressableProps } from './interactions/Pressable';
 export { useHover, type HoverEvent, type HoverProps } from './interactions/useHover';
 export { useKeyboard, type KeyboardProps } from './interactions/useKeyboard';
 export { useFocusWithin, type FocusWithinProps } from './interactions/useFocusWithin';
@@ -142,7 +158,13 @@ export {
   type KeyboardActivation,
   type TabOrientation,
 } from './tabs/useTabs';
-export { FocusScope, type FocusScopeProps } from './overlays/FocusScope';
+export {
+  FocusScope,
+  useFocusManager,
+  type FocusManager,
+  type FocusManagerOptions,
+  type FocusScopeProps,
+} from './overlays/FocusScope';
 export { DismissButton, type DismissButtonProps } from './overlays/DismissButton';
 export { ariaHideOutside } from './overlays/ariaHideOutside';
 export { useModal, type AriaModalProps } from './overlays/useModal';
@@ -180,4 +202,13 @@ export { useTooltip, type AriaTooltipProps } from './tooltip/useTooltip';
 export { useTooltipTrigger, type AriaTooltipTriggerProps } from './tooltip/useTooltipTrigger';
 export { useToast, type AriaToastProps, type ToastPriority } from './toast/useToast';
 export { useToastRegion, type AriaToastRegionProps } from './toast/useToastRegion';
+export {
+  UNSTABLE_createLandmarkController,
+  useLandmark,
+  type AriaLandmarkProps,
+  type AriaLandmarkRole,
+  type LandmarkAria,
+  type LandmarkController,
+  type LandmarkControllerOptions,
+} from './landmark/useLandmark';
 export type { PointerType, PressEvent, PressProps } from './types';

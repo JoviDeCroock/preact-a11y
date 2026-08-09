@@ -55,7 +55,7 @@ export function Settings() {
 
 ## Current native primitives
 
-- Press, hover, focus, focus-visible, and focus-ring interactions
+- Press, hover, focus, focus-visible, focus-ring, and focusable-child composition
 - Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
 - Search clearing and locale-aware number fields with keyboard stepping
@@ -63,7 +63,7 @@ export function Settings() {
 - Filtered comboboxes with active-descendant focus and form synchronization
 - Checkbox and single/multiple toggle-button groups with shared semantics
 - Single and multi-thumb sliders with form values, constraints, pointer, and keyboard input
-- Modal semantics, outside/Escape dismissal, scroll locking, and focus scopes
+- Modal semantics, outside/Escape dismissal, scroll locking, and programmatic focus scopes
 - Trigger-linked popovers with collision-aware placement and modal/non-modal behavior
 - Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
@@ -78,6 +78,7 @@ export function Settings() {
 - Polite/assertive toast regions with paused timers and safe focus handoff
 - Locale direction, locale-aware filtering, and native Intl formatters
 - Stable IDs, object refs, callback chaining, RTL detection, and SSR state
+- F6 landmark registration and imperative main/next/previous navigation
 - VisuallyHidden, mergeProps, and mergeRefs utilities
 
 The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State

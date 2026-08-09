@@ -6,7 +6,7 @@ automated accessibility coverage before being marked complete.
 
 | Family                    | Status      | Current scope                                                |
 | ------------------------- | ----------- | ------------------------------------------------------------ |
-| Interactions              | In progress | Press/long press, move, focus, keyboard, context/outside     |
+| Interactions              | In progress | Press/long press, focus composition, keyboard, context       |
 | Buttons                   | In progress | Button and toggle button hooks and components                |
 | Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox         |
 | Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
@@ -14,7 +14,7 @@ automated accessibility coverage before being marked complete.
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
 | Overlays                  | In progress | Modal/popover focus, collision positioning, and tooltips     |
 | Collections               | In progress | List/menu/grid/tree/tag/table navigation and selection       |
-| Disclosure and navigation | In progress | Links, breadcrumbs, dialogs, tabs, and keyboard toolbars     |
+| Disclosure and navigation | In progress | Links, tabs, toolbars, focus managers, and F6 landmarks      |
 | Internationalization      | In progress | Locale/direction, filtering, date/number/list formatting     |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
 | Drag and drop             | Planned     | Pointer, keyboard, and assistive-technology flows            |

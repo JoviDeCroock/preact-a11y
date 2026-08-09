@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { JSX, TargetedFocusEvent } from 'preact';
+import { useFocusWithin } from './useFocusWithin';
 
 type Modality = 'keyboard' | 'pointer';
 let modality: Modality = 'pointer';
@@ -63,8 +64,39 @@ export function useFocusVisible() {
   return { isFocusVisible };
 }
 
-export function useFocusRing(props: FocusProps = {}) {
+export interface FocusRingOptions extends FocusProps {
+  within?: boolean;
+  isTextInput?: boolean;
+  autoFocus?: boolean;
+}
+
+export interface FocusRingAria {
+  focusProps: Pick<
+    JSX.HTMLAttributes<HTMLElement>,
+    'onBlur' | 'onFocus' | 'onFocusIn' | 'onFocusOut'
+  >;
+  isFocused: boolean;
+  isFocusVisible: boolean;
+}
+
+export function useFocusRing(props: FocusRingOptions = {}): FocusRingAria {
   const { focusProps, isFocused } = useFocus(props);
+  const { focusWithinProps, isFocusWithin } = useFocusWithin({ isDisabled: props.isDisabled });
   const { isFocusVisible: hadKeyboardFocus } = useFocusVisible();
-  return { focusProps, isFocused, isFocusVisible: isFocused && hadKeyboardFocus };
+  const [isAutoFocusVisible, setAutoFocusVisible] = useState(props.autoFocus === true);
+  useEffect(() => {
+    if (!props.autoFocus) return;
+    ensureGlobalListeners();
+    const clearAutoFocus = (value: Modality) => {
+      if (value === 'pointer') setAutoFocusVisible(false);
+    };
+    subscribers.add(clearAutoFocus);
+    return () => subscribers.delete(clearAutoFocus);
+  }, [props.autoFocus]);
+  const focused = props.within ? isFocusWithin : isFocused;
+  return {
+    focusProps: props.within ? focusWithinProps : focusProps,
+    isFocused: focused,
+    isFocusVisible: focused && (hadKeyboardFocus || isAutoFocusVisible),
+  };
 }

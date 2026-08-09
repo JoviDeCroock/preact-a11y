@@ -1,5 +1,6 @@
 import { render } from 'preact';
-import { useState } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
+import { FocusRing, Pressable, useLandmark } from '../src';
 import {
   Button,
   Breadcrumb,
@@ -61,12 +62,15 @@ import './styles.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  const [composedCount, setComposedCount] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [tags, setTags] = useState(['preact', 'accessibility', 'vdom']);
+  const mainRef = useRef<HTMLElement>(null);
+  const { landmarkProps } = useLandmark({ role: 'main', 'aria-label': 'Component demo' }, mainRef);
 
   return (
-    <main>
+    <main {...landmarkProps} ref={mainRef}>
       <h1>Preact Aria browser fixture</h1>
       <Breadcrumbs>
         <Breadcrumb href="#home">Home</Breadcrumb>
@@ -78,6 +82,13 @@ function App() {
       </Toolbar>
       <Button onPress={() => setCount((value) => value + 1)}>Increment</Button>
       <output aria-live="polite">Count: {count}</output>
+      <Pressable onPress={() => setComposedCount((value) => value + 1)}>
+        <div role="button">Composed increment</div>
+      </Pressable>
+      <output aria-live="polite">Composed count: {composedCount}</output>
+      <FocusRing focusClass="focused" focusRingClass="focus-ring">
+        <button>Focus ring example</button>
+      </FocusRing>
       <Checkbox>Accept terms</Checkbox>
       <CheckboxGroup label="Permissions" name="permission">
         <CheckboxGroupItem value="read">Read projects</CheckboxGroupItem>
