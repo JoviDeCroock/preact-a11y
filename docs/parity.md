@@ -6,20 +6,20 @@ automated accessibility coverage before being marked complete.
 
 | Family                    | Status      | Current scope                                                  |
 | ------------------------- | ----------- | -------------------------------------------------------------- |
-| Interactions              | In progress | Press/long press, focus composition, keyboard, context         |
-| Buttons                   | In progress | Button and toggle button hooks and components                  |
-| Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox           |
-| Forms                     | In progress | Labels, text/search/number, token, and date/time editing       |
-| Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints   |
-| Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions     |
-| Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip    |
-| Collections               | In progress | Construction, list/grid/tree/tag/table, sections, autocomplete |
-| Disclosure and navigation | In progress | Routed links, tabs, toolbars, submenus, focus and landmarks    |
-| Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting       |
-| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state         |
-| Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates    |
-| Date and calendar         | In progress | Segments, pickers, grids, cells, month/year and range behavior |
-| Color                     | In progress | Areas, sliders, wheels, channel/text fields, and swatches      |
+| Interactions              | Implemented | Press/long press, focus composition, keyboard, context         |
+| Buttons                   | Implemented | Button and toggle button hooks and components                  |
+| Selection controls        | Implemented | Grouped checkbox/toggle, radio, select, and combobox           |
+| Forms                     | Implemented | Labels, text/search/number, token, and date/time editing       |
+| Sliders                   | Implemented | Single/range thumbs, forms, pointer and keyboard constraints   |
+| Feedback                  | Implemented | Progress/meter semantics and focus-safe live toast regions     |
+| Overlays                  | Implemented | Portals/providers, popovers, previews, positioning, tooltip    |
+| Collections               | Implemented | Construction, list/grid/tree/tag/table, sections, autocomplete |
+| Disclosure and navigation | Implemented | Routed links, tabs, toolbars, submenus, focus and landmarks    |
+| Internationalization      | Implemented | Locale/direction, filtering, Intl and message formatting       |
+| Utilities and SSR         | Implemented | Chaining, stable IDs, object refs, and hydration state         |
+| Drag and drop             | Implemented | Clipboard, typed transfer, collection targets and delegates    |
+| Date and calendar         | Implemented | Segments, pickers, grids, cells, month/year and range behavior |
+| Color                     | Implemented | Areas, sliders, wheels, channel/text fields, and swatches      |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility
