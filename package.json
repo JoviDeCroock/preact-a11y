@@ -10,13 +10,13 @@
     "hooks",
     "preact"
   ],
-  "homepage": "https://github.com/preactjs/preact-aria#readme",
-  "bugs": "https://github.com/preactjs/preact-aria/issues",
+  "homepage": "https://github.com/JoviDeCroock/preact-aria#readme",
+  "bugs": "https://github.com/JoviDeCroock/preact-aria/issues",
   "license": "Apache-2.0",
-  "author": "The Preact Authors (https://github.com/preactjs/preact-aria/contributors)",
+  "author": "The Preact Authors (https://github.com/JoviDeCroock/preact-aria/contributors)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/preactjs/preact-aria.git"
+    "url": "git+https://github.com/JoviDeCroock/preact-aria.git"
   },
   "funding": "https://opencollective.com/preact",
   "files": [
