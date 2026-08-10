@@ -17,7 +17,7 @@ automated accessibility coverage before being marked complete.
 | Disclosure and navigation | In progress | Routed links, tabs, toolbars, submenus, focus and landmarks  |
 | Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting     |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
-| Drag and drop             | In progress | Clipboard plus pointer/keyboard drag; collections pending    |
+| Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates  |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility

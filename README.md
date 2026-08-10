@@ -57,7 +57,7 @@ export function Settings() {
 
 - Press, hover, focus, focus-visible, focus-ring, and focusable-child composition
 - Focus-scoped typed clipboard interactions with multi-format item transfer
-- Pointer and keyboard drag/drop with operation negotiation, previews, and live announcements
+- Pointer and keyboard drag/drop for standalone and collection items, indicators, and previews
 - Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
 - Matching unstyled form and selection components
 - Search clearing and locale-aware number fields with keyboard stepping

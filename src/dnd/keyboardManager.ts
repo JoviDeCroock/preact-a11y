@@ -103,12 +103,15 @@ export function completeKeyboardDrop(target: KeyboardDropTarget) {
   const operation = target.getOperation(session.types, session.allowedOperations, 0, 0);
   if (operation === 'cancel') return false;
   const current = session;
-  target.drop(dragItemsToDropItems(current.items), operation);
   target.setActive(false);
   activeTarget = undefined;
   session = undefined;
+  target.drop(dragItemsToDropItems(current.items), operation);
   current.finish(operation);
   current.source.focus();
+  queueMicrotask(() => {
+    if (current.source.isConnected) current.source.focus();
+  });
   announce('Drop complete.');
   return true;
 }

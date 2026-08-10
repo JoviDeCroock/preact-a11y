@@ -299,6 +299,44 @@ export {
 export { useDrop, type DropOptions, type DropResult } from './dnd/useDrop';
 export { DragPreview, type DragPreviewProps } from './dnd/DragPreview';
 export {
+  useDraggableCollection,
+  type DraggableCollectionEndEvent,
+  type DraggableCollectionMoveEvent,
+  type DraggableCollectionOptions,
+  type DraggableCollectionStartEvent,
+  type DraggableCollectionState,
+} from './dnd/useDraggableCollection';
+export {
+  useDraggableItem,
+  type DraggableItemProps,
+  type DraggableItemResult,
+} from './dnd/useDraggableItem';
+export {
+  useDroppableCollection,
+  type CollectionDropOperationEvent,
+  type CollectionDropTargetDelegate,
+  type CollectionKeyboardDelegate,
+  type DroppableCollectionDropEvent,
+  type DroppableCollectionEventBase,
+  type DroppableCollectionInsertDropEvent,
+  type DroppableCollectionItemDropEvent,
+  type DroppableCollectionOptions,
+  type DroppableCollectionReorderEvent,
+  type DroppableCollectionResult,
+  type DroppableCollectionRootDropEvent,
+  type DroppableCollectionState,
+} from './dnd/useDroppableCollection';
+export {
+  useDroppableItem,
+  type DroppableItemOptions,
+  type DroppableItemResult,
+} from './dnd/useDroppableItem';
+export {
+  useDropIndicator,
+  type DropIndicatorAria,
+  type DropIndicatorProps,
+} from './dnd/useDropIndicator';
+export {
   UNSTABLE_createLandmarkController,
   useLandmark,
   type AriaLandmarkProps,

@@ -10,12 +10,21 @@ import {
   isTextDropItem,
   useClipboard,
   useDrag,
+  useDraggableCollection,
+  useDraggableItem,
   useDrop,
+  useDropIndicator,
+  useDroppableCollection,
+  useDroppableItem,
   useLandmark,
   usePreviewTrigger,
   useSubmenuTrigger,
   type DragPreviewRenderer,
   type DropEvent,
+  type CollectionKey,
+  type DraggableCollectionState,
+  type DropTarget,
+  type DroppableCollectionState,
   type SubmenuFocusStrategy,
 } from '../src';
 import {
@@ -168,6 +177,126 @@ function DragDropExample() {
   );
 }
 
+const collectionDragToken = {};
+const afterBetaTarget: DropTarget = { type: 'item', key: 'beta', dropPosition: 'after' };
+
+function targetsMatch(left: DropTarget | null, right: DropTarget | null) {
+  return (
+    left?.type === right?.type &&
+    left?.key === right?.key &&
+    left?.dropPosition === right?.dropPosition
+  );
+}
+
+function CollectionDragDropExample() {
+  const collectionRef = useRef<HTMLDivElement>(null);
+  const sourceRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+  const [order, setOrder] = useState(['alpha', 'beta']);
+  const [draggedKey, setDraggedKey] = useState<CollectionKey | null>(null);
+  const [draggingKeys, setDraggingKeys] = useState(new Set<CollectionKey>());
+  const [target, setTarget] = useState<DropTarget | null>(null);
+
+  const dragStateRef = useRef<DraggableCollectionState>();
+  if (!dragStateRef.current) {
+    dragStateRef.current = {
+      collection: collectionDragToken,
+      draggedKey: null,
+      draggingKeys: new Set(),
+      isDragging: (key) => dragStateRef.current!.draggingKeys.has(key),
+      getKeysForDrag: (key) => new Set([key]),
+      getItems: (key) => [{ 'text/plain': String(key) }],
+      getAllowedDropOperations: () => ['move'],
+      startDrag(key, event) {
+        setDraggedKey(key);
+        setDraggingKeys(event.keys);
+      },
+      moveDrag() {},
+      endDrag() {
+        setDraggedKey(null);
+        setDraggingKeys(new Set());
+      },
+    };
+  }
+  dragStateRef.current.draggedKey = draggedKey;
+  dragStateRef.current.draggingKeys = draggingKeys;
+  const dragState = dragStateRef.current;
+
+  const dropStateRef = useRef<DroppableCollectionState>();
+  if (!dropStateRef.current) {
+    dropStateRef.current = {
+      collection: collectionDragToken,
+      target: null,
+      setTarget,
+      isDropTarget: (candidate) => targetsMatch(dropStateRef.current!.target, candidate),
+      getDropOperation: ({ target: candidate, types, allowedOperations }) =>
+        candidate.type === 'item' && types.has('text/plain') && allowedOperations.includes('move')
+          ? 'move'
+          : 'cancel',
+    };
+  }
+  dropStateRef.current.target = target;
+  const dropState = dropStateRef.current;
+
+  useDraggableCollection({}, dragState, collectionRef);
+  const drag = useDraggableItem({ key: 'alpha' }, dragState);
+  const collectionDrop = useDroppableCollection(
+    {
+      keyboardDelegate: {},
+      dropTargetDelegate: { getDropTargetFromPoint: () => ({ type: 'root' }) },
+      acceptedDragTypes: ['text/plain'],
+      onReorder: () => setOrder(['beta', 'alpha']),
+    },
+    dropState,
+    collectionRef,
+  );
+  const indicator = useDropIndicator({ target: afterBetaTarget }, dropState, indicatorRef);
+  const itemDrop = useDroppableItem({ target: afterBetaTarget }, dropState, targetRef);
+
+  const alpha = (
+    <div key="alpha" role="listitem">
+      <div
+        {...drag.dragProps}
+        aria-label="Alpha collection card"
+        data-dragging={drag.isDragging || undefined}
+        ref={sourceRef}
+        role="button"
+      >
+        Alpha
+      </div>
+    </div>
+  );
+  const beta = (
+    <div
+      {...itemDrop.dropProps}
+      aria-label="Beta collection card"
+      data-drop-target={itemDrop.isDropTarget || undefined}
+      key="beta"
+      ref={targetRef}
+      role="listitem"
+      tabIndex={-1}
+    >
+      Beta
+      <div {...indicator.dropIndicatorProps} ref={indicatorRef} />
+    </div>
+  );
+
+  return (
+    <section aria-label="Collection drag and drop example">
+      <div
+        {...collectionDrop.collectionProps}
+        aria-label="Reorder cards"
+        ref={collectionRef}
+        role="list"
+      >
+        {order.map((key) => (key === 'alpha' ? alpha : beta))}
+      </div>
+      <output aria-live="polite">Collection order: {order.join(', ')}</output>
+    </section>
+  );
+}
+
 function SubmenuExample() {
   const parentMenuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -270,6 +399,7 @@ function App() {
       </FocusRing>
       <ClipboardExample />
       <DragDropExample />
+      <CollectionDragDropExample />
       <Checkbox>Accept terms</Checkbox>
       <CheckboxGroup label="Permissions" name="permission">
         <CheckboxGroupItem value="read">Read projects</CheckboxGroupItem>

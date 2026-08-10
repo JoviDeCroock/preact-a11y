@@ -69,6 +69,19 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
     'Drag status: Dropped on Backlog drop zone: Preact card',
   );
 
+  const collectionSource = page.getByRole('button', { name: 'Alpha collection card' });
+  const collectionTarget = page.getByRole('listitem', { name: 'Beta collection card' });
+  await collectionSource.focus();
+  await collectionSource.press('Enter');
+  const collectionIndicator = page.getByRole('button', { name: 'Drop after beta' });
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('ArrowRight');
+  await expect(collectionIndicator).toBeFocused();
+  await expect(collectionTarget).toHaveAttribute('data-drop-target');
+  await collectionIndicator.press('Enter');
+  await expect(page.getByText(/^Collection order:/)).toHaveText('Collection order: beta, alpha');
+  await expect(collectionSource).toBeFocused();
+
   const bold = page.getByRole('button', { name: 'Bold' });
   await bold.focus();
   await bold.press('ArrowRight');
