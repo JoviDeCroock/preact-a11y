@@ -59,7 +59,7 @@
     "test:e2e": "playwright test",
     "test:consumer": "node scripts/consumer-smoke.mjs",
     "test:parity": "node scripts/check-parity.mjs",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc6 --noEmit",
     "version": "changeset version && pnpm install --lockfile-only",
     "prepublishOnly": "pnpm run build && pnpm check:package"
   },

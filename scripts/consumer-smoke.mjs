@@ -95,10 +95,15 @@ if (packageJson.dependencies?.react || packageJson.peerDependencies?.react) {
   throw new Error('The published package must not depend on React.');
 }
 
-execFileSync(node, [join(root, 'node_modules/typescript/bin/tsc')], {
-  cwd: fixture,
-  stdio: 'inherit',
-});
+for (const typeScript of [
+  join(root, 'node_modules/typescript/bin/tsc'),
+  join(root, 'node_modules/@typescript/typescript6/bin/tsc6'),
+]) {
+  execFileSync(node, [typeScript], {
+    cwd: fixture,
+    stdio: 'inherit',
+  });
+}
 execFileSync(
   node,
   [
