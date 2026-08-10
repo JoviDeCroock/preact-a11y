@@ -19,6 +19,7 @@ automated accessibility coverage before being marked complete.
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state         |
 | Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates    |
 | Date and calendar         | In progress | Segments, pickers, grids, cells, month/year and range behavior |
+| Color                     | In progress | Areas, sliders, wheels, channel/text fields, and swatches      |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility

@@ -157,6 +157,17 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await launchMonth.press('ArrowUp');
   await expect(launchMonth).toHaveText('9');
 
+  const hue = page.getByRole('slider', { name: 'Hue selector' });
+  await hue.focus();
+  await hue.press('ArrowRight');
+  await expect(page.getByText(/^Selected hue:/)).toHaveText('Selected hue: 181');
+  const colorTrack = page.locator('.color-track');
+  const colorBounds = await colorTrack.boundingBox();
+  if (!colorBounds) throw new Error('Color slider track has no layout bounds.');
+  await colorTrack.click({ position: { x: colorBounds.width * 0.75, y: colorBounds.height / 2 } });
+  await expect(page.getByText(/^Selected hue:/)).toHaveText('Selected hue: 270');
+  await expect(page.getByRole('img', { name: 'Selected color' })).toBeVisible();
+
   const search = page.getByRole('searchbox', { name: 'Search docs' });
   await search.fill('keyboard');
   await search.press('Escape');

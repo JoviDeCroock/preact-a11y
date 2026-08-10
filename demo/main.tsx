@@ -16,6 +16,9 @@ import {
   useCalendarHeading,
   useDateField,
   useDateSegment,
+  useColorChannelField,
+  useColorSlider,
+  useColorSwatch,
   useDrag,
   useDraggableCollection,
   useDraggableItem,
@@ -35,6 +38,8 @@ import {
   type CalendarState,
   type DateFieldState,
   type DateSegment,
+  type ColorState,
+  type ColorValue,
   type DraggableCollectionState,
   type DropTarget,
   type DroppableCollectionState,
@@ -590,6 +595,36 @@ function DateFieldExample() {
   );
 }
 
+function ColorExample() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState<ColorValue>({
+    space: 'hsv',
+    channels: { hue: 180, saturation: 75, brightness: 80 },
+  });
+  const state: ColorState = { value, setValue };
+  const slider = useColorSlider({ channel: 'hue', label: 'Hue selector' }, state, trackRef);
+  const brightness = useColorChannelField(
+    { channel: 'brightness', label: 'Color brightness' },
+    state,
+    inputRef,
+  );
+  const swatch = useColorSwatch({ color: value, 'aria-label': 'Selected color' });
+  return (
+    <section aria-label="Color controls">
+      <span {...slider.labelProps}>Hue</span>
+      <div {...slider.trackProps} className="color-track" ref={trackRef}>
+        <div {...slider.thumbProps} className="color-thumb" />
+        <input {...slider.inputProps} />
+      </div>
+      <label {...brightness.labelProps}>Color brightness</label>
+      <input {...brightness.inputProps} ref={inputRef} />
+      <div {...swatch.colorSwatchProps} className="color-swatch" />
+      <output aria-live="polite">Selected hue: {Math.round(value.channels.hue ?? 0)}</output>
+    </section>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -752,6 +787,7 @@ function App() {
       <AutocompleteExample />
       <CalendarExample />
       <DateFieldExample />
+      <ColorExample />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
       <Slider

@@ -160,3 +160,24 @@ label {
   transform: translateX(-50%);
   z-index: 1;
 }
+
+.color-track {
+  background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
+  height: 2rem;
+  position: relative;
+  width: 16rem;
+}
+
+.color-thumb {
+  border: 2px solid white;
+  height: 2rem;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 0.75rem;
+}
+
+.color-swatch {
+  border: 1px solid currentColor;
+  height: 3rem;
+  width: 3rem;
+}
