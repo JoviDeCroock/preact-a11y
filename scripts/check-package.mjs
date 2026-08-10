@@ -15,7 +15,12 @@ const forbiddenPackages = [
   'react-stately',
 ];
 
-for (const field of ['dependencies', 'peerDependencies', 'optionalDependencies']) {
+for (const field of [
+  'dependencies',
+  'devDependencies',
+  'peerDependencies',
+  'optionalDependencies',
+]) {
   const dependencies = packageJson[field] ?? {};
   for (const dependency of Object.keys(dependencies)) {
     if (
@@ -58,7 +63,10 @@ function inspect(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     const path = join(directory, entry.name);
     if (entry.isDirectory()) inspect(path);
-    else if (['.js', '.cjs', '.d.ts'].includes(extname(path)) || path.endsWith('.d.ts')) {
+    else if (
+      ['.js', '.cjs', '.mjs', '.ts', '.tsx'].includes(extname(path)) ||
+      path.endsWith('.d.ts')
+    ) {
       const source = readFileSync(path, 'utf8');
       for (const [label, pattern] of forbiddenSourcePatterns) {
         if (pattern.test(source))
@@ -70,6 +78,8 @@ function inspect(directory) {
 
 const dist = join(root, 'dist');
 if (existsSync(dist)) inspect(dist);
+const source = join(root, 'src');
+if (existsSync(source)) inspect(source);
 
 if (failures.length > 0) {
   for (const failure of failures) console.error(`package: ${failure}`);

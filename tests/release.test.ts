@@ -33,9 +33,21 @@ describe('release safety', () => {
   it('gates staged publishing behind checks and the npm environment', () => {
     const workflow = readFileSync(join(root, '.github/workflows/main.yml'), 'utf8');
 
+    expect(workflow).toContain('permissions:\n  contents: read');
     expect(workflow).toContain('needs: checks');
     expect(workflow).toContain('name: npm');
+    expect(workflow).toContain('id-token: write');
     expect(workflow).toContain('node .github/scripts/stage-package.mjs');
     expect(workflow).not.toMatch(/run:\s+npm publish/);
+  });
+
+  it('requires provenance and scans source plus build output for forbidden runtimes', () => {
+    const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+    const packageCheck = readFileSync(join(root, 'scripts/check-package.mjs'), 'utf8');
+
+    expect(packageJson.publishConfig).toEqual({ access: 'public', provenance: true });
+    expect(packageCheck).toContain("join(root, 'src')");
+    expect(packageCheck).toContain("'preact/compat'");
+    expect(packageCheck).toContain("'@react-stately'");
   });
 });
