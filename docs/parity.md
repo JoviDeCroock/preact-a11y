@@ -9,7 +9,7 @@ automated accessibility coverage before being marked complete.
 | Interactions              | In progress | Press/long press, focus composition, keyboard, context       |
 | Buttons                   | In progress | Button and toggle button hooks and components                |
 | Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox         |
-| Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
+| Forms                     | In progress | Labels, text/search/number, validation, and token editing    |
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
 | Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip  |

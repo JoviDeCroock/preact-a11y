@@ -19,6 +19,8 @@ import {
   useLandmark,
   usePreviewTrigger,
   useSubmenuTrigger,
+  useToken,
+  useTokenField,
   type DragPreviewRenderer,
   type DropEvent,
   type CollectionKey,
@@ -26,6 +28,7 @@ import {
   type DropTarget,
   type DroppableCollectionState,
   type SubmenuFocusStrategy,
+  type TokenFieldSegment,
 } from '../src';
 import {
   Button,
@@ -367,6 +370,56 @@ function PreviewExample() {
   );
 }
 
+function TokenExample({ text }: { text: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const token = useToken({}, null, ref);
+  return (
+    <span {...token.tokenProps} data-selected={token.isSelected || undefined} ref={ref}>
+      {text}
+    </span>
+  );
+}
+
+function TokenFieldExample() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [status, setStatus] = useState('Editing');
+  const [value, setValue] = useState<readonly TokenFieldSegment[]>([
+    { type: 'text', text: '' },
+    { type: 'token', text: 'Preact', value: 'preact' },
+    { type: 'text', text: ' aria' },
+  ]);
+  const [isComposing, setComposing] = useState(false);
+  const field = useTokenField(
+    {
+      description: 'Type text around atomic topic tokens',
+      label: 'Topics token field',
+      onSubmit: () => setStatus('Submitted'),
+    },
+    { isComposing, setComposing, setValue, value },
+    ref,
+  );
+  return (
+    <section>
+      <span {...field.labelProps}>Topics token field</span>
+      <div {...field.tokenFieldProps} ref={ref}>
+        {value.map((segment, index) =>
+          segment.type === 'token' ? (
+            <TokenExample key={`${segment.text}-${index}`} text={segment.text} />
+          ) : (
+            <span data-preact-aria-text key={`text-${index}`}>
+              {segment.text}
+            </span>
+          ),
+        )}
+      </div>
+      <span {...field.descriptionProps}>Type text around atomic topic tokens</span>
+      <output aria-live="polite">
+        Token field status: {status}; value: {value.map((segment) => segment.text).join('')}
+      </output>
+    </section>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -525,6 +578,7 @@ function App() {
       <Meter label="Storage used" maxValue={100} value={42} />
       <Separator />
       <TextField label="Email" description="We will only use this for accessibility updates" />
+      <TokenFieldExample />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
       <Slider

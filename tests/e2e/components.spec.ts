@@ -107,6 +107,32 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await email.fill('person@example.com');
   await expect(email).toHaveValue('person@example.com');
 
+  const tokenField = page.getByRole('textbox', { name: 'Topics token field' });
+  const inserted = await tokenField.evaluate((element) => {
+    const first = element.querySelector('[data-preact-aria-text]');
+    if (!first) return false;
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.setStart(first, 0);
+    range.collapse(true);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    return element.dispatchEvent(
+      new InputEvent('beforeinput', {
+        bubbles: true,
+        cancelable: true,
+        data: 'Accessible ',
+        inputType: 'insertText',
+      }),
+    );
+  });
+  expect(inserted).toBe(false);
+  await expect(page.getByText(/^Token field status:/)).toContainText(
+    'value: Accessible Preact aria',
+  );
+  await tokenField.press('Enter');
+  await expect(page.getByText(/^Token field status:/)).toContainText('Submitted');
+
   const search = page.getByRole('searchbox', { name: 'Search docs' });
   await search.fill('keyboard');
   await search.press('Escape');

@@ -337,6 +337,22 @@ export {
   type DropIndicatorProps,
 } from './dnd/useDropIndicator';
 export {
+  getSelection,
+  setTokenFieldSelection,
+  tokenFieldPositionToDOMRange,
+  type TokenFieldPosition,
+} from './tokenfield/selection';
+export { useToken, type TokenAria, type TokenProps } from './tokenfield/useToken';
+export {
+  useTokenField,
+  type AriaTokenFieldProps,
+  type TokenFieldAria,
+  type TokenFieldSegment,
+  type TokenFieldState,
+  type TokenFieldTextSegment,
+  type TokenFieldTokenSegment,
+} from './tokenfield/useTokenField';
+export {
   UNSTABLE_createLandmarkController,
   useLandmark,
   type AriaLandmarkProps,
