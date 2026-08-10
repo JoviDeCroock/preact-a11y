@@ -7,6 +7,7 @@ const root = resolve(import.meta.dirname, '..');
 const fixture = mkdtempSync(join(tmpdir(), 'preact-aria-consumer-'));
 const pnpm = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 const node = process.execPath;
+const preactSpec = process.env.PREACT_ARIA_PREACT_SPEC;
 
 function pack(directory) {
   const output = execFileSync(
@@ -21,7 +22,7 @@ function pack(directory) {
 }
 
 const archive = pack(root);
-const preactArchive = pack(join(root, 'node_modules/preact'));
+const preactArchive = preactSpec ? undefined : pack(join(root, 'node_modules/preact'));
 
 writeFileSync(
   join(fixture, 'package.json'),
@@ -30,7 +31,7 @@ writeFileSync(
       private: true,
       type: 'module',
       dependencies: {
-        preact: `file:./${preactArchive}`,
+        preact: preactSpec ?? `file:./${preactArchive}`,
         'preact-aria': `file:./${archive}`,
       },
     },
@@ -79,7 +80,10 @@ export function ComponentButton() {
 `,
 );
 
-execFileSync(pnpm, ['install', '--offline', '--ignore-scripts'], {
+const installArguments = ['install', '--ignore-scripts'];
+if (!preactSpec) installArguments.push('--offline');
+
+execFileSync(pnpm, installArguments, {
   cwd: fixture,
   stdio: 'inherit',
 });
@@ -109,4 +113,6 @@ execFileSync(node, ['--eval', "require('preact-aria'); require('preact-aria/comp
   stdio: 'inherit',
 });
 
-console.log(`consumer: types, ESM, and CommonJS passed without React (${fixture})`);
+console.log(
+  `consumer: types, ESM, and CommonJS passed with ${preactSpec ?? 'the locked Preact version'} and without React (${fixture})`,
+);

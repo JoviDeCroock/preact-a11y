@@ -13,6 +13,9 @@ React, React DOM, `preact/compat`, or React Stately.
 pnpm add preact preact-aria
 ```
 
+Preact 10.27.2 or newer within the 10.x line is required. Preact 11 is not included in the
+supported peer range until its stable public types and behavior can be verified.
+
 ## Hooks
 
 Hooks provide behavior and ARIA/DOM props without prescribing markup or styles.

@@ -42,6 +42,11 @@ jobs:
       - name: Verify
         run: pnpm run check
 
+      - name: Verify minimum Preact peer
+        run: pnpm test:consumer
+        env:
+          PREACT_ARIA_PREACT_SPEC: 10.27.2
+
   release:
     name: Prepare release
     needs: checks

@@ -83,4 +83,12 @@ describe('release safety', () => {
     expect(packageCheck).toContain("'preact/compat'");
     expect(packageCheck).toContain("'@react-stately'");
   });
+
+  it('keeps the minimum tested Preact version aligned with the peer range', () => {
+    const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+    const workflow = readFileSync(join(root, '.github/workflows/main.yml'), 'utf8');
+
+    expect(packageJson.peerDependencies?.preact).toBe('>=10.27.2 <11');
+    expect(workflow).toContain('PREACT_ARIA_PREACT_SPEC: 10.27.2');
+  });
 });
