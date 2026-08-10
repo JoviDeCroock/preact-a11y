@@ -107,6 +107,15 @@ export {
   type Filter,
 } from './i18n/formatters';
 export {
+  LocalizedStringDictionary,
+  LocalizedStringFormatter,
+  useLocalizedStringDictionary,
+  useLocalizedStringFormatter,
+  type LocalizedString,
+  type LocalizedStrings,
+  type LocalizedStringVariables,
+} from './i18n/localizedStrings';
+export {
   useListBox,
   useOption,
   type AriaListBoxProps,

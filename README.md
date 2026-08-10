@@ -79,7 +79,7 @@ export function Settings() {
 - Menus with trigger relationships, labeled sections, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Polite/assertive toast regions with paused timers and safe focus handoff
-- Locale direction, locale-aware filtering, and native Intl formatters
+- Locale direction, filtering, native Intl formatters, and localized message dictionaries
 - Stable IDs, object refs, callback chaining, RTL detection, and SSR state
 - F6 landmark registration and imperative main/next/previous navigation
 - VisuallyHidden, mergeProps, and mergeRefs utilities
