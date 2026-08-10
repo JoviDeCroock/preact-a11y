@@ -9,6 +9,8 @@ export interface AriaListBoxProps {
   selectionMode?: SelectionMode;
   orientation?: 'horizontal' | 'vertical';
   isDisabled?: boolean;
+  shouldUseVirtualFocus?: boolean;
+  disallowTypeAhead?: boolean;
   'aria-label'?: string;
   'aria-labelledby'?: string;
   onFocusedKeyChange?: (key: string) => void;
@@ -61,6 +63,7 @@ export function useListBox(props: AriaListBoxProps, ref: RefObject<HTMLElement>)
       event.preventDefault();
       props.onSelectionAction?.(props.focusedKey);
     } else if (
+      !props.disallowTypeAhead &&
       event.key.length === 1 &&
       !event.altKey &&
       !event.ctrlKey &&
@@ -86,7 +89,7 @@ export function useListBox(props: AriaListBoxProps, ref: RefObject<HTMLElement>)
   return {
     listBoxProps: {
       role: 'listbox',
-      tabIndex: props.isDisabled ? undefined : 0,
+      tabIndex: props.isDisabled ? undefined : props.shouldUseVirtualFocus ? -1 : 0,
       'aria-activedescendant': props.focusedKey,
       'aria-disabled': props.isDisabled || undefined,
       'aria-label': props['aria-label'],

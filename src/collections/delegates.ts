@@ -6,9 +6,9 @@ export type Direction = 'ltr' | 'rtl';
 
 export interface CollectionNode<T = unknown> {
   key: CollectionKey;
-  type?: 'item' | 'section';
+  type?: string;
   textValue?: string;
-  value?: T;
+  value?: T | null;
   props?: { isDisabled?: boolean; disabledBehavior?: 'all' | 'selection' };
 }
 

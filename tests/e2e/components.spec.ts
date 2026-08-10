@@ -133,6 +133,17 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await tokenField.press('Enter');
   await expect(page.getByText(/^Token field status:/)).toContainText('Submitted');
 
+  const primitiveFinder = page.getByRole('combobox', { name: 'Primitive finder' });
+  await primitiveFinder.fill('');
+  await primitiveFinder.pressSequentially('o');
+  await expect(primitiveFinder).toHaveAttribute('aria-activedescendant', 'primitive-Button');
+  await primitiveFinder.press('ArrowDown');
+  await expect(primitiveFinder).toHaveAttribute('aria-activedescendant', 'primitive-Collection');
+  await primitiveFinder.press('Enter');
+  await expect(page.getByText(/^Autocomplete status:/)).toHaveText(
+    'Autocomplete status: Collection selected',
+  );
+
   const search = page.getByRole('searchbox', { name: 'Search docs' });
   await search.fill('keyboard');
   await search.press('Escape');

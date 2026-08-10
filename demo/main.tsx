@@ -9,6 +9,7 @@ import {
   RouterProvider,
   isTextDropItem,
   useClipboard,
+  useAutocomplete,
   useDrag,
   useDraggableCollection,
   useDraggableItem,
@@ -420,6 +421,58 @@ function TokenFieldExample() {
   );
 }
 
+function AutocompleteExample() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const collectionRef = useRef<HTMLUListElement>(null);
+  const [inputValue, setInputValue] = useState('');
+  const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
+  const [status, setStatus] = useState('No primitive selected');
+  const autocomplete = useAutocomplete(
+    {
+      inputRef,
+      collectionRef,
+      'aria-label': 'Primitive suggestions',
+      filter: (text, input) => text.toLocaleLowerCase().includes(input.toLocaleLowerCase()),
+    },
+    { inputValue, focusedNodeId, setInputValue, setFocusedNodeId },
+  );
+  const { shouldUseVirtualFocus, disallowTypeAhead, ...collectionProps } =
+    autocomplete.collectionProps;
+  const suggestions = ['Button', 'Collection', 'ListBox', 'TokenField'].filter(
+    (name) => autocomplete.filter?.(name, { id: `primitive-${name}` }) ?? true,
+  );
+
+  return (
+    <section>
+      <label for="primitive-finder">Primitive finder</label>
+      <input {...autocomplete.inputProps} id="primitive-finder" ref={inputRef} />
+      <ul
+        {...collectionProps}
+        data-disallow-typeahead={disallowTypeAhead || undefined}
+        data-virtual-focus={shouldUseVirtualFocus || undefined}
+        ref={collectionRef}
+        role="listbox"
+      >
+        {suggestions.map((name) => (
+          <li
+            aria-selected={focusedNodeId === `primitive-${name}`}
+            id={`primitive-${name}`}
+            key={name}
+            onClick={() => {
+              setInputValue(name);
+              setStatus(`${name} selected`);
+            }}
+            role="option"
+          >
+            {name}
+          </li>
+        ))}
+      </ul>
+      <output aria-live="polite">Autocomplete status: {status}</output>
+    </section>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -579,6 +632,7 @@ function App() {
       <Separator />
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <TokenFieldExample />
+      <AutocompleteExample />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
       <Slider

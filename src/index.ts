@@ -190,6 +190,17 @@ export {
   type ListKeyboardDelegateOptions,
   type Orientation,
 } from './collections/delegates';
+export {
+  BuiltCollection,
+  Collection,
+  CollectionBuilder,
+  createBranchComponent,
+  createLeafComponent,
+  type BuiltCollectionNode,
+  type CollectionBuilderProps,
+  type CollectionNodeClass,
+  type CollectionProps,
+} from './collections/CollectionBuilder';
 export { useDisclosure, type AriaDisclosureProps } from './disclosure/useDisclosure';
 export {
   useTab,
@@ -251,6 +262,14 @@ export {
 } from './select/useHiddenSelect';
 export { HiddenSelect, type HiddenSelectProps } from './select/HiddenSelect';
 export { useComboBox, type AriaComboBoxProps } from './combobox/useComboBox';
+export {
+  useAutocomplete,
+  type AriaAutocompleteProps,
+  type AutocompleteAria,
+  type AutocompleteCollectionProps,
+  type AutocompleteNode,
+  type AutocompleteState,
+} from './autocomplete/useAutocomplete';
 export {
   useSlider,
   type AriaSliderProps,

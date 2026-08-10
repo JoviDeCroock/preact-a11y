@@ -4,20 +4,20 @@ React Aria is a behavioral and API reference, not a runtime dependency. Each fam
 implemented natively for Preact and must pass unit, real-browser, keyboard, pointer, and
 automated accessibility coverage before being marked complete.
 
-| Family                    | Status      | Current scope                                                |
-| ------------------------- | ----------- | ------------------------------------------------------------ |
-| Interactions              | In progress | Press/long press, focus composition, keyboard, context       |
-| Buttons                   | In progress | Button and toggle button hooks and components                |
-| Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox         |
-| Forms                     | In progress | Labels, text/search/number, validation, and token editing    |
-| Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
-| Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
-| Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip  |
-| Collections               | In progress | List/grid/tree/tag/table navigation, sections, and delegates |
-| Disclosure and navigation | In progress | Routed links, tabs, toolbars, submenus, focus and landmarks  |
-| Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting     |
-| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
-| Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates  |
+| Family                    | Status      | Current scope                                                  |
+| ------------------------- | ----------- | -------------------------------------------------------------- |
+| Interactions              | In progress | Press/long press, focus composition, keyboard, context         |
+| Buttons                   | In progress | Button and toggle button hooks and components                  |
+| Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox           |
+| Forms                     | In progress | Labels, text/search/number, validation, and token editing      |
+| Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints   |
+| Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions     |
+| Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip    |
+| Collections               | In progress | Construction, list/grid/tree/tag/table, sections, autocomplete |
+| Disclosure and navigation | In progress | Routed links, tabs, toolbars, submenus, focus and landmarks    |
+| Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting       |
+| Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state         |
+| Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates    |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility

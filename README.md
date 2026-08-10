@@ -77,6 +77,7 @@ export function Settings() {
 - Data tables with two-dimensional navigation, sorting, selection, and column resizing
 - Contenteditable token fields with atomic selection, clipboard transfer, and text editing
 - Reusable stack/grid keyboard and pointer drop-target delegates for DOM-backed collections
+- Immutable collection construction and collection-agnostic autocomplete with virtual focus
 - Menus with trigger relationships, labeled sections, actions, typeahead, and dismissal
 - Labeled progress bars, meters, and horizontal/vertical separators
 - Polite/assertive toast regions with paused timers and safe focus handoff
