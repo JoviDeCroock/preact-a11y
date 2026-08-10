@@ -6,20 +6,18 @@ import { basename, join, resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 const fixture = mkdtempSync(join(tmpdir(), 'preact-aria-consumer-'));
 const pnpm = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
-const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const node = process.execPath;
 
 function pack(directory) {
   const output = execFileSync(
-    npm,
-    ['pack', '--ignore-scripts', '--json', '--pack-destination', fixture],
+    pnpm,
+    ['--config.ignore-scripts=true', 'pack', '--json', '--pack-destination', fixture],
     {
       cwd: directory,
       encoding: 'utf8',
-      env: { ...process.env, npm_config_cache: join(fixture, '.npm-cache') },
     },
   );
-  return basename(JSON.parse(output)[0].filename);
+  return basename(JSON.parse(output).filename);
 }
 
 const archive = pack(root);
