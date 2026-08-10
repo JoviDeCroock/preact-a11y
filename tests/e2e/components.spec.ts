@@ -300,6 +300,31 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
   await menu.press('Escape');
   await expect(menu).toBeHidden();
   await expect(menuTrigger).toBeFocused();
+
+  const submenuTrigger = page.getByRole('menuitem', { name: 'Export submenu' });
+  await submenuTrigger.focus();
+  await submenuTrigger.press('ArrowRight');
+  const submenu = page.getByRole('menu', { name: 'Export submenu' });
+  await expect(submenu).toBeVisible();
+  await expect(submenu).toBeFocused();
+  await submenu.press('ArrowLeft');
+  await expect(submenu).toBeHidden();
+  await expect(submenuTrigger).toBeFocused();
+
+  const previewTrigger = page.getByRole('link', { name: 'Preview article' });
+  await previewTrigger.hover();
+  const preview = page.getByRole('dialog', { name: 'Article preview' });
+  await expect(preview).toBeVisible();
+  await preview.hover();
+  await page.waitForTimeout(150);
+  await expect(preview).toBeVisible();
+  await previewTrigger.focus();
+  await previewTrigger.press('Tab');
+  const previewAction = page.getByRole('button', { name: 'Read article preview' });
+  await expect(previewAction).toBeFocused();
+  await previewAction.press('Escape');
+  await expect(preview).toBeHidden();
+  await expect(previewTrigger).toBeFocused();
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {
@@ -317,6 +342,14 @@ test('fixture has no automatically detectable accessibility violations', async (
     [],
   );
   await tooltipTrigger.press('Escape');
+
+  const previewTrigger = page.getByRole('link', { name: 'Preview article' });
+  await previewTrigger.hover();
+  const preview = page.getByRole('dialog', { name: 'Article preview' });
+  await expect(preview).toBeVisible();
+  expect((await new AxeBuilder({ page }).include('.preview').analyze()).violations).toEqual([]);
+  await previewTrigger.focus();
+  await previewTrigger.press('Escape');
 
   const showNotification = page.getByRole('button', { name: 'Show notification' });
   await showNotification.click();

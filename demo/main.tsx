@@ -12,8 +12,11 @@ import {
   useDrag,
   useDrop,
   useLandmark,
+  usePreviewTrigger,
+  useSubmenuTrigger,
   type DragPreviewRenderer,
   type DropEvent,
+  type SubmenuFocusStrategy,
 } from '../src';
 import {
   Button,
@@ -162,6 +165,76 @@ function DragDropExample() {
       <output aria-live="polite">Drag status: {status}</output>
       <DragPreview previewRef={previewRef}>{() => <div>Preact card preview</div>}</DragPreview>
     </section>
+  );
+}
+
+function SubmenuExample() {
+  const parentMenuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const submenuRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setOpen] = useState(false);
+  const [focusStrategy, setFocusStrategy] = useState<SubmenuFocusStrategy>();
+  const aria = useSubmenuTrigger(
+    { parentMenuRef, submenuRef },
+    {
+      isOpen,
+      focusStrategy,
+      open(strategy) {
+        setFocusStrategy(strategy);
+        setOpen(true);
+      },
+      close: () => setOpen(false),
+    },
+    triggerRef,
+  );
+  const { autoFocus: _, submenuLevel: __, ...submenuProps } = aria.submenuProps;
+
+  return (
+    <div className="submenu-example">
+      <div aria-label="Export actions" ref={parentMenuRef} role="menu">
+        <div {...aria.submenuTriggerProps} ref={triggerRef} role="menuitem" tabIndex={0}>
+          Export submenu
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Print
+        </div>
+      </div>
+      {isOpen && (
+        <div {...submenuProps} ref={submenuRef} role="menu" tabIndex={-1}>
+          <div role="menuitem" tabIndex={-1}>
+            Export PDF
+          </div>
+          <div role="menuitem" tabIndex={-1}>
+            Export HTML
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PreviewExample() {
+  const triggerRef = useRef<HTMLAnchorElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setOpen] = useState(false);
+  const aria = usePreviewTrigger(
+    { closeDelay: 100, delay: 50, popoverRef, triggerRef },
+    { isOpen, open: () => setOpen(true), close: () => setOpen(false) },
+  );
+  const { isNonModal: _, ...popoverProps } = aria.popoverProps;
+
+  return (
+    <>
+      <a {...aria.triggerProps} href="#preview-article" ref={triggerRef}>
+        Preview article
+      </a>
+      {isOpen && (
+        <div {...popoverProps} aria-label="Article preview" className="preview" ref={popoverRef}>
+          <p>Build accessible Preact interfaces from unstyled primitives.</p>
+          <button>Read article preview</button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -317,6 +390,7 @@ function App() {
           Delete
         </MenuItem>
       </MenuTrigger>
+      <SubmenuExample />
       <ProgressBar label="Upload progress" value={65} />
       <Meter label="Storage used" maxValue={100} value={42} />
       <Separator />
@@ -361,6 +435,7 @@ function App() {
       <Tooltip closeDelay={100} content="Copies a shareable link" delay={50}>
         <Button>Copy share link</Button>
       </Tooltip>
+      <PreviewExample />
       <Button
         onPress={() =>
           setToasts([
@@ -425,6 +500,9 @@ function App() {
       <Link href="/client-settings">Client-routed settings</Link>
       <section id="learn-more" tabIndex={-1}>
         Native Preact accessibility primitives.
+      </section>
+      <section id="preview-article" tabIndex={-1}>
+        Article destination.
       </section>
     </main>
   );

@@ -12,9 +12,9 @@ automated accessibility coverage before being marked complete.
 | Forms                     | In progress | Labels, validation, text/search, locale-aware number fields  |
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints |
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions   |
-| Overlays                  | In progress | Portals/providers, modal/popover focus, positioning, tooltip |
+| Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip  |
 | Collections               | In progress | List/grid/tree/tag/table navigation, sections, and delegates |
-| Disclosure and navigation | In progress | Routed links, tabs, toolbars, focus managers, F6 landmarks   |
+| Disclosure and navigation | In progress | Routed links, tabs, toolbars, submenus, focus and landmarks  |
 | Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting     |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state       |
 | Drag and drop             | In progress | Clipboard plus pointer/keyboard drag; collections pending    |

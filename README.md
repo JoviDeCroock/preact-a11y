@@ -66,7 +66,7 @@ export function Settings() {
 - Checkbox and single/multiple toggle-button groups with shared semantics
 - Single and multi-thumb sliders with form values, constraints, pointer, and keyboard input
 - Modal semantics, Preact-native portals, nested overlay providers, and programmatic focus scopes
-- Trigger-linked popovers with collision-aware placement and modal/non-modal behavior
+- Trigger-linked popovers, interactive previews, and nested submenus with RTL behavior
 - Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
 - Disclosures and automatic/manual keyboard-navigable tabs
 - Breadcrumbs, titled dialogs, arrow-key toolbars, and client-router-aware links

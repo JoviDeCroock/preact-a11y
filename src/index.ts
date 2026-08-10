@@ -21,6 +21,13 @@ export {
   type MenuSectionAria,
 } from './menu/useMenuSection';
 export { useMenuTrigger, type AriaMenuTriggerProps } from './menu/useMenuTrigger';
+export {
+  useSubmenuTrigger,
+  type AriaSubmenuTriggerProps,
+  type SubmenuFocusStrategy,
+  type SubmenuTriggerAria,
+  type SubmenuTriggerState,
+} from './menu/useSubmenuTrigger';
 export { useRadio, type AriaRadioProps } from './hooks/useRadio';
 export { useRadioGroup, type AriaRadioGroupProps } from './hooks/useRadioGroup';
 export { useSwitch, type AriaSwitchProps } from './hooks/useSwitch';
@@ -253,6 +260,12 @@ export {
 export { useSliderThumb, type AriaSliderThumbProps } from './slider/useSliderThumb';
 export { useTooltip, type AriaTooltipProps } from './tooltip/useTooltip';
 export { useTooltipTrigger, type AriaTooltipTriggerProps } from './tooltip/useTooltipTrigger';
+export {
+  usePreviewTrigger,
+  type AriaPreviewTriggerProps,
+  type PreviewTriggerAria,
+  type PreviewTriggerState,
+} from './tooltip/usePreviewTrigger';
 export { useToast, type AriaToastProps, type ToastPriority } from './toast/useToast';
 export { useToastRegion, type AriaToastRegionProps } from './toast/useToastRegion';
 export {
