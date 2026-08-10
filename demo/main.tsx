@@ -10,6 +10,12 @@ import {
   isTextDropItem,
   useClipboard,
   useAutocomplete,
+  useCalendar,
+  useCalendarCell,
+  useCalendarGrid,
+  useCalendarHeading,
+  useDateField,
+  useDateSegment,
   useDrag,
   useDraggableCollection,
   useDraggableItem,
@@ -25,6 +31,10 @@ import {
   type DragPreviewRenderer,
   type DropEvent,
   type CollectionKey,
+  type CalendarDate,
+  type CalendarState,
+  type DateFieldState,
+  type DateSegment,
   type DraggableCollectionState,
   type DropTarget,
   type DroppableCollectionState,
@@ -473,6 +483,113 @@ function AutocompleteExample() {
   );
 }
 
+function DemoCalendarCell({ date, state }: { date: CalendarDate; state: CalendarState }) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const cell = useCalendarCell({ date }, state, ref);
+  return (
+    <td {...cell.cellProps}>
+      <button {...cell.buttonProps} ref={ref}>
+        {date.day}
+      </button>
+    </td>
+  );
+}
+
+function CalendarExample() {
+  const [focusedDate, setFocusedDate] = useState<CalendarDate>({
+    year: 2026,
+    month: 8,
+    day: 12,
+  });
+  const [selectedDates, setSelectedDates] = useState<readonly CalendarDate[]>([]);
+  const [visibleRange, setVisibleRange] = useState({
+    start: { year: 2026, month: 8, day: 1 },
+    end: { year: 2026, month: 8, day: 31 },
+  });
+  const state: CalendarState = {
+    focusedDate,
+    selectedDates,
+    visibleRange,
+    setFocusedDate,
+    setVisibleRange,
+    selectDate: (date) => setSelectedDates([date]),
+  };
+  const calendar = useCalendar({ 'aria-label': 'Release calendar' }, state);
+  const grid = useCalendarGrid({}, state);
+  const heading = useCalendarHeading();
+  const dates = Array.from({ length: 7 }, (_, index) => ({
+    year: 2026,
+    month: 8,
+    day: 10 + index,
+  }));
+  return (
+    <section {...calendar.calendarProps}>
+      <h2 {...heading.headingProps}>{calendar.title}</h2>
+      <button {...calendar.prevButtonProps}>Previous</button>
+      <button {...calendar.nextButtonProps}>Next</button>
+      <table {...grid.gridProps}>
+        <thead {...grid.headerProps}>
+          <tr>
+            {grid.weekDays.map((day) => (
+              <th key={day}>{day}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {dates.map((date) => (
+              <DemoCalendarCell date={date} key={date.day} state={state} />
+            ))}
+          </tr>
+        </tbody>
+      </table>
+      <output aria-live="polite">Calendar selection: {selectedDates[0]?.day ?? 'none'}</output>
+    </section>
+  );
+}
+
+function DemoDateSegment({ segment, state }: { segment: DateSegment; state: DateFieldState }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const aria = useDateSegment(segment, state, ref);
+  return (
+    <span {...aria.segmentProps} ref={ref}>
+      {segment.text}
+    </span>
+  );
+}
+
+function DateFieldExample() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [segments, setSegments] = useState<readonly DateSegment[]>([
+    { type: 'month', text: '08', value: 8, minValue: 1, maxValue: 12 },
+    { type: 'literal', text: '/' },
+    { type: 'day', text: '12', value: 12, minValue: 1, maxValue: 31 },
+    { type: 'literal', text: '/' },
+    { type: 'year', text: '2026', value: 2026, minValue: 1900, maxValue: 2100 },
+  ]);
+  const state: DateFieldState = {
+    segments,
+    setSegment(type, value) {
+      setSegments((current) =>
+        current.map((segment) =>
+          segment.type === type ? { ...segment, value, text: String(value) } : segment,
+        ),
+      );
+    },
+  };
+  const field = useDateField({ label: 'Launch date' }, state, ref);
+  return (
+    <section>
+      <span {...field.labelProps}>Launch date</span>
+      <div {...field.fieldProps} ref={ref}>
+        {segments.map((segment, index) => (
+          <DemoDateSegment key={`${segment.type}-${index}`} segment={segment} state={state} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
   const [composedCount, setComposedCount] = useState(0);
@@ -633,6 +750,8 @@ function App() {
       <TextField label="Email" description="We will only use this for accessibility updates" />
       <TokenFieldExample />
       <AutocompleteExample />
+      <CalendarExample />
+      <DateFieldExample />
       <SearchField label="Search docs" />
       <NumberField defaultValue={2} label="Seats" maxValue={10} minValue={1} />
       <Slider

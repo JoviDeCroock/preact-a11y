@@ -144,6 +144,19 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
     'Autocomplete status: Collection selected',
   );
 
+  const calendarDay = page.getByRole('button', { name: 'August 12, 2026' });
+  await calendarDay.focus();
+  await calendarDay.press('ArrowRight');
+  const nextCalendarDay = page.getByRole('button', { name: 'August 13, 2026' });
+  await expect(nextCalendarDay).toBeFocused();
+  await nextCalendarDay.press('Enter');
+  await expect(page.getByText(/^Calendar selection:/)).toHaveText('Calendar selection: 13');
+
+  const launchMonth = page.getByRole('spinbutton', { name: 'month' });
+  await launchMonth.focus();
+  await launchMonth.press('ArrowUp');
+  await expect(launchMonth).toHaveText('9');
+
   const search = page.getByRole('searchbox', { name: 'Search docs' });
   await search.fill('keyboard');
   await search.press('Escape');

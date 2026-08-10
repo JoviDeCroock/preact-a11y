@@ -76,6 +76,7 @@ export function Settings() {
 - Removable tag groups with selection, RTL navigation, live updates, and focus recovery
 - Data tables with two-dimensional navigation, sorting, selection, and column resizing
 - Contenteditable token fields with atomic selection, clipboard transfer, and text editing
+- Date/time segments, date picker relationships, and range-aware calendar navigation
 - Reusable stack/grid keyboard and pointer drop-target delegates for DOM-backed collections
 - Immutable collection construction and collection-agnostic autocomplete with virtual focus
 - Menus with trigger relationships, labeled sections, actions, typeahead, and dismissal

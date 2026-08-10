@@ -9,7 +9,7 @@ automated accessibility coverage before being marked complete.
 | Interactions              | In progress | Press/long press, focus composition, keyboard, context         |
 | Buttons                   | In progress | Button and toggle button hooks and components                  |
 | Selection controls        | In progress | Grouped checkbox/toggle, radio, select, and combobox           |
-| Forms                     | In progress | Labels, text/search/number, validation, and token editing      |
+| Forms                     | In progress | Labels, text/search/number, token, and date/time editing       |
 | Sliders                   | In progress | Single/range thumbs, forms, pointer and keyboard constraints   |
 | Feedback                  | In progress | Progress/meter semantics and focus-safe live toast regions     |
 | Overlays                  | In progress | Portals/providers, popovers, previews, positioning, tooltip    |
@@ -18,6 +18,7 @@ automated accessibility coverage before being marked complete.
 | Internationalization      | In progress | Locale/direction, filtering, Intl and message formatting       |
 | Utilities and SSR         | In progress | Chaining, stable IDs, object refs, and hydration state         |
 | Drag and drop             | In progress | Clipboard, typed transfer, collection targets and delegates    |
+| Date and calendar         | In progress | Segments, pickers, grids, cells, month/year and range behavior |
 
 React Stately and component state libraries are intentionally out of scope. Consumers may
 use signals, local hooks, or any external store while composing these accessibility
