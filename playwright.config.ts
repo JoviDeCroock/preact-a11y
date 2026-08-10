@@ -11,8 +11,21 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    {
+      name: 'chromium',
+      grepInvert: /touch interactions/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      grepInvert: /touch interactions/,
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'mobile-chromium',
+      grep: /touch interactions/,
+      use: { ...devices['Pixel 7'] },
+    },
   ],
   webServer: {
     command: 'pnpm vite --host 127.0.0.1 --port 41737 --strictPort',

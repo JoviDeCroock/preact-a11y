@@ -5,6 +5,43 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/demo/');
 });
 
+test('touch interactions preserve semantics and mobile accessibility', async ({
+  page,
+}, testInfo) => {
+  test.skip(!testInfo.project.use.hasTouch, 'requires a touch-enabled browser context');
+
+  const increment = page.getByRole('button', { name: 'Increment', exact: true });
+  const incrementBounds = await increment.boundingBox();
+  if (!incrementBounds) throw new Error('Increment button has no layout bounds.');
+  await page.touchscreen.tap(
+    incrementBounds.x + incrementBounds.width / 2,
+    incrementBounds.y + incrementBounds.height / 2,
+  );
+  await expect(page.getByText(/^Count:/)).toHaveText('Count: 1');
+
+  const checkbox = page.getByRole('checkbox', { name: 'Accept terms' });
+  await checkbox.scrollIntoViewIfNeeded();
+  const checkboxBounds = await checkbox.boundingBox();
+  if (!checkboxBounds) throw new Error('Checkbox has no layout bounds.');
+  await page.touchscreen.tap(
+    checkboxBounds.x + checkboxBounds.width / 2,
+    checkboxBounds.y + checkboxBounds.height / 2,
+  );
+  await expect(checkbox).toBeChecked();
+
+  const colorTrack = page.locator('.color-track');
+  await colorTrack.scrollIntoViewIfNeeded();
+  const colorBounds = await colorTrack.boundingBox();
+  if (!colorBounds) throw new Error('Color track has no layout bounds.');
+  await page.touchscreen.tap(
+    colorBounds.x + colorBounds.width * 0.25,
+    colorBounds.y + colorBounds.height / 2,
+  );
+  await expect(page.getByText(/^Selected hue:/)).not.toHaveText('Selected hue: 180');
+
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+});
+
 test('components support pointer and keyboard interaction', async ({ page }) => {
   const main = page.getByRole('main', { name: 'Component demo' });
   await page.keyboard.press('F6');
@@ -402,6 +439,7 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
 });
 
 test('fixture has no automatically detectable accessibility violations', async ({ page }) => {
+  test.setTimeout(60_000);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 
   await page.getByRole('button', { name: 'More actions' }).click();

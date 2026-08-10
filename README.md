@@ -101,7 +101,7 @@ pnpm check
 
 The full gate includes oxfmt, oxlint, strict TypeScript, unit tests, production package
 builds, clean-consumer ESM/CommonJS/type checks, Chromium and Firefox interaction tests,
-and axe-core accessibility audits.
+touch-enabled mobile Chromium coverage, and axe-core accessibility audits.
 
 ## License
 
