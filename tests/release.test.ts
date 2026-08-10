@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync } from 'node:fs';
+import { chmodSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -29,6 +29,39 @@ describe('release safety', () => {
     expect(result.status).not.toBe(0);
     expect(result.stderr).toContain('Refusing to stage the placeholder version 0.0.0');
   });
+
+  it.skipIf(process.platform === 'win32')(
+    'fails closed when staged publishing cannot bootstrap the package',
+    () => {
+      const temporaryDirectory = mkdtempSync(join(tmpdir(), 'preact-aria-release-'));
+      const binaryDirectory = join(temporaryDirectory, 'bin');
+      const npm = join(binaryDirectory, 'npm');
+
+      mkdirSync(binaryDirectory);
+      writeFileSync(
+        join(temporaryDirectory, 'package.json'),
+        JSON.stringify({ name: 'preact-aria', version: '0.1.0' }),
+      );
+      writeFileSync(npm, '#!/bin/sh\necho "npm error code E404" >&2\nexit 1\n', {
+        mode: 0o755,
+      });
+      chmodSync(npm, 0o755);
+
+      const result = spawnSync(
+        process.execPath,
+        [join(root, '.github/scripts/stage-package.mjs')],
+        {
+          cwd: temporaryDirectory,
+          encoding: 'utf8',
+          env: { ...process.env, PATH: `${binaryDirectory}:${process.env.PATH}` },
+        },
+      );
+
+      expect(result.status).not.toBe(0);
+      expect(result.stderr).toContain('Staged publishing cannot create a new package');
+      expect(result.stderr).toContain('complete an explicitly approved initial publish');
+    },
+  );
 
   it('gates staged publishing behind checks and the npm environment', () => {
     const workflow = readFileSync(join(root, '.github/workflows/main.yml'), 'utf8');

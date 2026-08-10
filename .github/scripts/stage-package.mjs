@@ -21,13 +21,16 @@ function run(command, args, options = {}) {
   return result;
 }
 
-function versionExists(name, version) {
-  const result = run('npm', ['view', `${name}@${version}`, 'version', '--json']);
-  if (result.status === 0) return true;
+function publishedVersions(name) {
+  const result = run('npm', ['view', name, 'versions', '--json']);
+  if (result.status === 0) {
+    const versions = JSON.parse(result.stdout);
+    return new Set(Array.isArray(versions) ? versions : [versions]);
+  }
 
   const output = `${result.stdout}\n${result.stderr}`;
-  if (output.includes('E404') || output.includes('No match found')) return false;
-  throw new Error(`Could not check npm version for ${name}@${version}`);
+  if (output.includes('E404') || output.includes('No match found')) return undefined;
+  throw new Error(`Could not check npm package ${name}`);
 }
 
 function distTag(version) {
@@ -71,7 +74,15 @@ if (packageJson.version === '0.0.0') {
   throw new Error('Refusing to stage the placeholder version 0.0.0.');
 }
 
-if (versionExists(packageJson.name, packageJson.version)) {
+const versions = publishedVersions(packageJson.name);
+if (!versions) {
+  throw new Error(
+    `${packageJson.name} does not exist on npm. Staged publishing cannot create a new package; ` +
+      'complete an explicitly approved initial publish, then configure trusted publishing before rerunning this workflow.',
+  );
+}
+
+if (versions.has(packageJson.version)) {
   console.log(`Skipping ${packageJson.name}@${packageJson.version}; already published.`);
   process.exit(0);
 }
