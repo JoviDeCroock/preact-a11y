@@ -108,8 +108,8 @@ touch-enabled mobile Chromium coverage, and axe-core accessibility audits.
 
 ## License
 
-Apache-2.0. React Aria documentation and behavior are used as references under the terms
-described in [NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
+MIT. React Aria documentation and behavior are used as references under the terms described
+in [NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for development and accessibility requirements and
 [SECURITY.md](./SECURITY.md) for private vulnerability reporting.
