@@ -1,5 +1,6 @@
 import { cloneElement } from 'preact';
-import type { JSX, VNode } from 'preact';
+import type { VNode } from 'preact';
+import type { JSX } from '../preactTypes';
 import { mergeProps } from '../utils/mergeProps';
 import { useFocusRing } from './useFocus';
 

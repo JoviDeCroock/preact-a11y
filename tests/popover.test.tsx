@@ -76,7 +76,7 @@ describe('popover primitives', () => {
         <>
           <button
             ref={(element) => {
-              targetRef.current = element;
+              (targetRef as { current: HTMLButtonElement | null }).current = element;
               if (element) element.getBoundingClientRect = () => rect(100, 700, 100, 40);
             }}
           >
@@ -86,7 +86,7 @@ describe('popover primitives', () => {
             {...result.overlayProps}
             data-testid="positioned"
             ref={(element) => {
-              overlayRef.current = element;
+              (overlayRef as { current: HTMLDivElement | null }).current = element;
               if (element) element.getBoundingClientRect = () => rect(0, 0, 200, 200);
             }}
           />

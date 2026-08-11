@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { useFocus } from '../interactions/useFocus';
 import { readFromDataTransfer, writeToDataTransfer } from './dataTransfer';

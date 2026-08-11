@@ -1,4 +1,4 @@
-import type { JSX, TargetedKeyboardEvent } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 
 export interface AriaSelectProps {
   isOpen: boolean;

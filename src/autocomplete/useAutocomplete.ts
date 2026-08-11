@@ -1,11 +1,11 @@
+import type { RefObject } from 'preact';
 import type {
   JSX,
-  RefObject,
   TargetedEvent,
   TargetedFocusEvent,
   TargetedKeyboardEvent,
   TargetedPointerEvent,
-} from 'preact';
+} from '../preactTypes';
 import { useCallback } from 'preact/hooks';
 import { useId } from '../utils/useId';
 
@@ -103,10 +103,10 @@ export function useAutocomplete(
   }, [state]);
 
   const onInput = useCallback(
-    (event: TargetedEvent<HTMLInputElement, InputEvent>) => {
+    (event: TargetedEvent<HTMLInputElement, Event>) => {
       const value = event.currentTarget.value;
       state.setInputValue(value);
-      const inputType = event.inputType;
+      const inputType = (event as TargetedEvent<HTMLInputElement, InputEvent>).inputType;
       if (inputType === 'insertText' && !props.disableAutoFocusFirst) {
         queueMicrotask(() =>
           setFocusedItem(collectionItems(props.collectionRef.current, collectionId)[0]),

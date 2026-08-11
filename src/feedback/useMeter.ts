@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useProgressBar, type AriaProgressBarProps } from './useProgressBar';
 
 export interface AriaMeterProps extends Omit<AriaProgressBarProps, 'isIndeterminate'> {

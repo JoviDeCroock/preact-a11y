@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { ariaHideOutside } from '../overlays/ariaHideOutside';
 import { DismissButton } from '../overlays/DismissButton';

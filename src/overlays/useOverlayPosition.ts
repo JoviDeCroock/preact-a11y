@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useCallback, useLayoutEffect, useState } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 

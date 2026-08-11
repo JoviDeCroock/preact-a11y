@@ -1,4 +1,5 @@
-import type { JSX, Ref } from 'preact';
+import type { Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useNumberField, type AriaNumberFieldProps } from '../forms/useNumberField';
 import { useSearchField, type AriaSearchFieldProps } from '../forms/useSearchField';

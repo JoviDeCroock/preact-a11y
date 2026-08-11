@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useCheckbox } from '../hooks/useCheckbox';
 import type { SelectionMode } from './useListBox';

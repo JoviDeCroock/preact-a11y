@@ -1,4 +1,4 @@
-import type { JSX, TargetedEvent } from 'preact';
+import type { JSX, TargetedEvent } from '../preactTypes';
 import { useState } from 'preact/hooks';
 
 export interface AriaRadioProps {

@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useId } from '../utils/useId';
@@ -117,12 +118,12 @@ export function useSubmenuTrigger(
         event.stopPropagation();
         open('first');
       },
-      onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (isDisabled || event.pointerType === 'touch' || state.isOpen) return;
         cancelOpen();
         openTimer.current = setTimeout(() => open(), delay);
       },
-      onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') cancelOpen();
       },
     },

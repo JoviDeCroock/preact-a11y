@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedEvent, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useId, useState } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useNumberFormatter } from '../i18n/formatters';
@@ -75,7 +76,7 @@ export function useSliderThumb(
       onPointerCancel() {
         setDragging(false);
       },
-      onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+      onInput(event: TargetedEvent<HTMLInputElement, Event>) {
         setValue(event.currentTarget.valueAsNumber);
       },
       onChange(event: TargetedEvent<HTMLInputElement, Event>) {

@@ -1,4 +1,4 @@
-import type { JSX, TargetedEvent } from 'preact';
+import type { JSX, TargetedEvent } from '../preactTypes';
 import { useField, type AriaFieldProps } from './useField';
 
 export interface AriaTextFieldProps extends AriaFieldProps {
@@ -33,7 +33,7 @@ export function useTextField(props: AriaTextFieldProps = {}) {
     required: props.isRequired,
     type: props.type ?? 'text',
     value: props.value,
-    onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+    onInput(event: TargetedEvent<HTMLInputElement, Event>) {
       props.onChange?.(event.currentTarget.value);
     },
   } satisfies JSX.InputHTMLAttributes<HTMLInputElement>;

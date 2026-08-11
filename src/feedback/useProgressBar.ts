@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useLabel, type AriaLabelProps } from '../forms/useLabel';
 import { useNumberFormatter } from '../i18n/formatters';
 

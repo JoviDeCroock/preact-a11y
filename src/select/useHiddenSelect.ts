@@ -1,4 +1,4 @@
-import type { JSX, TargetedEvent } from 'preact';
+import type { JSX, TargetedEvent } from '../preactTypes';
 
 export interface HiddenSelectOption {
   key: string;

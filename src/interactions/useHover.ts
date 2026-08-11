@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import type { JSX, TargetedPointerEvent } from 'preact';
+import type { JSX, TargetedPointerEvent } from '../preactTypes';
 import type { PointerType } from '../types';
 
 export interface HoverEvent {
@@ -16,8 +16,8 @@ export interface HoverProps {
 
 export function useHover(props: HoverProps = {}) {
   const [isHovered, setHovered] = useState(false);
-  const hoverProps: Pick<JSX.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave'> = {
-    onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+  const hoverProps: Pick<JSX.HTMLAttributes<HTMLElement>, 'onpointerenter' | 'onpointerleave'> = {
+    onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
       if (props.isDisabled || event.pointerType === 'touch') return;
       setHovered(true);
       props.onHoverChange?.(true);
@@ -26,7 +26,7 @@ export function useHover(props: HoverProps = {}) {
         target: event.currentTarget,
       });
     },
-    onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+    onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
       if (!isHovered) return;
       setHovered(false);
       props.onHoverChange?.(false);

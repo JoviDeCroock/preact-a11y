@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedFocusEvent, TargetedPointerEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedFocusEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 export interface AriaToastRegionProps {
@@ -48,13 +49,13 @@ export function useToastRegion(props: AriaToastRegionProps, ref: RefObject<HTMLE
       tabIndex: -1,
       'aria-label': props['aria-label'] ?? `Notifications (${props.toastIds.length})`,
       'data-preact-aria-top-layer': true,
-      onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') setHovered(true);
       },
-      onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') setHovered(false);
       },
-      onFocusIn(event: TargetedFocusEvent<HTMLElement>) {
+      onfocusin(event: TargetedFocusEvent<HTMLElement>) {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
           restoreTarget.current = event.relatedTarget as HTMLElement | null;
         }
@@ -63,7 +64,7 @@ export function useToastRegion(props: AriaToastRegionProps, ref: RefObject<HTMLE
           (event.target as HTMLElement).closest<HTMLElement>('[data-toast-id]')?.dataset.toastId ??
           null;
       },
-      onFocusOut(event: TargetedFocusEvent<HTMLElement>) {
+      onfocusout(event: TargetedFocusEvent<HTMLElement>) {
         if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
         setFocusWithin(false);
         const next = event.relatedTarget as HTMLElement | null;

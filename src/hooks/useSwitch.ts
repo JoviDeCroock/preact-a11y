@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useCheckbox, type AriaCheckboxProps } from './useCheckbox';
 
 export type AriaSwitchProps = AriaCheckboxProps;

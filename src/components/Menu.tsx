@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useContext, useId, useRef, useState } from 'preact/hooks';
 import { useInteractOutside } from '../interactions/useInteractOutside';
 import { useMenu, useMenuItem } from '../menu/useMenu';

@@ -1,5 +1,6 @@
 import { cloneElement } from 'preact';
-import type { JSX, Ref, RefObject, TargetedKeyboardEvent, VNode } from 'preact';
+import type { Ref, RefObject, VNode } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { mergeProps } from '../utils/mergeProps';
 import { mergeRefs } from '../utils/mergeRefs';

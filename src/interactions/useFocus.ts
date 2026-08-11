@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { JSX, TargetedFocusEvent } from 'preact';
+import type { JSX, TargetedFocusEvent } from '../preactTypes';
 import { useFocusWithin } from './useFocusWithin';
 
 type Modality = 'keyboard' | 'pointer';
@@ -73,7 +73,7 @@ export interface FocusRingOptions extends FocusProps {
 export interface FocusRingAria {
   focusProps: Pick<
     JSX.HTMLAttributes<HTMLElement>,
-    'onBlur' | 'onFocus' | 'onFocusIn' | 'onFocusOut'
+    'onBlur' | 'onFocus' | 'onfocusin' | 'onfocusout'
   >;
   isFocused: boolean;
   isFocusVisible: boolean;

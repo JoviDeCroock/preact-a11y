@@ -1,5 +1,10 @@
 import { useCallback, useRef, useState } from 'preact/hooks';
-import type { JSX, TargetedKeyboardEvent, TargetedMouseEvent, TargetedPointerEvent } from 'preact';
+import type {
+  JSX,
+  TargetedKeyboardEvent,
+  TargetedMouseEvent,
+  TargetedPointerEvent,
+} from '../preactTypes';
 import type { PointerType, PressEvent, PressProps } from '../types';
 
 type PressDOMProps = Pick<
@@ -10,8 +15,8 @@ type PressDOMProps = Pick<
   | 'onKeyUp'
   | 'onPointerCancel'
   | 'onPointerDown'
-  | 'onPointerEnter'
-  | 'onPointerLeave'
+  | 'onpointerenter'
+  | 'onpointerleave'
   | 'onPointerUp'
 >;
 
@@ -79,10 +84,10 @@ export function usePress(props: PressProps = {}): PressResult {
       changePressed(true);
       onPressStart?.(pressEvent('pressstart', event, event.currentTarget));
     },
-    onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+    onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
       if (activePointer.current === event.pointerId && !pressed.current) changePressed(true);
     },
-    onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+    onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
       if (activePointer.current === event.pointerId && pressed.current) changePressed(false);
     },
     onPointerUp(event: TargetedPointerEvent<HTMLElement>) {

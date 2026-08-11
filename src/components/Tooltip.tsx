@@ -1,5 +1,6 @@
 import { cloneElement, Fragment } from 'preact';
-import type { ComponentChildren, JSX, Ref, VNode } from 'preact';
+import type { ComponentChildren, Ref, VNode } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useTooltip } from '../tooltip/useTooltip';
 import { useTooltipTrigger, type AriaTooltipTriggerProps } from '../tooltip/useTooltipTrigger';

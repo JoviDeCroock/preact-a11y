@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import type { CollectionKey } from '../collections/delegates';
 import { finishCollectionSession, startCollectionSession } from './collectionSession';
 import { useDrag } from './useDrag';

@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useContext, useId, useState } from 'preact/hooks';
 import { useRadio, type AriaRadioProps } from '../hooks/useRadio';
 import { useRadioGroup, type AriaRadioGroupProps } from '../hooks/useRadioGroup';

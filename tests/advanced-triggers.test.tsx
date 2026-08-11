@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/preact';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { useRef, useState } from 'preact/hooks';
 import { describe, expect, it, vi } from 'vitest';
@@ -131,14 +131,18 @@ describe('advanced controlled triggers', () => {
     const trigger = screen.getByRole('link', { name: 'Article' });
 
     fireEvent.pointerEnter(trigger, { pointerType: 'mouse' });
-    await vi.advanceTimersByTimeAsync(10);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(10);
+    });
     const dialog = screen.getByRole('dialog');
     expect(trigger).toHaveAttribute('aria-controls', dialog.id);
     expect(trigger).toHaveAttribute('aria-describedby', dialog.id);
 
     fireEvent.pointerLeave(trigger, { pointerType: 'mouse' });
     fireEvent.pointerEnter(dialog, { pointerType: 'mouse' });
-    await vi.advanceTimersByTimeAsync(20);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(20);
+    });
     expect(dialog).toBeInTheDocument();
 
     trigger.focus();

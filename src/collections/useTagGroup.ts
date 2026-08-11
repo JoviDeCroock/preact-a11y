@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedFocusEvent, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedFocusEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useButton } from '../hooks/useButton';
@@ -111,10 +112,10 @@ export function useTagGroup(props: AriaTagGroupProps, ref: RefObject<HTMLElement
         if (event.target === event.currentTarget && !props.focusedKey)
           focusTag(enabledTags(event.currentTarget)[0]);
       },
-      onFocusIn() {
+      onfocusin() {
         setFocusWithin(true);
       },
-      onFocusOut(event: TargetedFocusEvent<HTMLElement>) {
+      onfocusout(event: TargetedFocusEvent<HTMLElement>) {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null))
           setFocusWithin(false);
       },

@@ -1,4 +1,4 @@
-import type { JSX, TargetedKeyboardEvent } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { usePress } from '../interactions/usePress';
 import {
   shouldClientNavigate,

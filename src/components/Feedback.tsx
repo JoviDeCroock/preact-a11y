@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useMeter, type AriaMeterProps } from '../feedback/useMeter';
 import { useProgressBar, type AriaProgressBarProps } from '../feedback/useProgressBar';
 import { useSeparator, type SeparatorProps as AriaSeparatorProps } from '../feedback/useSeparator';

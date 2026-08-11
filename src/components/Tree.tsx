@@ -1,5 +1,6 @@
 import { toChildArray } from 'preact';
-import type { ComponentChildren, JSX, Ref, VNode } from 'preact';
+import type { ComponentChildren, Ref, VNode } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
 import { useTree, useTreeItem } from '../collections/useTree';
 import type { SelectionMode } from '../collections/useListBox';

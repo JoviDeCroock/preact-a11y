@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, TargetedMouseEvent } from 'preact';
+import type { ComponentChildren } from 'preact';
+import type { JSX, TargetedMouseEvent } from '../preactTypes';
 import { useId } from '../utils/useId';
 
 export interface AriaListBoxSectionProps {

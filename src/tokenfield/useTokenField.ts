@@ -1,12 +1,12 @@
+import type { ComponentChildren, RefObject } from 'preact';
 import type {
-  ComponentChildren,
   JSX,
-  RefObject,
   TargetedClipboardEvent,
   TargetedCompositionEvent,
+  TargetedEvent,
   TargetedInputEvent,
   TargetedKeyboardEvent,
-} from 'preact';
+} from '../preactTypes';
 import { useMemo } from 'preact/hooks';
 import { useField } from '../forms/useField';
 import { getSelection, setTokenFieldSelection, type TokenFieldPosition } from './selection';
@@ -335,32 +335,36 @@ export function useTokenField<Value = unknown>(
     'aria-details': props['aria-details'],
     spellcheck: true,
     style: { whiteSpace: 'pre-wrap' },
-    onBeforeInput(event: TargetedInputEvent<HTMLDivElement>) {
-      if (props.isDisabled || props.isReadOnly || event.isComposing) return;
+    onBeforeInput(event: TargetedEvent<HTMLDivElement, Event>) {
+      const inputEvent = event as TargetedInputEvent<HTMLDivElement>;
+      if (props.isDisabled || props.isReadOnly || inputEvent.isComposing) return;
       const [start, end] = selection();
       if (
-        event.inputType === 'insertText' ||
-        event.inputType === 'insertReplacementText' ||
-        event.inputType === 'insertFromDrop'
+        inputEvent.inputType === 'insertText' ||
+        inputEvent.inputType === 'insertReplacementText' ||
+        inputEvent.inputType === 'insertFromDrop'
       ) {
-        event.preventDefault();
+        inputEvent.preventDefault();
         const text = props.allowsNewlines
-          ? (event.data ?? '')
-          : (event.data ?? '').replace(/[\r\n]+/g, ' ');
+          ? (inputEvent.data ?? '')
+          : (inputEvent.data ?? '').replace(/[\r\n]+/g, ' ');
         update(start, end, [{ type: 'text', text }]);
-      } else if (event.inputType === 'insertParagraph' || event.inputType === 'insertLineBreak') {
-        event.preventDefault();
-        if (event.inputType === 'insertParagraph' && props.onSubmit) props.onSubmit();
+      } else if (
+        inputEvent.inputType === 'insertParagraph' ||
+        inputEvent.inputType === 'insertLineBreak'
+      ) {
+        inputEvent.preventDefault();
+        if (inputEvent.inputType === 'insertParagraph' && props.onSubmit) props.onSubmit();
         else if (props.allowsNewlines) update(start, end, [{ type: 'text', text: '\n' }]);
-      } else if (event.inputType === 'deleteContentBackward') {
-        event.preventDefault();
+      } else if (inputEvent.inputType === 'deleteContentBackward') {
+        inputEvent.preventDefault();
         const previous =
           start.index === end.index && start.offset === end.offset
             ? previousPosition(normalizeSegments(state.value), start, graphemes)
             : start;
         if (previous) update(previous, end, []);
-      } else if (event.inputType === 'deleteContentForward') {
-        event.preventDefault();
+      } else if (inputEvent.inputType === 'deleteContentForward') {
+        inputEvent.preventDefault();
         const next =
           start.index === end.index && start.offset === end.offset
             ? nextPosition(normalizeSegments(state.value), end, graphemes)

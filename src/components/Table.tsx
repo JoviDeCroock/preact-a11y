@@ -1,5 +1,6 @@
 import { createContext, toChildArray } from 'preact';
-import type { ComponentChildren, JSX, Ref, VNode } from 'preact';
+import type { ComponentChildren, Ref, VNode } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useContext, useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
 import {
   useTable,

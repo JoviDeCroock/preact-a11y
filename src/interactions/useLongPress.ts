@@ -1,4 +1,4 @@
-import type { JSX, TargetedPointerEvent } from 'preact';
+import type { JSX, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import type { PointerType } from '../types';
 

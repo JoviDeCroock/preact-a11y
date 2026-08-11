@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { ComponentChildren, RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useId } from '../utils/useId';
 

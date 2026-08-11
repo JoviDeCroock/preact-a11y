@@ -1,4 +1,4 @@
-import type { JSX, TargetedEvent, TargetedKeyboardEvent } from 'preact';
+import type { JSX, TargetedEvent, TargetedKeyboardEvent } from '../preactTypes';
 
 export interface AriaComboBoxProps {
   isOpen: boolean;
@@ -30,7 +30,7 @@ export function useComboBox(props: AriaComboBoxProps) {
       'aria-expanded': props.isOpen,
       'aria-labelledby': props.labelId,
       'aria-activedescendant': props.isOpen ? props.activeDescendant : undefined,
-      onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+      onInput(event: TargetedEvent<HTMLInputElement, Event>) {
         props.onInputChange(event.currentTarget.value);
         props.onOpenChange(true);
       },

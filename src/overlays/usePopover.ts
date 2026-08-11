@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedFocusEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedFocusEvent } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 import { mergeProps } from '../utils/mergeProps';
 import { ariaHideOutside } from './ariaHideOutside';
@@ -71,8 +72,8 @@ export function usePopover(props: AriaPopoverProps): PopoverAria {
   }, [interactionRef, props.isNonModal, props.isOpen, props.triggerRef]);
 
   const focusProps = {
-    onFocusIn: props.onFocusWithin,
-    onFocusOut(event: TargetedFocusEvent<HTMLElement>) {
+    onfocusin: props.onFocusWithin,
+    onfocusout(event: TargetedFocusEvent<HTMLElement>) {
       if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
         props.onBlurWithin?.(event);
       }

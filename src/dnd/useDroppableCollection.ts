@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import type { CollectionKey, DropTarget } from '../collections/delegates';
 import { getCollectionSession, markCollectionDrop } from './collectionSession';

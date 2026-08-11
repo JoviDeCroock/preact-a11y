@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useDisclosure, type AriaDisclosureProps } from '../disclosure/useDisclosure';
 
 export interface DisclosureProps

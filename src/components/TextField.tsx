@@ -1,4 +1,5 @@
-import type { JSX, Ref } from 'preact';
+import type { Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useTextField, type AriaTextFieldProps } from '../forms/useTextField';
 
 export interface TextFieldProps

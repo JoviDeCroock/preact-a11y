@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useButton } from '../hooks/useButton';
 import type { PressProps } from '../types';
 import { mergeProps } from '../utils/mergeProps';

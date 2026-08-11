@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useCheckbox } from '../hooks/useCheckbox';
 import { usePress } from '../interactions/usePress';

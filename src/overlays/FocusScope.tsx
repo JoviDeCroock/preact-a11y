@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
-import type { ComponentChildren, JSX, RefObject } from 'preact';
+import type { ComponentChildren, RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useContext, useEffect, useMemo, useRef } from 'preact/hooks';
 
 const focusScopes: HTMLElement[] = [];

@@ -1,4 +1,4 @@
-import type { FocusEventHandler, JSX, TargetedFocusEvent } from 'preact';
+import type { FocusEventHandler, JSX, TargetedFocusEvent } from '../preactTypes';
 import { useState } from 'preact/hooks';
 
 export interface FocusWithinProps {
@@ -14,7 +14,7 @@ export function useFocusWithin(props: FocusWithinProps = {}) {
   return {
     isFocusWithin,
     focusWithinProps: {
-      onFocusIn(event: TargetedFocusEvent<HTMLElement>) {
+      onfocusin(event: TargetedFocusEvent<HTMLElement>) {
         if (props.isDisabled) return;
         if (!isFocusWithin) {
           setFocusWithin(true);
@@ -22,7 +22,7 @@ export function useFocusWithin(props: FocusWithinProps = {}) {
         }
         props.onFocusWithin?.(event);
       },
-      onFocusOut(event: TargetedFocusEvent<HTMLElement>) {
+      onfocusout(event: TargetedFocusEvent<HTMLElement>) {
         if (props.isDisabled || event.currentTarget.contains(event.relatedTarget as Node | null)) {
           return;
         }

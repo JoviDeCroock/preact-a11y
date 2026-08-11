@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useSlider, type AriaSliderProps } from '../slider/useSlider';
 import { useSliderThumb } from '../slider/useSliderThumb';

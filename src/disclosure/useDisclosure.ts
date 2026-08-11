@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useId, useState } from 'preact/hooks';
 
 export interface AriaDisclosureProps {

@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useCheckbox, type AriaCheckboxProps } from '../hooks/useCheckbox';
 import { mergeRefs } from '../utils/mergeRefs';
@@ -10,7 +11,7 @@ export interface CheckboxProps
       JSX.InputHTMLAttributes<HTMLInputElement>,
       'checked' | 'children' | 'name' | 'onChange' | 'type' | 'value'
     > {
-  children: ComponentChildren;
+  children?: ComponentChildren;
   className?: string;
   elementRef?: Ref<HTMLInputElement>;
   inputClassName?: string;

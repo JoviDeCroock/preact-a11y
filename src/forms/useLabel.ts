@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX } from 'preact';
+import type { ComponentChildren } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useId } from 'preact/hooks';
 
 export interface AriaLabelProps {

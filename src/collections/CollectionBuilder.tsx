@@ -103,7 +103,7 @@ interface CollectionMetadata<Props extends object = Record<string, unknown>> {
 
 const collectionMetadata = Symbol('preact-aria collection metadata');
 
-type CollectionComponent<Props extends object> = ((props: Props) => ComponentChildren) & {
+type CollectionComponent<Props extends object> = ((props: Props) => VNode | null) & {
   [collectionMetadata]?: CollectionMetadata<Props>;
 };
 
@@ -299,7 +299,7 @@ export function createLeafComponent<Value, Props extends object, ElementType ext
   const type = nodeType(nodeClass);
   const Component = ((props: Props & NativeCollectionProps<ElementType>) => {
     const node = standaloneNode<Value, Props & NativeCollectionProps<ElementType>>(type, props);
-    return render(props, props.elementRef, node);
+    return <Fragment>{render(props, props.elementRef, node)}</Fragment>;
   }) as CollectionComponent<Props & NativeCollectionProps<ElementType>>;
   Component[collectionMetadata] = {
     type,

@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { usePress } from '../interactions/usePress';
 import type { PressProps } from '../types';
 

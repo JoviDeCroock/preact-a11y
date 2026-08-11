@@ -1,4 +1,5 @@
 export { Button, type ButtonProps } from './components/Button';
+export type { AriaAttributes, JSX } from './preactTypes';
 export {
   NumberField,
   SearchField,

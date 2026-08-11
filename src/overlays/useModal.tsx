@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
-import type { ComponentChildren, JSX } from 'preact';
+import type { ComponentChildren } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'preact/hooks';
 import { Portal } from './Portal';
 import { useUNSAFE_PortalContext } from './PortalProvider';

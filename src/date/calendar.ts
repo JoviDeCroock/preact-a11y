@@ -1,4 +1,5 @@
-import type { ComponentChildren, JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { ComponentChildren, RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useId } from '../utils/useId';

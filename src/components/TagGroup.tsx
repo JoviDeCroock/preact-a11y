@@ -1,5 +1,6 @@
 import { createContext, Fragment, toChildArray } from 'preact';
-import type { ComponentChildren, JSX, Ref } from 'preact';
+import type { ComponentChildren, Ref } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useContext, useEffect, useId, useMemo, useRef, useState } from 'preact/hooks';
 import { useTag, useTagGroup } from '../collections/useTagGroup';
 import type { SelectionMode } from '../collections/useListBox';
@@ -22,7 +23,7 @@ const TagContext = createContext<TagContextValue | null>(null);
 
 export interface TagGroupProps extends Omit<
   JSX.HTMLAttributes<HTMLDivElement>,
-  'aria-label' | 'aria-labelledby' | 'onChange'
+  'aria-label' | 'aria-labelledby' | 'label' | 'onChange'
 > {
   children?: ComponentChildren;
   label?: ComponentChildren;

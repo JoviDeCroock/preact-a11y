@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { useId } from '../utils/useId';
 
@@ -43,11 +44,11 @@ export function useTooltipTrigger(props: AriaTooltipTriggerProps = {}, _ref?: Re
   return {
     triggerProps: {
       'aria-describedby': isOpen ? tooltipId : undefined,
-      onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (props.trigger === 'focus' || event.pointerType === 'touch') return;
         schedule(true, props.delay ?? 1500);
       },
-      onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
         if (props.trigger === 'focus' || event.pointerType === 'touch') return;
         schedule(false, props.closeDelay ?? 500);
       },
@@ -72,10 +73,10 @@ export function useTooltipTrigger(props: AriaTooltipTriggerProps = {}, _ref?: Re
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     tooltipHoverProps: {
-      onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') clearTimer();
       },
-      onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') schedule(false, props.closeDelay ?? 500);
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,

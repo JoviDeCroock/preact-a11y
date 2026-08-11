@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 import type { CollectionKey } from '../collections/delegates';
 import type { DragPreviewRenderer } from './useDrag';

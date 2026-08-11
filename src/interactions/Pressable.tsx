@@ -1,5 +1,6 @@
 import { cloneElement } from 'preact';
-import type { JSX, Ref, VNode } from 'preact';
+import type { Ref, VNode } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import type { PressProps } from '../types';
 import { mergeProps } from '../utils/mergeProps';

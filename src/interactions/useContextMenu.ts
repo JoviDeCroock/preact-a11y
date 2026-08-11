@@ -1,4 +1,4 @@
-import type { JSX, TargetedKeyboardEvent, TargetedMouseEvent } from 'preact';
+import type { JSX, TargetedKeyboardEvent, TargetedMouseEvent } from '../preactTypes';
 
 export interface ContextMenuEvent {
   pointerType: 'keyboard' | 'mouse';

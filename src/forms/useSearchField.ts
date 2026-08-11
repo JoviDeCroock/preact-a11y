@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useTextField, type AriaTextFieldProps } from './useTextField';
 
 export interface AriaSearchFieldProps extends Omit<AriaTextFieldProps, 'type'> {

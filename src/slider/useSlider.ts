@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedPointerEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedPointerEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useNumberFormatter } from '../i18n/formatters';
 import { useField, type AriaFieldProps } from '../forms/useField';

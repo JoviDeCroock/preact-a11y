@@ -1,4 +1,4 @@
-import type { JSX } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useField, type AriaFieldProps } from '../forms/useField';
 
 export interface AriaRadioGroupProps extends AriaFieldProps {

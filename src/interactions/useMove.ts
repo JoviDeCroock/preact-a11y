@@ -1,4 +1,4 @@
-import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from 'preact';
+import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import type { PointerType } from '../types';
 

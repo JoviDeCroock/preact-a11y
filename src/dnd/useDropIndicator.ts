@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useEffect, useState } from 'preact/hooks';
 import type { DropTarget } from '../collections/delegates';
 import { subscribeCollectionSession } from './collectionSession';

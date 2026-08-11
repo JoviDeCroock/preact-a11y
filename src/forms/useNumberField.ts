@@ -1,4 +1,4 @@
-import type { JSX, TargetedEvent, TargetedKeyboardEvent } from 'preact';
+import type { JSX, TargetedEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useNumberFormatter } from '../i18n/formatters';
@@ -108,7 +108,7 @@ export function useNumberField(props: AriaNumberFieldProps = {}) {
       'aria-valuemax': props.maxValue,
       'aria-valuenow': parsedValue ?? undefined,
       'aria-valuetext': parsedValue == null ? undefined : formatter.format(parsedValue),
-      onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+      onInput(event: TargetedEvent<HTMLInputElement, Event>) {
         setInputValue(event.currentTarget.value);
       },
       onBlur() {

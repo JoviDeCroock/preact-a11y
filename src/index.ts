@@ -449,3 +449,17 @@ export {
   type LandmarkControllerOptions,
 } from './landmark/useLandmark';
 export type { PointerType, PressEvent, PressProps } from './types';
+export type {
+  AriaAttributes,
+  FocusEventHandler,
+  JSX,
+  TargetedClipboardEvent,
+  TargetedCompositionEvent,
+  TargetedDragEvent,
+  TargetedEvent,
+  TargetedFocusEvent,
+  TargetedInputEvent,
+  TargetedKeyboardEvent,
+  TargetedMouseEvent,
+  TargetedPointerEvent,
+} from './preactTypes';

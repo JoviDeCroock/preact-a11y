@@ -1,4 +1,4 @@
-import type { JSX, TargetedKeyboardEvent } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 
 export type TabOrientation = 'horizontal' | 'vertical';
 export type KeyboardActivation = 'automatic' | 'manual';

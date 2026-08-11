@@ -1,10 +1,10 @@
+import type { RefObject } from 'preact';
 import type {
   JSX,
-  RefObject,
   TargetedEvent,
   TargetedKeyboardEvent,
   TargetedPointerEvent,
-} from 'preact';
+} from '../preactTypes';
 import { useEffect, useState } from 'preact/hooks';
 import { useField, type AriaFieldProps } from '../forms/useField';
 
@@ -149,7 +149,7 @@ function rangeInputProps(
     disabled,
     'aria-label': label,
     'aria-valuetext': `${Math.round(value * (channel === 'alpha' ? 100 : 1))}${channel === 'alpha' ? '%' : ''}`,
-    onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+    onInput(event: TargetedEvent<HTMLInputElement, Event>) {
       setChannel(state, channel, event.currentTarget.valueAsNumber);
     },
   };
@@ -410,7 +410,7 @@ export function useColorChannelField(
       value,
       disabled: props.isDisabled,
       readOnly: props.isReadOnly,
-      onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+      onInput(event: TargetedEvent<HTMLInputElement, Event>) {
         if (!props.isReadOnly) setChannel(state, props.channel, event.currentTarget.valueAsNumber);
       },
       onKeyDown(event: TargetedKeyboardEvent<HTMLInputElement>) {
@@ -504,7 +504,7 @@ export function useColorField(
       autoComplete: 'off',
       spellcheck: false,
       'aria-invalid': props.isInvalid || isInvalid || undefined,
-      onInput(event: TargetedEvent<HTMLInputElement, InputEvent>) {
+      onInput(event: TargetedEvent<HTMLInputElement, Event>) {
         setInputValue(event.currentTarget.value);
       },
       onBlur: commit,

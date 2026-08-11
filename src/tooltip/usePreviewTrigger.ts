@@ -1,10 +1,10 @@
+import type { RefObject } from 'preact';
 import type {
   JSX,
-  RefObject,
   TargetedFocusEvent,
   TargetedKeyboardEvent,
   TargetedPointerEvent,
-} from 'preact';
+} from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { useLongPress } from '../interactions/useLongPress';
 import { mergeProps } from '../utils/mergeProps';
@@ -103,12 +103,12 @@ export function usePreviewTrigger(
     'aria-describedby': state.isOpen ? popoverId : undefined,
     'aria-description': props['aria-description'],
     style: { WebkitTouchCallout: 'none', WebkitUserDrag: 'none' },
-    onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+    onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
       if (event.pointerType === 'touch') return;
       pointerInside.current = true;
       scheduleOpen();
     },
-    onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+    onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
       if (event.pointerType === 'touch') return;
       pointerInside.current = false;
       scheduleClose();
@@ -149,13 +149,13 @@ export function usePreviewTrigger(
       role: 'dialog',
       tabIndex: -1,
       isNonModal: true,
-      onPointerEnter(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType === 'touch') return;
         pointerInside.current = true;
         clearTimer();
         state.open(true);
       },
-      onPointerLeave(event: TargetedPointerEvent<HTMLElement>) {
+      onpointerleave(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType === 'touch') return;
         pointerInside.current = false;
         scheduleClose();

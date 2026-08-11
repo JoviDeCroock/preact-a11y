@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useToggleButton, type AriaToggleButtonProps } from '../hooks/useToggleButton';
 
 export interface AriaToggleButtonGroupProps {

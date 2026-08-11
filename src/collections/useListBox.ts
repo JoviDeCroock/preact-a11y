@@ -1,4 +1,5 @@
-import type { JSX, RefObject, TargetedKeyboardEvent } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 
 export type SelectionMode = 'none' | 'single' | 'multiple';

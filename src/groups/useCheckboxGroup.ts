@@ -1,4 +1,5 @@
-import type { JSX, RefObject } from 'preact';
+import type { RefObject } from 'preact';
+import type { JSX } from '../preactTypes';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useCheckbox, type AriaCheckboxProps } from '../hooks/useCheckbox';
 
