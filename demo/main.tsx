@@ -110,8 +110,8 @@ function ClipboardExample() {
   const { clipboardProps } = useClipboard({
     getItems: ({ action }) => [
       {
-        'text/plain': `Preact Aria ${action}`,
-        'application/json': JSON.stringify({ library: 'preact-aria', action }),
+        'text/plain': `Preact A11y ${action}`,
+        'application/json': JSON.stringify({ library: 'preact-a11y', action }),
       },
     ],
     onCopy: () => setStatus('Copied'),
@@ -422,7 +422,7 @@ function TokenFieldExample() {
           segment.type === 'token' ? (
             <TokenExample key={`${segment.text}-${index}`} text={segment.text} />
           ) : (
-            <span data-preact-aria-text key={`text-${index}`}>
+            <span data-preact-a11y-text key={`text-${index}`}>
               {segment.text}
             </span>
           ),
@@ -637,7 +637,7 @@ function App() {
 
   return (
     <main {...landmarkProps} ref={mainRef}>
-      <h1>Preact Aria browser fixture</h1>
+      <h1>Preact A11y browser fixture</h1>
       <Breadcrumbs>
         <Breadcrumb href="#home">Home</Breadcrumb>
         <Breadcrumb isCurrent>Fixture</Breadcrumb>

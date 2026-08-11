@@ -21,7 +21,7 @@ function joinIds(...ids: Array<string | undefined | false>): string | undefined 
 
 export function useField(props: AriaFieldProps = {}) {
   const generatedId = useId();
-  const fieldId = props.id ?? `preact-aria-${generatedId}`;
+  const fieldId = props.id ?? `preact-a11y-${generatedId}`;
   const labelId = `${fieldId}-label`;
   const descriptionId = `${fieldId}-description`;
   const errorMessageId = `${fieldId}-error`;

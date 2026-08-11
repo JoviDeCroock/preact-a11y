@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add overlay-trigger, collision-aware positioning, popover, and modal-overlay primitives

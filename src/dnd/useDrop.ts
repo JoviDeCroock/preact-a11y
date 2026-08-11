@@ -42,7 +42,7 @@ export interface DropResult {
   dropProps: DropDOMProps;
   isDropTarget: boolean;
   dropButtonProps?: JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    'data-preact-aria-drop-button': true;
+    'data-preact-a11y-drop-button': true;
   };
 }
 
@@ -85,7 +85,7 @@ export function useDrop(options: DropOptions): DropResult {
       ref: options.ref,
       focus() {
         const button = options.ref.current?.querySelector<HTMLElement>(
-          '[data-preact-aria-drop-button]',
+          '[data-preact-a11y-drop-button]',
         );
         (button ?? options.ref.current)?.focus();
       },
@@ -225,7 +225,7 @@ export function useDrop(options: DropOptions): DropResult {
     dropButtonProps: options.hasDropButton
       ? {
           'aria-label': 'Drop',
-          'data-preact-aria-drop-button': true,
+          'data-preact-a11y-drop-button': true,
           disabled: options.isDisabled,
           type: 'button',
           onClick: () => completeKeyboardDrop(keyboardTarget),

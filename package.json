@@ -1,7 +1,7 @@
 {
-  "name": "preact-aria",
+  "name": "preact-a11y",
   "version": "0.0.0",
-  "description": "Preact-native accessibility and interaction primitives.",
+  "description": "Headless accessibility and interaction primitives built natively for Preact.",
   "keywords": [
     "a11y",
     "accessibility",

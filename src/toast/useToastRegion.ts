@@ -48,7 +48,7 @@ export function useToastRegion(props: AriaToastRegionProps, ref: RefObject<HTMLE
       role: 'region',
       tabIndex: -1,
       'aria-label': props['aria-label'] ?? `Notifications (${props.toastIds.length})`,
-      'data-preact-aria-top-layer': true,
+      'data-preact-a11y-top-layer': true,
       onpointerenter(event: TargetedPointerEvent<HTMLElement>) {
         if (event.pointerType !== 'touch') setHovered(true);
       },
@@ -73,7 +73,7 @@ export function useToastRegion(props: AriaToastRegionProps, ref: RefObject<HTMLE
           restoreTarget.current = null;
         }
       },
-    } as JSX.HTMLAttributes<HTMLElement> & { 'data-preact-aria-top-layer': true },
+    } as JSX.HTMLAttributes<HTMLElement> & { 'data-preact-a11y-top-layer': true },
     isPaused: isHovered || isFocusWithin,
   };
 }

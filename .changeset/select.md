@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add select and hidden native select primitives with listbox navigation, form integration, dismissal, and focus restoration.

@@ -76,7 +76,7 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
     element.dispatchEvent(event);
     return transfer.getData('text/plain');
   });
-  expect(copied).toBe('Preact Aria copy');
+  expect(copied).toBe('Preact A11y copy');
   await expect(clipboard).toContainText('Clipboard status: Copied');
   await clipboard.evaluate((element) => {
     const transfer = new DataTransfer();
@@ -146,7 +146,7 @@ test('components support pointer and keyboard interaction', async ({ page }) => 
 
   const tokenField = page.getByRole('textbox', { name: 'Topics token field' });
   const inserted = await tokenField.evaluate((element) => {
-    const first = element.querySelector('[data-preact-aria-text]');
+    const first = element.querySelector('[data-preact-a11y-text]');
     if (!first) return false;
     const selection = window.getSelection();
     const range = document.createRange();

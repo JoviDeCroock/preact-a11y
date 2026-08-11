@@ -26,7 +26,7 @@ const nativeRouter: RouterContextValue = {
 
 const RouterContext = createContext<RouterContextValue>(nativeRouter);
 
-/** Connects Preact Aria links to a client-side router while preserving native link semantics. */
+/** Connects Preact A11y links to a client-side router while preserving native link semantics. */
 export function RouterProvider({ children, navigate, useHref }: RouterProviderProps) {
   const value = useMemo<RouterContextValue>(
     () => ({ isNative: false, navigate, useHref: useHref ?? nativeRouter.useHref }),

@@ -6,7 +6,7 @@ export interface TokenProps {}
 
 export interface TokenAria {
   tokenProps: Omit<JSX.HTMLAttributes<HTMLSpanElement>, 'ref'> & {
-    'data-preact-aria-token': true;
+    'data-preact-a11y-token': true;
   };
   isSelected: boolean;
 }
@@ -36,7 +36,7 @@ export function useToken(
 
   return {
     tokenProps: {
-      'data-preact-aria-token': true,
+      'data-preact-a11y-token': true,
       contentEditable: false,
       draggable: false,
       style: { userSelect: 'all', WebkitUserSelect: 'all' },

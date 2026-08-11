@@ -12,8 +12,8 @@ export function useDisclosure(props: AriaDisclosureProps = {}) {
   const [uncontrolled, setUncontrolled] = useState(props.defaultExpanded ?? false);
   const isExpanded = props.isExpanded ?? uncontrolled;
   const generatedId = useId();
-  const buttonId = `preact-aria-disclosure-trigger-${generatedId}`;
-  const panelId = `preact-aria-disclosure-panel-${generatedId}`;
+  const buttonId = `preact-a11y-disclosure-trigger-${generatedId}`;
+  const panelId = `preact-a11y-disclosure-panel-${generatedId}`;
 
   return {
     isExpanded,

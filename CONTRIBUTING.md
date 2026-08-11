@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping make Preact Aria reliable and accessible.
+Thanks for helping make Preact A11y reliable and accessible.
 
 ## Development
 

@@ -8,7 +8,7 @@ export interface AriaDialogProps {
 }
 
 export function useDialog(props: AriaDialogProps = {}) {
-  const titleId = `preact-aria-dialog-title-${useId()}`;
+  const titleId = `preact-a11y-dialog-title-${useId()}`;
   return {
     dialogProps: {
       role: props.role ?? 'dialog',

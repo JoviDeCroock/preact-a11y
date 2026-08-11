@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native portals, overlay focus containers, configurable portal providers, and nested

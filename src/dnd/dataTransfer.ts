@@ -1,7 +1,7 @@
 /* oxlint-disable no-await-in-loop -- directory readers are paginated and must be consumed serially */
 import type { DirectoryDropItem, DragItem, DropItem, FileDropItem, TextDropItem } from './types';
 
-const CUSTOM_DRAG_TYPE = 'application/vnd.preact-aria.items+json';
+const CUSTOM_DRAG_TYPE = 'application/vnd.preact-a11y.items+json';
 const GENERIC_TYPE = 'application/octet-stream';
 const NATIVE_TEXT_TYPES = new Set(['text/plain', 'text/html', 'text/uri-list']);
 

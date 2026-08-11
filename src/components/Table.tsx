@@ -114,7 +114,7 @@ export function Table({
   ...domProps
 }: TableProps) {
   const localRef = useRef<HTMLTableElement>(null);
-  const baseId = `preact-aria-table-${useId()}`;
+  const baseId = `preact-a11y-table-${useId()}`;
   const { columns, rows } = tableParts(children);
   const columnIds = columns.map((column) => column.props.id);
   const defaultWidths = new Map(

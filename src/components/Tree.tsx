@@ -171,7 +171,7 @@ export function Tree({
   ...domProps
 }: TreeProps) {
   const localRef = useRef<HTMLDivElement>(null);
-  const baseId = `preact-aria-tree-${useId()}`;
+  const baseId = `preact-a11y-tree-${useId()}`;
   const [uncontrolledSelection, setUncontrolledSelection] = useState(
     () => new Set(defaultSelectedKeys),
   );

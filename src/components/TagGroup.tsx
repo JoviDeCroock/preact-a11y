@@ -63,7 +63,7 @@ export function TagGroup({
   ...domProps
 }: TagGroupProps) {
   const localRef = useRef<HTMLDivElement>(null);
-  const baseId = `preact-aria-tags-${useId()}`;
+  const baseId = `preact-a11y-tags-${useId()}`;
   const [uncontrolled, setUncontrolled] = useState(() => new Set(defaultSelectedKeys));
   const selection = useMemo(
     () => (selectedKeys === undefined ? uncontrolled : new Set(selectedKeys)),

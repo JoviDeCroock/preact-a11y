@@ -89,7 +89,7 @@ export function usePopover(props: AriaPopoverProps): PopoverAria {
     arrowProps: position.arrowProps as JSX.HTMLAttributes<HTMLDivElement>,
     underlayProps: {
       style: { position: 'fixed', inset: 0 },
-      'data-preact-aria-underlay': true,
+      'data-preact-a11y-underlay': true,
     } as JSX.HTMLAttributes<HTMLDivElement>,
     placement: position.placement,
     triggerAnchorPoint: position.triggerAnchorPoint,

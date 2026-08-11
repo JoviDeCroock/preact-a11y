@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native table primitives with two-dimensional navigation, sorting, row selection,

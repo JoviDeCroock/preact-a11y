@@ -54,7 +54,7 @@ function TokenFieldProbe({ onSubmit = () => {} }: { onSubmit?: () => void }) {
           segment.type === 'token' ? (
             <Token key={`${segment.text}-${index}`} text={segment.text} />
           ) : (
-            <span data-preact-aria-text key={`text-${index}`}>
+            <span data-preact-a11y-text key={`text-${index}`}>
               {segment.text}
             </span>
           ),
@@ -78,7 +78,7 @@ describe('token field primitives', () => {
   it('maps segment positions to DOM ranges and reports atomic token selection', async () => {
     render(<TokenFieldProbe />);
     const field = screen.getByRole('textbox', { name: 'Topics' });
-    const token = field.querySelector<HTMLElement>('[data-preact-aria-token]')!;
+    const token = field.querySelector<HTMLElement>('[data-preact-a11y-token]')!;
     const selectionChange = vi.fn();
     document.addEventListener('selectionchange', selectionChange, { once: true });
 
@@ -112,7 +112,7 @@ describe('token field primitives', () => {
       expect(screen.getByRole('status')).toHaveTextContent('Hi there docs');
     });
 
-    const text = field.querySelector<HTMLElement>('[data-preact-aria-text]')!;
+    const text = field.querySelector<HTMLElement>('[data-preact-a11y-text]')!;
     fireEvent.compositionStart(field);
     text.textContent = 'Bonjour docs';
     fireEvent.compositionEnd(field);
@@ -126,7 +126,7 @@ describe('token field primitives', () => {
     setTokenFieldSelection(field, { index: 1, offset: 0 }, { index: 1, offset: 6 });
     fireEvent.copy(field, { clipboardData: clipboard });
     expect(clipboard.getData('text/plain')).toBe('Preact');
-    expect(clipboard.getData('application/vnd.preact-aria.tokens+json')).toContain('"token"');
+    expect(clipboard.getData('application/vnd.preact-a11y.tokens+json')).toContain('"token"');
 
     setTokenFieldSelection(field, { index: 2, offset: 5 }, { index: 2, offset: 5 });
     fireEvent.paste(field, { clipboardData: clipboard });

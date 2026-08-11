@@ -47,7 +47,7 @@ describe('portal and overlay providers', () => {
 
     await waitFor(() => expect(target).toHaveTextContent('bridged context'));
     expect(target).toHaveTextContent('Unrelated target content');
-    expect(target.querySelector('[data-preact-aria-portal]')).not.toBeNull();
+    expect(target.querySelector('[data-preact-a11y-portal]')).not.toBeNull();
 
     view.unmount();
     expect(target).toHaveTextContent('Unrelated target content');

@@ -10,7 +10,7 @@ export interface AriaLabelProps {
 
 export function useLabel(props: AriaLabelProps = {}) {
   const generatedId = useId();
-  const labelId = `preact-aria-label-${generatedId}`;
+  const labelId = `preact-a11y-label-${generatedId}`;
   return {
     labelProps: {
       id: labelId,

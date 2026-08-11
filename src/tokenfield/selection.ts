@@ -34,7 +34,7 @@ function domPointToPosition(root: Element, node: Node, offset: number): TokenFie
   if (!children.length) return { index: 0, offset: 0 };
   if (node === root) {
     const previous = children[offset - 1];
-    if (previous instanceof HTMLElement && previous.hasAttribute('data-preact-aria-token')) {
+    if (previous instanceof HTMLElement && previous.hasAttribute('data-preact-a11y-token')) {
       return { index: offset - 1, offset: segmentLength(previous) };
     }
     if (offset >= children.length) {
@@ -76,7 +76,7 @@ function domPoint(root: Element, position: TokenFieldPosition): [Node, number] {
   const segment = children[index]!;
   const length = segmentLength(segment);
   const offset = Math.max(0, Math.min(position.offset, length));
-  const isToken = segment instanceof HTMLElement && segment.hasAttribute('data-preact-aria-token');
+  const isToken = segment instanceof HTMLElement && segment.hasAttribute('data-preact-a11y-token');
   if (isToken) return [root, offset <= 0 ? index : index + 1];
 
   if (offset <= 0) {

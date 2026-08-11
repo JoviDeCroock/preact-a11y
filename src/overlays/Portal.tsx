@@ -54,7 +54,7 @@ export class Portal extends Component<PortalProps> {
     if (!this.mount) {
       this.container = this.props.container;
       this.mount = this.props.container.ownerDocument.createElement('div');
-      this.mount.dataset.preactAriaPortal = '';
+      this.mount.dataset.preactA11yPortal = '';
       this.mount.style.display = 'contents';
       this.props.container.append(this.mount);
     }

@@ -4,10 +4,10 @@ import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const fixture = mkdtempSync(join(tmpdir(), 'preact-aria-consumer-'));
+const fixture = mkdtempSync(join(tmpdir(), 'preact-a11y-consumer-'));
 const pnpm = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 const node = process.execPath;
-const preactSpec = process.env.PREACT_ARIA_PREACT_SPEC;
+const preactSpec = process.env.PREACT_A11Y_PREACT_SPEC;
 
 function pack(directory) {
   const output = execFileSync(
@@ -32,7 +32,7 @@ writeFileSync(
       type: 'module',
       dependencies: {
         preact: preactSpec ?? `file:./${preactArchive}`,
-        'preact-aria': `file:./${archive}`,
+        'preact-a11y': `file:./${archive}`,
       },
     },
     undefined,
@@ -64,8 +64,8 @@ writeFileSync(
 
 writeFileSync(
   join(fixture, 'index.tsx'),
-  `import {useButton, type AriaButtonProps} from 'preact-aria';
-import {Button} from 'preact-aria/components';
+  `import {useButton, type AriaButtonProps} from 'preact-a11y';
+import {Button} from 'preact-a11y/components';
 import {useRef} from 'preact/hooks';
 
 export function HookButton(props: AriaButtonProps) {
@@ -89,7 +89,7 @@ execFileSync(pnpm, installArguments, {
 });
 
 const packageJson = JSON.parse(
-  readFileSync(join(fixture, 'node_modules/preact-aria/package.json'), 'utf8'),
+  readFileSync(join(fixture, 'node_modules/preact-a11y/package.json'), 'utf8'),
 );
 if (packageJson.dependencies?.react || packageJson.peerDependencies?.react) {
   throw new Error('The published package must not depend on React.');
@@ -109,11 +109,11 @@ execFileSync(
   [
     '--input-type=module',
     '--eval',
-    "await Promise.all([import('preact-aria'), import('preact-aria/components')])",
+    "await Promise.all([import('preact-a11y'), import('preact-a11y/components')])",
   ],
   { cwd: fixture, stdio: 'inherit' },
 );
-execFileSync(node, ['--eval', "require('preact-aria'); require('preact-aria/components')"], {
+execFileSync(node, ['--eval', "require('preact-a11y'); require('preact-a11y/components')"], {
   cwd: fixture,
   stdio: 'inherit',
 });

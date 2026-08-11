@@ -54,7 +54,7 @@ export function ListBox({
     [selectedKeys, uncontrolled],
   );
   const [focusedKey, setFocusedKey] = useState<string>();
-  const baseId = `preact-aria-listbox-${useId()}`;
+  const baseId = `preact-a11y-listbox-${useId()}`;
 
   function select(key: string) {
     if (selectionMode === 'none' || isDisabled) return;

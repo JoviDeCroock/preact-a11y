@@ -60,9 +60,9 @@ export function ComboBox(props: ComboBoxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const generatedId = useId();
-  const labelId = `preact-aria-combobox-label-${generatedId}`;
-  const inputId = `preact-aria-combobox-input-${generatedId}`;
-  const listBoxId = `preact-aria-combobox-listbox-${generatedId}`;
+  const labelId = `preact-a11y-combobox-label-${generatedId}`;
+  const inputId = `preact-a11y-combobox-input-${generatedId}`;
+  const listBoxId = `preact-a11y-combobox-listbox-${generatedId}`;
 
   function changeInput(next: string) {
     if (props.inputValue === undefined) setUncontrolledInput(next);

@@ -30,7 +30,7 @@ describe('framework utilities', () => {
     rerender(<Ids />);
 
     expect(output).toHaveAttribute('data-custom', 'custom-id');
-    expect(generated).toMatch(/^preact-aria-/);
+    expect(generated).toMatch(/^preact-a11y-/);
     expect(output).toHaveAttribute('data-generated', generated);
   });
 

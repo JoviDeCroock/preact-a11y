@@ -101,7 +101,7 @@ interface CollectionMetadata<Props extends object = Record<string, unknown>> {
   useChildren?: (props: Props) => ComponentChildren;
 }
 
-const collectionMetadata = Symbol('preact-aria collection metadata');
+const collectionMetadata = Symbol('preact-a11y collection metadata');
 
 type CollectionComponent<Props extends object> = ((props: Props) => VNode | null) & {
   [collectionMetadata]?: CollectionMetadata<Props>;

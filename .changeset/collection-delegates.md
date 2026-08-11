@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native list keyboard and drop-target delegates with disabled-item skipping, collated

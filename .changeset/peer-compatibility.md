@@ -1,5 +1,5 @@
 ---
-'preact-aria': patch
+'preact-a11y': patch
 ---
 
 Support Preact 10.11 and newer throughout the Preact 10 line, including stable ARIA and event

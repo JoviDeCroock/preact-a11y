@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native tag-group primitives with horizontal navigation, selection, removal,

@@ -48,7 +48,7 @@ export function Menu({
 }: MenuProps) {
   const localRef = useRef<HTMLDivElement>(null);
   const [focusedKey, setFocusedKey] = useState<string>();
-  const baseId = id ?? `preact-aria-menu-${useId()}`;
+  const baseId = id ?? `preact-a11y-menu-${useId()}`;
   const selection = new Set(selectedKeys);
 
   function action(key: string) {
@@ -154,8 +154,8 @@ export function MenuTrigger({
   const open = isOpen ?? uncontrolled;
   const triggerRef = useRef<HTMLButtonElement>(null);
   const generatedId = useId();
-  const triggerId = `preact-aria-menu-trigger-${generatedId}`;
-  const menuId = `preact-aria-menu-${generatedId}`;
+  const triggerId = `preact-a11y-menu-trigger-${generatedId}`;
+  const menuId = `preact-a11y-menu-${generatedId}`;
 
   function setOpen(next: boolean, strategy: 'first' | 'last' = 'first') {
     setFocusStrategy(strategy);

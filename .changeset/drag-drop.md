@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native drag sources, drop targets, custom drag previews, drop-operation negotiation,

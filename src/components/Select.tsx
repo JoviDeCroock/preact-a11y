@@ -60,10 +60,10 @@ export function Select({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const listBoxRef = useRef<HTMLDivElement>(null);
   const generatedId = useId();
-  const labelId = `preact-aria-select-label-${generatedId}`;
-  const valueId = `preact-aria-select-value-${generatedId}`;
-  const triggerId = `preact-aria-select-trigger-${generatedId}`;
-  const listBoxId = `preact-aria-select-listbox-${generatedId}`;
+  const labelId = `preact-a11y-select-label-${generatedId}`;
+  const valueId = `preact-a11y-select-value-${generatedId}`;
+  const triggerId = `preact-a11y-select-trigger-${generatedId}`;
+  const listBoxId = `preact-a11y-select-listbox-${generatedId}`;
   const options = optionData(children);
   const selectedLabel = options.find((option) => option.key === selection)?.label;
 

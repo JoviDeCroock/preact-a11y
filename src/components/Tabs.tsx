@@ -48,7 +48,7 @@ export function Tabs({
   const [uncontrolled, setUncontrolled] = useState(defaultSelectedKey);
   const selection = selectedKey ?? uncontrolled;
   const context: TabsContextValue = {
-    baseId: `preact-aria-tabs-${useId()}`,
+    baseId: `preact-a11y-tabs-${useId()}`,
     selectedKey: selection,
     orientation,
     keyboardActivation,

@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add focus-scoped clipboard interactions, multi-format data transfer serialization, typed text,

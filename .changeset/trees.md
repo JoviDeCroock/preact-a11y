@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add Preact-native tree-grid primitives with hierarchical metadata, controlled expansion,

@@ -60,7 +60,7 @@ export function GridList({
   ...domProps
 }: GridListProps) {
   const localRef = useRef<HTMLDivElement>(null);
-  const baseId = `preact-aria-grid-${useId()}`;
+  const baseId = `preact-a11y-grid-${useId()}`;
   const [uncontrolled, setUncontrolled] = useState(() => new Set(defaultSelectedKeys));
   const selection = useMemo(
     () => (selectedKeys === undefined ? uncontrolled : new Set(selectedKeys)),

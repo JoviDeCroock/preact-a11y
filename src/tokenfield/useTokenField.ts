@@ -11,7 +11,7 @@ import { useMemo } from 'preact/hooks';
 import { useField } from '../forms/useField';
 import { getSelection, setTokenFieldSelection, type TokenFieldPosition } from './selection';
 
-const TOKEN_CLIPBOARD_TYPE = 'application/vnd.preact-aria.tokens+json';
+const TOKEN_CLIPBOARD_TYPE = 'application/vnd.preact-a11y.tokens+json';
 
 export interface TokenFieldTextSegment {
   type: 'text';
@@ -258,7 +258,7 @@ function parseTransferredSegments<Value>(data: string): TokenFieldSegment<Value>
 function segmentsFromDOM<Value>(root: HTMLElement, previous: readonly TokenFieldSegment<Value>[]) {
   return normalizeSegments(
     [...root.childNodes].map<TokenFieldSegment<Value>>((node, index) => {
-      if (node instanceof HTMLElement && node.hasAttribute('data-preact-aria-token')) {
+      if (node instanceof HTMLElement && node.hasAttribute('data-preact-a11y-token')) {
         const oldToken = previous[index];
         return {
           type: 'token',

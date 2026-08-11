@@ -34,7 +34,7 @@ function announce(message: string) {
     liveRegion = document.createElement('div');
     liveRegion.setAttribute('aria-live', 'assertive');
     liveRegion.setAttribute('aria-atomic', 'true');
-    liveRegion.dataset.preactAriaDragAnnouncer = '';
+    liveRegion.dataset.preactA11yDragAnnouncer = '';
     Object.assign(liveRegion.style, {
       border: '0',
       clip: 'rect(0 0 0 0)',

@@ -1,5 +1,5 @@
 ---
-'preact-aria': minor
+'preact-a11y': minor
 ---
 
 Add a Preact-native internationalization provider with locale direction, collation, filtering, and date, number, and list formatters.

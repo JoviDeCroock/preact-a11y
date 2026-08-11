@@ -2,7 +2,7 @@ import type { JSX as PreactJSX } from 'preact';
 
 type Booleanish = boolean | 'false' | 'true';
 
-/** ARIA attributes owned by preact-aria so older Preact 10 declarations remain usable. */
+/** ARIA attributes owned by preact-a11y so older Preact 10 declarations remain usable. */
 export interface AriaAttributes {
   'aria-activedescendant'?: string;
   'aria-atomic'?: Booleanish;

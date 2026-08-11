@@ -49,7 +49,7 @@ export function RadioGroup({
   onChange,
   ...domProps
 }: RadioGroupProps) {
-  const generatedName = `preact-aria-radio-${useId()}`;
+  const generatedName = `preact-a11y-radio-${useId()}`;
   const [uncontrolled, setUncontrolled] = useState(defaultValue);
   const selectedValue = value ?? uncontrolled;
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup({

@@ -22,7 +22,7 @@ export function useSliderThumb(
   const { direction } = useLocale();
   const formatter = useNumberFormatter(props.formatOptions);
   const generatedId = useId();
-  const inputId = props.id ?? `preact-aria-slider-${generatedId}`;
+  const inputId = props.id ?? `preact-a11y-slider-${generatedId}`;
   const [isDragging, setDragging] = useState(false);
   const [isFocused, setFocused] = useState(false);
   const value = state.values[props.index]!;

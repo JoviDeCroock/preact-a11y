@@ -36,7 +36,7 @@ export function useModalOverlay(props: AriaModalOverlayProps, ref: RefObject<HTM
     ) as JSX.HTMLAttributes<HTMLElement>,
     underlayProps: {
       style: { position: 'fixed', inset: 0 },
-      'data-preact-aria-underlay': true,
+      'data-preact-a11y-underlay': true,
     } as JSX.HTMLAttributes<HTMLElement>,
   };
 }

@@ -45,7 +45,7 @@ jobs:
       - name: Verify minimum Preact peer
         run: pnpm test:consumer
         env:
-          PREACT_ARIA_PREACT_SPEC: 10.11.0
+          PREACT_A11Y_PREACT_SPEC: 10.11.0
 
   release:
     name: Prepare release
@@ -97,7 +97,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: npm
-      url: https://www.npmjs.com/package/preact-aria
+      url: https://www.npmjs.com/package/preact-a11y
     permissions:
       contents: write
       id-token: write
