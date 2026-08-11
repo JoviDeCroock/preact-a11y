@@ -50,7 +50,8 @@
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
     "changeset": "changeset",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm run build && pnpm check:package && pnpm test:parity && pnpm test:consumer && pnpm test:e2e",
+    "check": "pnpm format:check && pnpm lint && pnpm check:docs && pnpm typecheck && pnpm test && pnpm run build && pnpm check:package && pnpm test:parity && pnpm test:consumer && pnpm test:e2e",
+    "check:docs": "node scripts/check-docs.mjs",
     "check:package": "node scripts/check-package.mjs",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",

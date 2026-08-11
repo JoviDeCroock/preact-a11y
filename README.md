@@ -1,99 +1,144 @@
-# Preact Aria
+<div align="center">
 
-Preact-native accessibility and interaction primitives for building design systems and
-unstyled component libraries. React Aria is an API and behavior reference, but this
-package is implemented independently with `preact` and `preact/hooks`—it does not use
-React, React DOM, `preact/compat`, or React Stately.
+# Preact A11y
 
-> This project is under active development and is not ready for production use yet.
+**Headless accessibility and interaction primitives, built natively for Preact.**
+
+[![CI](https://github.com/JoviDeCroock/preact-aria/actions/workflows/main.yml/badge.svg)](https://github.com/JoviDeCroock/preact-aria/actions/workflows/main.yml)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Preact 10.11+](https://img.shields.io/badge/Preact-10.11%2B-673ab8.svg)](https://preactjs.com/)
+
+[Getting started](./docs/getting-started.md) · [Components](#two-levels-of-control) ·
+[Documentation](./docs/README.md) · [Contributing](./CONTRIBUTING.md)
+
+</div>
+
+---
+
+Preact A11y gives design systems the accessible behavior behind buttons, fields, overlays,
+collections, drag and drop, date and color controls, and more—without prescribing styles or
+bringing React into your bundle.
+
+> **Inspired by React Aria. Native to Preact.**
+>
+> [React Aria](https://react-spectrum.adobe.com/react-aria/) is the leading inspiration for this
+> project's public API and behavior. Preact A11y is an independent Preact implementation: it does
+> not re-export React Aria, use React Stately, or depend on `preact/compat`.
+
+> [!IMPORTANT]
+> Preact A11y is under active development. Review the current API and test the primitives in your
+> product before adopting it in production.
+
+## Why Preact A11y?
+
+| Principle                       | What it means                                                       |
+| ------------------------------- | ------------------------------------------------------------------- |
+| **Preact-native**               | Built with `preact` and `preact/hooks`, including types.            |
+| **Headless by default**         | Bring your own markup, styling, state, and design tokens.           |
+| **Behavior, not ARIA stickers** | Keyboard, pointer, touch, focus, and form behavior ship together.   |
+| **Composable state**            | Use local hooks, signals, or any external store.                    |
+| **Browser-verified**            | Playwright exercises Chromium, Firefox, mobile input, and axe-core. |
 
 ## Install
 
 ```sh
-pnpm add preact preact-aria
+pnpm add preact preact-a11y
 ```
 
-Preact 10.11.0 or newer within the 10.x line is required. Preact 11 is not included in the
-supported peer range until its stable public types and behavior can be verified.
+Preact `>=10.11.0 <11` is supported. The package ships ESM, CommonJS, and TypeScript declarations.
 
-## Hooks
+## Two levels of control
 
-Hooks provide behavior and ARIA/DOM props without prescribing markup or styles.
+### Start with an unstyled component
 
 ```tsx
-import { useButton } from 'preact-aria';
+import { Button, Checkbox, TextField } from 'preact-a11y/components';
+
+export function ProfileForm() {
+  return (
+    <form>
+      <TextField
+        autoComplete="email"
+        description="Used for account recovery."
+        isRequired
+        label="Email address"
+        name="email"
+        type="email"
+      />
+
+      <Checkbox name="updates">Send me product updates</Checkbox>
+
+      <Button type="submit">Save profile</Button>
+    </form>
+  );
+}
+```
+
+Components are unstyled and expose state through attributes such as `data-pressed`,
+`data-selected`, and `data-invalid`.
+
+### Drop down to a hook
+
+```tsx
+import { useButton } from 'preact-a11y';
 import { useRef } from 'preact/hooks';
 
-export function SaveButton() {
+export function CommandButton() {
   const ref = useRef<HTMLButtonElement>(null);
-  const { buttonProps, isPressed } = useButton({ onPress: () => save() }, ref);
+  const { buttonProps, isPressed } = useButton({ onPress: () => openCommandPalette() }, ref);
 
   return (
     <button {...buttonProps} data-pressed={isPressed || undefined} ref={ref}>
-      Save
+      Open commands
     </button>
   );
 }
 ```
 
-## Components
+Hooks return Preact-ready DOM props and interaction state, giving a design system full control over
+the rendered tree.
 
-Optional unstyled components compose the same native hooks. Preact's own ref model is
-kept explicit through `elementRef`; no React-style `forwardRef` shim is installed.
+## What is included?
 
-```tsx
-import { Button, Checkbox, Switch, TextField } from 'preact-aria/components';
+| Area               | Primitives                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| **Interactions**   | Press, hover, focus, focus rings, keyboard, movement, long press, outside interaction |
+| **Forms**          | Text/search/number fields, checkbox, switch, radio, select, combobox, slider          |
+| **Collections**    | Listbox, menu, grid list, tree, tags, table, sections, delegates, autocomplete        |
+| **Overlays**       | Portal, focus scope, modal, popover, tooltip, positioning, scroll prevention          |
+| **Navigation**     | Links, router integration, breadcrumbs, tabs, disclosure, toolbar, landmarks          |
+| **Rich input**     | Clipboard, drag and drop, token fields, dates, calendars, and color controls          |
+| **Feedback**       | Progress bars, meters, separators, and focus-safe toast regions                       |
+| **Infrastructure** | Stable IDs, SSR state, locale direction, Intl formatters, localized strings           |
 
-export function Settings() {
-  return (
-    <>
-      <Button onPress={() => save()}>Save</Button>
-      <Checkbox onChange={(selected) => updateConsent(selected)}>Accept terms</Checkbox>
-      <Switch onChange={(selected) => updateNotifications(selected)}>Notifications</Switch>
-      <TextField label="Email" description="Used for account recovery" type="email" />
-    </>
-  );
-}
-```
+## Documentation
 
-## Current native primitives
+- [Getting started](./docs/getting-started.md)
+- [Interactions](./docs/interactions.md)
+- [Forms and validation](./docs/forms.md)
+- [Collections](./docs/collections.md)
+- [Overlays and focus](./docs/overlays.md)
+- [Internationalization and routing](./docs/internationalization.md)
+- [Accessibility testing](./docs/testing.md)
 
-- Press, hover, focus, focus-visible, focus-ring, and focusable-child composition
-- Focus-scoped typed clipboard interactions with multi-format item transfer
-- Pointer and keyboard drag/drop for standalone and collection items, indicators, and previews
-- Button, toggle button, link, checkbox, switch, radio group, field, and text field hooks
-- Matching unstyled form and selection components
-- Search clearing and locale-aware number fields with keyboard stepping
-- Form-integrated selects with listbox navigation and hidden native controls
-- Filtered comboboxes with active-descendant focus and form synchronization
-- Checkbox and single/multiple toggle-button groups with shared semantics
-- Single and multi-thumb sliders with form values, constraints, pointer, and keyboard input
-- Modal semantics, Preact-native portals, nested overlay providers, and programmatic focus scopes
-- Trigger-linked popovers, interactive previews, and nested submenus with RTL behavior
-- Hover/focus tooltips with delays, Escape dismissal, and stable descriptions
-- Disclosures and automatic/manual keyboard-navigable tabs
-- Breadcrumbs, titled dialogs, arrow-key toolbars, and client-router-aware links
-- Single/multiple-selection listboxes with active focus, typeahead, and labeled sections
-- Grid lists with row actions, selection checkboxes, sections, and nested controls
-- Hierarchical tree grids with expansion, parent/child navigation, and typeahead
-- Removable tag groups with selection, RTL navigation, live updates, and focus recovery
-- Data tables with two-dimensional navigation, sorting, selection, and column resizing
-- Contenteditable token fields with atomic selection, clipboard transfer, and text editing
-- Date/time segments, date picker relationships, and range-aware calendar navigation
-- Color areas, sliders, wheels, channel/text fields, and accessible swatches
-- Reusable stack/grid keyboard and pointer drop-target delegates for DOM-backed collections
-- Immutable collection construction and collection-agnostic autocomplete with virtual focus
-- Menus with trigger relationships, labeled sections, actions, typeahead, and dismissal
-- Labeled progress bars, meters, and horizontal/vertical separators
-- Polite/assertive toast regions with paused timers and safe focus handoff
-- Locale direction, filtering, native Intl formatters, and localized message dictionaries
-- Stable IDs, object refs, callback chaining, RTL detection, and SSR state
-- F6 landmark registration and imperative main/next/previous navigation
-- VisuallyHidden, mergeProps, and mergeRefs utilities
+## How React Aria influences this project
 
-The full implementation roadmap is tracked in [docs/parity.md](./docs/parity.md). State
-management packages are intentionally out of scope; primitives use small internal state
-only where browser behavior requires it.
+React Aria demonstrated that accessible interaction logic can be separated from styling and
+component state. Preact A11y follows that philosophy and uses React Aria's public documentation,
+API vocabulary, and observable behavior as a reference.
+
+The implementation boundary is deliberate:
+
+- no React or React DOM dependency;
+- no `preact/compat` bridge;
+- no React Aria or React Stately re-export;
+- no state-management package required;
+- Preact-native refs, events, JSX, portals, and hooks;
+- behavior verified independently in real browsers.
+
+The pinned React Aria API inventory helps catch missing primitive families, but matching an export
+name is never considered accessibility proof. Keyboard, pointer, touch, focus, form, direction,
+and automated accessibility checks remain the release gate. See [NOTICE](./NOTICE) for attribution.
 
 ## Verification
 
@@ -102,14 +147,13 @@ pnpm install
 pnpm check
 ```
 
-The full gate includes oxfmt, oxlint, strict TypeScript, unit tests, production package
-builds, clean-consumer ESM/CommonJS/type checks, Chromium and Firefox interaction tests,
-touch-enabled mobile Chromium coverage, and axe-core accessibility audits.
+The full gate runs oxfmt, oxlint, strict TypeScript, unit tests, production package checks,
+clean-consumer ESM/CommonJS/type checks, API inventory, Playwright in Chromium and Firefox, mobile
+touch coverage, and axe-core audits. CI separately verifies the declared Preact 10.11.0 floor.
 
 ## License
 
-MIT. React Aria documentation and behavior are used as references under the terms described
-in [NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
+[MIT](./LICENSE) © Preact A11y contributors.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development and accessibility requirements and
-[SECURITY.md](./SECURITY.md) for private vulnerability reporting.
+React Aria documentation and behavior are used as references under the terms described in
+[NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
