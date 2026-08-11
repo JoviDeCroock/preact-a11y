@@ -1,3 +1,9 @@
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * Licensed under the Apache License, Version 2.0. See LICENSE.
+ * Modified by JoviDeCroock for Preact A11y in 2026.
+ */
+
 import type { JSX } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { useFocus } from '../interactions/useFocus';

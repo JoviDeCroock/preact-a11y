@@ -19,7 +19,8 @@ real-browser interaction tests, and axe-core audits.
 
 - Implement against `preact` and `preact/hooks` directly.
 - Do not add React, React DOM, React Aria, React Stately, or `preact/compat` dependencies.
-- Treat React Aria as an API and behavior reference, not as source to bundle or re-export.
+- Preserve Apache-2.0 attribution and modification notices when adapting React Aria source.
+- Do not re-export React Aria or use it as a runtime dependency.
 - Keep state-management packages out of scope; expose accessibility and interaction primitives.
 - Preserve ESM, CommonJS, declaration, SSR-import, and clean-consumer compatibility.
 

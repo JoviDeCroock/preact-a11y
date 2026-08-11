@@ -5,6 +5,23 @@ const root = resolve(import.meta.dirname, '..');
 const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const failures = [];
 
+if (packageJson.license !== 'Apache-2.0') {
+  failures.push('package license must be Apache-2.0');
+}
+
+const license = readFileSync(join(root, 'LICENSE'), 'utf8');
+if (!license.includes('Apache License\n                           Version 2.0')) {
+  failures.push('LICENSE must contain the Apache License, Version 2.0');
+}
+
+const notice = readFileSync(join(root, 'NOTICE'), 'utf8');
+if (!notice.includes('Portions of this project are adapted from the React Spectrum project')) {
+  failures.push('NOTICE must retain React Spectrum attribution');
+}
+if (!notice.includes('not affiliated with, authorized, endorsed, or\nsponsored by Adobe')) {
+  failures.push('NOTICE must include the Adobe non-affiliation statement');
+}
+
 const forbiddenPackages = [
   'react',
   'react-dom',

@@ -1,11 +1,17 @@
 Preact A11y
 Copyright 2026 JoviDeCroock
 
-Preact A11y is licensed under the MIT License. See LICENSE for the full terms.
+Licensed under the Apache License, Version 2.0. See LICENSE for the full terms.
 
-This project references the public APIs, documentation, and accessibility behavior of
-the React Spectrum project (https://github.com/adobe/react-spectrum), developed by Adobe
-and contributors and licensed under the Apache License, Version 2.0. React Aria source is
-not bundled or re-exported.
+Portions of this project are adapted from the React Spectrum project, including React Aria:
+https://github.com/adobe/react-spectrum
+
+Copyright 2019-2026 Adobe and its licensors. All rights reserved.
+React Spectrum is licensed under the Apache License, Version 2.0. Files adapted for Preact A11y
+retain Adobe's copyright notice and carry a notice identifying the modifications.
+
+React Aria and Adobe are used only to identify the source and inspiration of the adapted work.
+Preact A11y is an independent project and is not affiliated with, authorized, endorsed, or
+sponsored by Adobe.
 
 Preact is copyright The Preact Authors and is licensed under the MIT License.

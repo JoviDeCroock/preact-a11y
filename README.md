@@ -5,7 +5,7 @@
 **Headless accessibility and interaction primitives, built natively for Preact.**
 
 [![CI](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml/badge.svg)](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
 [![Preact 10.11+](https://img.shields.io/badge/Preact-10.11%2B-673ab8.svg)](https://preactjs.com/)
 
 [Getting started](./docs/getting-started.md) · [Components](#two-levels-of-control) ·
@@ -22,8 +22,12 @@ bringing React into your bundle.
 > **Inspired by React Aria. Native to Preact.**
 >
 > [React Aria](https://react-spectrum.adobe.com/react-aria/) is the leading inspiration for this
-> project's public API and behavior. Preact A11y is an independent Preact implementation: it does
-> not re-export React Aria, use React Stately, or depend on `preact/compat`.
+> project's public API and behavior. Portions are adapted from React Aria for Preact under the
+> Apache License 2.0. Preact A11y does not re-export React Aria, use React Stately, or depend on
+> `preact/compat`.
+>
+> Preact A11y is an independent project and is not affiliated with, authorized, endorsed, or
+> sponsored by Adobe.
 
 > [!IMPORTANT]
 > Preact A11y is under active development. Review the current API and test the primitives in your
@@ -124,8 +128,9 @@ the rendered tree.
 ## How React Aria influences this project
 
 React Aria demonstrated that accessible interaction logic can be separated from styling and
-component state. Preact A11y follows that philosophy and uses React Aria's public documentation,
-API vocabulary, and observable behavior as a reference.
+component state. Preact A11y follows that philosophy. It uses React Aria's public documentation,
+API vocabulary, and observable behavior as references, and adapts portions of its Apache-2.0
+licensed implementation to Preact.
 
 The implementation boundary is deliberate:
 
@@ -153,7 +158,7 @@ touch coverage, and axe-core audits. CI separately verifies the declared Preact 
 
 ## License
 
-[MIT](./LICENSE) © JoviDeCroock.
+[Apache License 2.0](./LICENSE) © JoviDeCroock.
 
-React Aria documentation and behavior are used as references under the terms described in
-[NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
+Portions are adapted from the Apache-2.0 licensed React Spectrum project. See [NOTICE](./NOTICE)
+for attribution. Preact A11y is not affiliated with, authorized, endorsed, or sponsored by Adobe.

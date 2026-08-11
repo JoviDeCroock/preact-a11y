@@ -12,7 +12,7 @@
   ],
   "homepage": "https://github.com/JoviDeCroock/preact-a11y#readme",
   "bugs": "https://github.com/JoviDeCroock/preact-a11y/issues",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "JoviDeCroock (https://github.com/JoviDeCroock)",
   "repository": {
     "type": "git",

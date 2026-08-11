@@ -46,8 +46,10 @@ Both entry points are implemented with `preact` and `preact/hooks`. They do not 
 
 [React Aria](https://react-spectrum.adobe.com/react-aria/) established an excellent model for
 accessible, headless interaction primitives. Preact A11y uses its public API, documentation, and
-behavior as an important reference while implementing the library independently for Preact.
+behavior as important references and adapts portions of its Apache-2.0 licensed implementation
+for Preact.
 
-React Aria is not a runtime dependency, its source is not re-exported, and API-name coverage is
-not treated as proof of accessibility. The release gate exercises real keyboard, pointer, touch,
-focus, form, and screen-reader-facing semantics in browsers.
+React Aria is not a runtime dependency, and API-name coverage is not treated as proof of
+accessibility. The release gate exercises real keyboard, pointer, touch, focus, form, and
+screen-reader-facing semantics in browsers. Preact A11y is not affiliated with, authorized,
+endorsed, or sponsored by Adobe. See the repository NOTICE for attribution.
