@@ -10,15 +10,14 @@
     "hooks",
     "preact"
   ],
-  "homepage": "https://github.com/JoviDeCroock/preact-aria#readme",
-  "bugs": "https://github.com/JoviDeCroock/preact-aria/issues",
+  "homepage": "https://github.com/JoviDeCroock/preact-a11y#readme",
+  "bugs": "https://github.com/JoviDeCroock/preact-a11y/issues",
   "license": "MIT",
-  "author": "The Preact Authors (https://github.com/JoviDeCroock/preact-aria/contributors)",
+  "author": "JoviDeCroock (https://github.com/JoviDeCroock)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoviDeCroock/preact-aria.git"
+    "url": "git+https://github.com/JoviDeCroock/preact-a11y.git"
   },
-  "funding": "https://opencollective.com/preact",
   "files": [
     "dist",
     "LICENSE",

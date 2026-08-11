@@ -8,7 +8,7 @@ current major line and any explicitly documented long-term-support line are supp
 ## Reporting a vulnerability
 
 Do not open a public issue for a suspected vulnerability. Use
-[GitHub's private vulnerability reporting](https://github.com/JoviDeCroock/preact-aria/security/advisories/new)
+[GitHub's private vulnerability reporting](https://github.com/JoviDeCroock/preact-a11y/security/advisories/new)
 and include:
 
 - the affected version or commit;

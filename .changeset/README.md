@@ -21,6 +21,6 @@ release as a separate, explicitly approved operation; do not add an automatic di
 fallback to the staging workflow. Provenance must be generated on a supported hosted CI
 runner, and npm does not generate provenance for a public package while its source repository
 is private. After the package exists, configure npm trusted publishing for
-`JoviDeCroock/preact-aria`, workflow `.github/workflows/main.yml`, environment `npm`, with
+`JoviDeCroock/preact-a11y`, workflow `.github/workflows/main.yml`, environment `npm`, with
 stage-publish permission. All later versions must use the Version Packages pull request and
 staged approval flow above.

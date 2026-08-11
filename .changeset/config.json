@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "JoviDeCroock/preact-aria"
+      "repo": "JoviDeCroock/preact-a11y"
     }
   ],
   "commit": false,

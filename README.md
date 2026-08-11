@@ -4,7 +4,7 @@
 
 **Headless accessibility and interaction primitives, built natively for Preact.**
 
-[![CI](https://github.com/JoviDeCroock/preact-aria/actions/workflows/main.yml/badge.svg)](https://github.com/JoviDeCroock/preact-aria/actions/workflows/main.yml)
+[![CI](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml/badge.svg)](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Preact 10.11+](https://img.shields.io/badge/Preact-10.11%2B-673ab8.svg)](https://preactjs.com/)
 
@@ -153,7 +153,7 @@ touch coverage, and axe-core audits. CI separately verifies the declared Preact 
 
 ## License
 
-[MIT](./LICENSE) © Preact A11y contributors.
+[MIT](./LICENSE) © JoviDeCroock.
 
 React Aria documentation and behavior are used as references under the terms described in
 [NOTICE](./NOTICE); no React Aria source is bundled or re-exported.
