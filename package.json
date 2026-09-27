@@ -71,7 +71,7 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/preact": "3.2.4",
     "@testing-library/user-event": "14.6.1",
-    "@types/node": "24.10.1",
+    "@types/node": "26.2.0",
     "@typescript/typescript6": "6.0.2",
     "jsdom": "27.2.0",
     "oxfmt": "0.62.0",
