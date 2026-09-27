@@ -2,7 +2,15 @@
 'preact-a11y': patch
 ---
 
-Support Preact 11. Prop bags no longer depend on `JSX.HTMLAttributes` (removed in Preact 11), ref
-parameters accept Preact 11's `useRef(null)` objects, overlay and table sizes are written in `px`
-now that Preact 11 no longer appends units, and token fields listen to lowercase composition
-events so IME input also commits on Preact 10 in real browsers.
+Support Preact 11 (11.0.0-rc.2 and later) alongside Preact 10.11+.
+
+- The `JSX` attribute types derive from `JSX.IntrinsicElements`, since Preact 11 removed
+  `JSX.HTMLAttributes`. `JSX.CSSProperties` is now an interface.
+- `role`, input `type` and `list`, and anchor `href` accept any value, so prop bags stay spreadable
+  onto Preact 11's per-element ARIA types.
+- Ref parameters use the newly exported `RefObject` (`{ current: T | null }`), which accepts
+  Preact 11's `useRef(null)`.
+- Overlay, table, and visually hidden lengths are written in `px`, because Preact 11 no longer
+  appends units.
+- Token fields listen to lowercase composition events, so IME input also commits on Preact 10 in
+  real browsers.

@@ -1,4 +1,5 @@
-const EVENT_HANDLER = /^on(?:[A-Z]|focus(?:in|out)$|pointer(?:enter|leave)$)/;
+const EVENT_HANDLER =
+  /^on(?:[A-Z]|composition(?:start|end)$|focus(?:in|out)$|pointer(?:enter|leave)$)/;
 
 export function mergeProps<T extends Record<string, unknown>>(...sources: T[]): T {
   const result: Record<string, unknown> = {};

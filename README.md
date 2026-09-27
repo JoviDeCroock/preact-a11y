@@ -156,7 +156,7 @@ pnpm check
 The full gate runs oxfmt, oxlint, strict TypeScript, unit tests, production package checks,
 clean-consumer ESM/CommonJS/type checks, API inventory, Playwright in Chromium and Firefox, mobile
 touch coverage, and axe-core audits. CI separately verifies the declared Preact 10.11.0 floor
-and runs the type checks, unit tests, and consumer check against Preact 11.
+and runs the type checks, unit tests, consumer check, and browser tests against Preact 11.
 
 ## License
 

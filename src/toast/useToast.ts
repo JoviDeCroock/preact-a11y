@@ -60,7 +60,7 @@ export function useToast(props: AriaToastProps, _ref?: RefObject<HTMLElement>) {
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     contentProps: {
-      role: props.priority === ('assertive' as const) ? ('alert' as const) : ('status' as const),
+      role: props.priority === 'assertive' ? ('alert' as const) : ('status' as const),
       'aria-atomic': 'true',
       'aria-hidden': isVisible ? undefined : 'true',
     } satisfies JSX.HTMLAttributes<HTMLElement>,

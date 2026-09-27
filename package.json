@@ -85,7 +85,7 @@
     "vitest": "4.1.10"
   },
   "peerDependencies": {
-    "preact": "^10.11.0 || ^11.0.0-0"
+    "preact": "^10.11.0 || ^11.0.0-rc.2"
   },
   "engines": {
     "node": ">=20.19.0"

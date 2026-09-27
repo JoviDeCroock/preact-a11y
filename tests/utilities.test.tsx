@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/preact';
 import { describe, expect, it, vi } from 'vitest';
-import { SSRProvider, chain, useId, useIsSSR, useObjectRef } from '../src';
+import { SSRProvider, chain, mergeProps, useId, useIsSSR, useObjectRef } from '../src';
 
 function Ids() {
   return (
@@ -21,6 +21,18 @@ describe('framework utilities', () => {
 
     callback('value');
     expect(calls).toEqual(['first:value', 'second:value']);
+  });
+
+  it('merges lowercase DOM event handlers instead of replacing them', () => {
+    for (const key of ['oncompositionend', 'onfocusin', 'onpointerenter']) {
+      const calls: string[] = [];
+      const merged = mergeProps<Record<string, unknown>>(
+        { [key]: () => calls.push('first') },
+        { [key]: () => calls.push('second') },
+      );
+      (merged[key] as () => void)();
+      expect(calls).toEqual(['first', 'second']);
+    }
   });
 
   it('provides stable generated and caller-defined ids', () => {

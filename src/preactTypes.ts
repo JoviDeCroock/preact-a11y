@@ -120,8 +120,8 @@ type StableEventAttributes<Attributes, Target extends EventTarget> = {
 /**
  * Preact 11 narrows some attributes per element (`role` everywhere, `type` and `list` on `<input>`,
  * `href` on `<a>`) and models `<a>`/`<input>` as unions discriminated by them. A headless prop bag
- * cannot know which element it is spread onto, so these stay as unchecked as Preact 10's `string`.
- * Write literals for them with `as const` so inferred prop bags keep the narrow type.
+ * cannot know which element it is spread onto, and any declared union here makes it unspreadable,
+ * so these stay unchecked. Write literals for them with `as const` so inferred bags stay narrow.
  */
 // oxlint-disable-next-line typescript/no-explicit-any
 type Discriminant = any;
