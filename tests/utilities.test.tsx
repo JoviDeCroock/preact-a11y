@@ -24,7 +24,7 @@ describe('framework utilities', () => {
   });
 
   it('merges lowercase DOM event handlers instead of replacing them', () => {
-    for (const key of ['oncompositionend', 'onfocusin', 'onpointerenter']) {
+    for (const key of ['oncompositionstart', 'oncompositionend', 'onfocusin', 'onpointerenter']) {
       const calls: string[] = [];
       const merged = mergeProps<Record<string, unknown>>(
         { [key]: () => calls.push('first') },

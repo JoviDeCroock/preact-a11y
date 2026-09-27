@@ -45,8 +45,10 @@ function SliderThumb({
     inputRef,
   );
   const position = `${state.getThumbPercent(index)}%`;
-  const style: JSX.CSSProperties =
-    state.orientation === 'vertical' ? { bottom: position } : { left: position };
+  const style: JSX.CSSProperties = {
+    ...(thumbProps.style as JSX.CSSProperties | undefined),
+    ...(state.orientation === 'vertical' ? { bottom: position } : { left: position }),
+  };
   return (
     <span {...thumbProps} className={className} data-slider-thumb style={style}>
       <input {...inputProps} className={inputClassName} />

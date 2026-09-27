@@ -97,7 +97,9 @@ export function useSliderThumb(
         event.preventDefault();
         setValue(next, true);
       },
-    } satisfies JSX.InputHTMLAttributes<HTMLInputElement>,
+    } satisfies JSX.InputHTMLAttributes<HTMLInputElement> & {
+      ref: RefObject<HTMLInputElement> | undefined;
+    },
     labelProps: {
       htmlFor: inputId,
     } satisfies JSX.LabelHTMLAttributes<HTMLLabelElement>,

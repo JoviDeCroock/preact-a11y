@@ -25,6 +25,9 @@ describe('Slider', () => {
     expect(slider).toHaveValue('25');
     expect(slider).toHaveAttribute('aria-valuetext', '25');
     expect(slider).toHaveAttribute('name', 'volume');
+    const thumb = slider.closest<HTMLElement>('[data-slider-thumb]')!;
+    expect(thumb.style.getPropertyValue('--slider-thumb-percent')).toBe('25%');
+    expect(thumb.style.left).toBe('25%');
 
     slider.focus();
     await user.keyboard('{ArrowRight}');

@@ -1,4 +1,4 @@
-import type { JSX as PreactJSX, Ref } from 'preact';
+import type { JSX as PreactJSX } from 'preact';
 
 type Booleanish = boolean | 'false' | 'true';
 
@@ -128,7 +128,6 @@ type Discriminant = any;
 
 /** Attributes typed here rather than read from Preact, so every supported version agrees on them. */
 type OwnedAttributes<Target extends EventTarget> = AriaAttributes & {
-  ref?: Ref<Target>;
   role?: Discriminant;
   [attribute: `data-${string}`]: unknown;
   enterKeyHint?: 'done' | 'enter' | 'go' | 'next' | 'previous' | 'search' | 'send';
@@ -153,7 +152,8 @@ type OwnedAttributes<Target extends EventTarget> = AriaAttributes & {
 
 type StableAttributes<Attributes, Target extends EventTarget> = Omit<
   Attributes,
-  EventPropName<Attributes> | keyof OwnedAttributes<Target>
+  // Prop bags never carry a ref: hooks take refs as arguments and components use `elementRef`.
+  EventPropName<Attributes> | keyof OwnedAttributes<Target> | 'ref'
 > &
   StableEventAttributes<Omit<Attributes, keyof OwnedAttributes<Target>>, Target> &
   OwnedAttributes<Target>;
@@ -207,7 +207,7 @@ interface InputAttributes {
   capture?: 'environment' | 'user';
   checked?: boolean;
   defaultChecked?: boolean;
-  defaultValue?: string | number;
+  defaultValue?: string;
   disabled?: boolean;
   form?: string;
   inputMode?: string;
@@ -247,7 +247,7 @@ interface SelectAttributes {
   name?: string;
   required?: boolean;
   size?: number;
-  value?: string | number | readonly string[];
+  value?: string | number | string[];
 }
 
 interface TableAttributes {
