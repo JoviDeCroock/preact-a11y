@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useCheckbox, type AriaCheckboxProps } from './useCheckbox';
 
 export type AriaSwitchProps = AriaCheckboxProps;
@@ -10,7 +9,7 @@ export function useSwitch(props: AriaSwitchProps = {}, ref?: RefObject<HTMLInput
     ...result,
     inputProps: {
       ...result.inputProps,
-      role: 'switch',
+      role: 'switch' as const,
     } satisfies JSX.InputHTMLAttributes<HTMLInputElement>,
   };
 }

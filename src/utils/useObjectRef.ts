@@ -1,5 +1,6 @@
-import type { Ref, RefObject } from 'preact';
+import type { Ref } from 'preact';
 import { useMemo } from 'preact/hooks';
+import type { RefObject } from '../preactTypes';
 
 function setRef<T>(ref: Ref<T> | undefined, value: T | null) {
   if (typeof ref === 'function') ref(value);

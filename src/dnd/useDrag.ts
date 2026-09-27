@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedDragEvent, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedDragEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { writeToDataTransfer } from './dataTransfer';
 import { cancelKeyboardDrag, startKeyboardDrag } from './keyboardManager';

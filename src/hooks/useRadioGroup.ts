@@ -14,7 +14,7 @@ export function useRadioGroup(props: AriaRadioGroupProps = {}) {
   return {
     radioGroupProps: {
       ...fieldProps,
-      role: 'radiogroup',
+      role: 'radiogroup' as const,
       'aria-disabled': props.isDisabled || undefined,
       'aria-orientation': props.orientation,
       'aria-readonly': props.isReadOnly || undefined,

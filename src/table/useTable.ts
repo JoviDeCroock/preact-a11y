@@ -4,8 +4,7 @@
  * Modified by JoviDeCroock for Preact A11y in 2026.
  */
 
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useCheckbox } from '../hooks/useCheckbox';
 import { usePress } from '../interactions/usePress';
@@ -119,7 +118,7 @@ export function useTable(props: AriaTableProps, ref: RefObject<HTMLElement>) {
 
   return {
     gridProps: {
-      role: 'grid',
+      role: 'grid' as const,
       tabIndex: props.isDisabled ? undefined : 0,
       'aria-activedescendant': props.focusedCellId,
       'aria-disabled': props.isDisabled || undefined,
@@ -139,7 +138,7 @@ export function useTable(props: AriaTableProps, ref: RefObject<HTMLElement>) {
 
 export function useTableRowGroup() {
   return {
-    rowGroupProps: { role: 'rowgroup' } satisfies JSX.HTMLAttributes<HTMLElement>,
+    rowGroupProps: { role: 'rowgroup' as const } satisfies JSX.HTMLAttributes<HTMLElement>,
   };
 }
 
@@ -150,7 +149,7 @@ export interface AriaTableHeaderRowProps {
 export function useTableHeaderRow(props: AriaTableHeaderRowProps = {}) {
   return {
     rowProps: {
-      role: 'row',
+      role: 'row' as const,
       'aria-rowindex': props.rowIndex ?? 1,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
   };
@@ -174,7 +173,7 @@ export function useTableColumnHeader(props: AriaTableColumnHeaderProps) {
     columnHeaderProps: {
       ...(props.allowsSorting ? press.pressProps : {}),
       id: props.id,
-      role: 'columnheader',
+      role: 'columnheader' as const,
       'aria-colindex': props.columnIndex,
       'aria-sort': props.allowsSorting ? (props.sortDirection ?? 'none') : undefined,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
@@ -196,7 +195,7 @@ export function useTableRow(props: AriaTableRowProps) {
   return {
     rowProps: {
       id: props.id,
-      role: 'row',
+      role: 'row' as const,
       'aria-rowindex': props.rowIndex,
       'aria-selected': props.isSelected,
       'aria-disabled': props.isDisabled || undefined,
@@ -230,7 +229,7 @@ export function useTableCell(props: AriaTableCellProps) {
   return {
     gridCellProps: {
       id: props.id,
-      role: 'gridcell',
+      role: 'gridcell' as const,
       'aria-rowindex': props.rowIndex,
       'aria-colindex': props.columnIndex,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
@@ -302,7 +301,7 @@ export function useTableColumnResize(props: AriaTableColumnResizeProps) {
 
   return {
     inputProps: {
-      type: 'range',
+      type: 'range' as const,
       min,
       max,
       step,

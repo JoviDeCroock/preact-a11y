@@ -1,8 +1,8 @@
 # Preact A11y documentation
 
 Preact A11y provides headless accessibility and interaction primitives for Preact 10.11 and
-newer. Use the unstyled components when their markup fits your design system, or use the hooks
-when you need complete control over rendering.
+newer, including Preact 11. Use the unstyled components when their markup fits your design
+system, or use the hooks when you need complete control over rendering.
 
 ## Start here
 

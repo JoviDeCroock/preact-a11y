@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useEffect, useState } from 'preact/hooks';
 
 export interface TokenProps {}

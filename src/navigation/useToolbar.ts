@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 
 export interface AriaToolbarProps {
   orientation?: 'horizontal' | 'vertical';
@@ -14,7 +13,7 @@ export function useToolbar(props: AriaToolbarProps, ref: RefObject<HTMLElement>)
   const orientation = props.orientation ?? 'horizontal';
   return {
     toolbarProps: {
-      role: 'toolbar',
+      role: 'toolbar' as const,
       'aria-orientation': orientation,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],

@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useId } from '../utils/useId';
 
 export type OverlayTriggerType = 'dialog' | 'menu' | 'listbox' | 'tree' | 'grid';

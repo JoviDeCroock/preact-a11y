@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedFocusEvent, TargetedPointerEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedFocusEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 export interface AriaToastRegionProps {
@@ -45,7 +44,7 @@ export function useToastRegion(props: AriaToastRegionProps, ref: RefObject<HTMLE
 
   return {
     regionProps: {
-      role: 'region',
+      role: 'region' as const,
       tabIndex: -1,
       'aria-label': props['aria-label'] ?? `Notifications (${props.toastIds.length})`,
       'data-preact-a11y-top-layer': true,

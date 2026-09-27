@@ -1,6 +1,6 @@
-import type { RefObject } from 'preact';
 import { dragItemsToDropItems, getDragTypes } from './dataTransfer';
 import { DragTypes, type DragItem, type DropOperation } from './types';
+import type { RefObject } from '../preactTypes';
 
 export interface KeyboardDropTarget {
   ref: RefObject<HTMLElement>;

@@ -1,6 +1,5 @@
 import { useState } from 'preact/hooks';
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useButton, type AriaButtonProps } from './useButton';
 
 export interface AriaToggleButtonProps extends AriaButtonProps {

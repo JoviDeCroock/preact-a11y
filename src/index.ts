@@ -453,6 +453,7 @@ export type {
   AriaAttributes,
   FocusEventHandler,
   JSX,
+  RefObject,
   TargetedClipboardEvent,
   TargetedCompositionEvent,
   TargetedDragEvent,

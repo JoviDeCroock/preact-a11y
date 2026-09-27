@@ -8,7 +8,7 @@ export function useSeparator(props: SeparatorProps = {}) {
   const orientation = props.orientation ?? 'horizontal';
   return {
     separatorProps: {
-      role: 'separator',
+      role: 'separator' as const,
       'aria-orientation': orientation === 'vertical' ? 'vertical' : undefined,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
   };

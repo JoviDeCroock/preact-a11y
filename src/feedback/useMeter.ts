@@ -12,7 +12,7 @@ export function useMeter(props: AriaMeterProps) {
     valueLabel: result.valueLabel,
     meterProps: {
       ...result.progressBarProps,
-      role: 'meter',
+      role: 'meter' as const,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
   };
 }

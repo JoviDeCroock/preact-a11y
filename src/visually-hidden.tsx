@@ -1,16 +1,17 @@
-import { createElement, type ComponentChildren, type JSX } from 'preact';
+import { createElement, type ComponentChildren } from 'preact';
+import type { JSX } from './preactTypes';
 
 const hiddenStyle: JSX.CSSProperties = {
   border: 0,
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
-  height: 1,
-  margin: -1,
+  height: '1px',
+  margin: '-1px',
   overflow: 'hidden',
   padding: 0,
   position: 'absolute',
   whiteSpace: 'nowrap',
-  width: 1,
+  width: '1px',
 };
 
 export function useVisuallyHidden(props: { isFocusable?: boolean } = {}) {

@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useRef } from 'preact/hooks';
 import { useCheckbox } from '../hooks/useCheckbox';
 import type { SelectionMode } from './useListBox';
@@ -117,7 +116,7 @@ export function useGridList(props: AriaGridListProps, ref: RefObject<HTMLElement
 
   return {
     gridProps: {
-      role: 'grid',
+      role: 'grid' as const,
       tabIndex: props.isDisabled ? undefined : 0,
       'aria-activedescendant': props.focusedKey,
       'aria-disabled': props.isDisabled || undefined,
@@ -157,7 +156,7 @@ export function useGridListItem(props: AriaGridListItemProps) {
   return {
     rowProps: {
       id: props.id,
-      role: 'row',
+      role: 'row' as const,
       'aria-selected': props.isSelected,
       'aria-disabled': props.isDisabled || undefined,
       onClick(event) {
@@ -173,7 +172,7 @@ export function useGridListItem(props: AriaGridListItemProps) {
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     gridCellProps: {
-      role: 'gridcell',
+      role: 'gridcell' as const,
       'aria-describedby': props.descriptionId,
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     descriptionProps: {
@@ -194,10 +193,13 @@ export interface AriaGridListSectionProps {
 export function useGridListSection(props: AriaGridListSectionProps) {
   const headingId = `${props.id}-heading`;
   return {
-    rowProps: { role: 'row' } satisfies JSX.HTMLAttributes<HTMLElement>,
-    rowHeaderProps: { id: headingId, role: 'rowheader' } satisfies JSX.HTMLAttributes<HTMLElement>,
+    rowProps: { role: 'row' as const } satisfies JSX.HTMLAttributes<HTMLElement>,
+    rowHeaderProps: {
+      id: headingId,
+      role: 'rowheader' as const,
+    } satisfies JSX.HTMLAttributes<HTMLElement>,
     rowGroupProps: {
-      role: 'rowgroup',
+      role: 'rowgroup' as const,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-label'] || props.hasHeading === false ? undefined : headingId,
     } satisfies JSX.HTMLAttributes<HTMLElement>,

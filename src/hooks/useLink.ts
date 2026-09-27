@@ -35,7 +35,7 @@ export function useLink(props: AriaLinkProps = {}) {
     'aria-disabled': isDisabled || undefined,
     ...(isNativeAnchor
       ? { tabIndex: isDisabled ? -1 : undefined }
-      : { role: 'link', tabIndex: isDisabled ? -1 : 0 }),
+      : { role: 'link' as const, tabIndex: isDisabled ? -1 : 0 }),
     onClick(event) {
       onClick?.(event);
       if (

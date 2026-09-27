@@ -31,7 +31,8 @@ export function useTextField(props: AriaTextFieldProps = {}) {
     placeholder: props.placeholder,
     readOnly: props.isReadOnly,
     required: props.isRequired,
-    type: props.type ?? 'text',
+    // Preact 11 only narrows `<input>` on a single literal `type`, so a union stays unchecked.
+    type: (props.type ?? 'text') as JSX.InputHTMLAttributes['type'],
     value: props.value,
     onInput(event: TargetedEvent<HTMLInputElement, Event>) {
       props.onChange?.(event.currentTarget.value);

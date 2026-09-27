@@ -11,7 +11,7 @@ export function useDialog(props: AriaDialogProps = {}) {
   const titleId = `preact-a11y-dialog-title-${useId()}`;
   return {
     dialogProps: {
-      role: props.role ?? 'dialog',
+      role: props.role ?? ('dialog' as const),
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'] ?? (props['aria-label'] ? undefined : titleId),
       tabIndex: -1,

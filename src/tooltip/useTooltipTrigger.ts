@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { useId } from '../utils/useId';
 
@@ -18,7 +17,7 @@ export function useTooltipTrigger(props: AriaTooltipTriggerProps = {}, _ref?: Re
   const tooltipId = useId(props.id);
   const [uncontrolled, setUncontrolled] = useState(props.defaultOpen ?? false);
   const isOpen = props.isOpen ?? uncontrolled;
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const pointerDown = useRef(false);
 
   function clearTimer() {

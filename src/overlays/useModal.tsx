@@ -117,7 +117,7 @@ export function useModal(props: AriaModalProps = {}) {
 
   return {
     modalProps: {
-      role: props.role ?? 'dialog',
+      role: props.role ?? ('dialog' as const),
       'aria-modal': props.isDisabled ? undefined : true,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],

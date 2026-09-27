@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedPointerEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedPointerEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useNumberFormatter } from '../i18n/formatters';
 import { useField, type AriaFieldProps } from '../forms/useField';
@@ -125,7 +124,7 @@ export function useSlider(props: AriaSliderProps = {}, trackRef: RefObject<HTMLD
     state,
     groupProps: {
       ...fieldProps,
-      role: 'group',
+      role: 'group' as const,
       'aria-disabled': props.isDisabled || undefined,
     } satisfies JSX.HTMLAttributes<HTMLDivElement>,
     trackProps: {

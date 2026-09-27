@@ -1,6 +1,6 @@
-import type { RefObject } from 'preact';
 import type {
   JSX,
+  RefObject,
   TargetedEvent,
   TargetedKeyboardEvent,
   TargetedPointerEvent,
@@ -141,7 +141,7 @@ function rangeInputProps(
   const range = channelRange(channel);
   const value = channelValue(state.value, channel);
   return {
-    type: 'range',
+    type: 'range' as const,
     min: range.minValue,
     max: range.maxValue,
     step: range.step,
@@ -206,7 +206,7 @@ export function useColorArea(
 
   return {
     colorAreaProps: {
-      role: 'group',
+      role: 'group' as const,
       'aria-label': props['aria-label'] ?? 'Color area',
       'aria-disabled': props.isDisabled || undefined,
       onPointerDown(event) {
@@ -225,7 +225,7 @@ export function useColorArea(
       onPointerCancel: () => setDragging(false),
     },
     thumbProps: {
-      role: 'presentation',
+      role: 'presentation' as const,
       style: {
         left: `${(channelValue(state.value, props.xChannel) / channelRange(props.xChannel).maxValue) * 100}%`,
         top: `${100 - (channelValue(state.value, props.yChannel) / channelRange(props.yChannel).maxValue) * 100}%`,
@@ -286,7 +286,7 @@ export function useColorSlider(
   return {
     labelProps: { id: `${props.channel}-label` },
     trackProps: {
-      role: 'presentation',
+      role: 'presentation' as const,
       onPointerDown(event) {
         if (props.isDisabled) return;
         event.currentTarget.setPointerCapture?.(event.pointerId);
@@ -300,7 +300,7 @@ export function useColorSlider(
       onPointerCancel: () => setDragging(false),
     },
     thumbProps: {
-      role: 'presentation',
+      role: 'presentation' as const,
       style: {
         [orientation === 'horizontal' ? 'left' : 'bottom']:
           `${((value - range.minValue) / (range.maxValue - range.minValue)) * 100}%`,
@@ -351,7 +351,7 @@ export function useColorWheel(
 
   return {
     trackProps: {
-      role: 'presentation',
+      role: 'presentation' as const,
       onPointerDown(event) {
         if (props.isDisabled) return;
         event.currentTarget.setPointerCapture?.(event.pointerId);
@@ -365,7 +365,7 @@ export function useColorWheel(
       onPointerCancel: () => setDragging(false),
     },
     thumbProps: {
-      role: 'presentation',
+      role: 'presentation' as const,
       style: { transform: `rotate(${hue}deg)` },
     },
     inputProps: rangeInputProps('hue', state, props.label ?? 'Hue', props.isDisabled),
@@ -401,8 +401,8 @@ export function useColorChannelField(
     errorMessageProps: field.errorMessageProps,
     inputProps: {
       ...field.fieldProps,
-      role: 'spinbutton',
-      type: 'number',
+      role: 'spinbutton' as const,
+      type: 'number' as const,
       inputMode: 'decimal',
       min: range.minValue,
       max: range.maxValue,
@@ -496,7 +496,7 @@ export function useColorField(
     errorMessageProps: field.errorMessageProps,
     inputProps: {
       ...field.fieldProps,
-      type: 'text',
+      type: 'text' as const,
       value: inputValue,
       placeholder: props.placeholder ?? '#000000',
       disabled: props.isDisabled,
@@ -528,7 +528,7 @@ export interface ColorSwatchAria {
 export function useColorSwatch(props: AriaColorSwatchProps): ColorSwatchAria {
   return {
     colorSwatchProps: {
-      role: 'img',
+      role: 'img' as const,
       'aria-label': props['aria-label'] ?? colorLabel(props.color),
       style: { backgroundColor: colorToCSS(props.color) },
     },

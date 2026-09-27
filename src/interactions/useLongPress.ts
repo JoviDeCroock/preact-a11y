@@ -17,14 +17,17 @@ export interface LongPressProps {
 }
 
 export function useLongPress(props: LongPressProps = {}) {
-  const timer = useRef<ReturnType<typeof setTimeout>>();
-  const active = useRef<{
-    id: number;
-    x: number;
-    y: number;
-    target: Element;
-    pointerType: PointerType;
-  }>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const active = useRef<
+    | {
+        id: number;
+        x: number;
+        y: number;
+        target: Element;
+        pointerType: PointerType;
+      }
+    | undefined
+  >(undefined);
   const triggered = useRef(false);
 
   function clear() {

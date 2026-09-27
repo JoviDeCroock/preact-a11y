@@ -1,6 +1,7 @@
-import type { ComponentChildren, RefObject } from 'preact';
+import type { ComponentChildren } from 'preact';
 import type {
   JSX,
+  RefObject,
   TargetedClipboardEvent,
   TargetedCompositionEvent,
   TargetedEvent,
@@ -326,7 +327,7 @@ export function useTokenField<Value = unknown>(
 
   const tokenFieldProps: Omit<JSX.HTMLAttributes<HTMLDivElement>, 'ref'> = {
     ...fieldProps,
-    role: props.role ?? 'textbox',
+    role: props.role ?? ('textbox' as const),
     tabIndex: props.isDisabled ? -1 : 0,
     contentEditable: !props.isDisabled && !props.isReadOnly,
     'aria-multiline': props.allowsNewlines ?? false,
@@ -372,10 +373,11 @@ export function useTokenField<Value = unknown>(
         if (next) update(start, next, []);
       }
     },
-    onCompositionStart(_event: TargetedCompositionEvent<HTMLDivElement>) {
+    // Lowercase so Preact 10 binds `compositionstart`; no browser exposes `oncompositionstart`.
+    oncompositionstart(_event: TargetedCompositionEvent<HTMLDivElement>) {
       state.setComposing?.(true);
     },
-    onCompositionEnd(_event: TargetedCompositionEvent<HTMLDivElement>) {
+    oncompositionend(_event: TargetedCompositionEvent<HTMLDivElement>) {
       state.setComposing?.(false);
       if (ref.current) {
         const next = segmentsFromDOM(ref.current, state.value);

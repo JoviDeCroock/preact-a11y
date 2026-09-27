@@ -25,7 +25,7 @@ export function useProgressBar(props: AriaProgressBarProps = {}) {
     valueLabel,
     progressBarProps: {
       ...fieldProps,
-      role: 'progressbar',
+      role: 'progressbar' as const,
       'aria-valuemin': props.isIndeterminate ? undefined : minValue,
       'aria-valuemax': props.isIndeterminate ? undefined : maxValue,
       'aria-valuenow': props.isIndeterminate ? undefined : value,

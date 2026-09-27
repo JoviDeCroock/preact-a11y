@@ -93,4 +93,5 @@ Before shipping a new primitive:
 `pnpm check` runs oxfmt, oxlint, strict TypeScript, unit tests, production builds, package-boundary
 checks, API inventory, clean-consumer ESM/CommonJS/type checks, Playwright interaction tests, and
 axe-core audits in Chromium and Firefox. CI repeats the consumer test with Preact 10.11.0, the
-declared minimum peer version.
+declared minimum peer version, and runs the type checks, unit tests, and consumer test on
+Preact 11.

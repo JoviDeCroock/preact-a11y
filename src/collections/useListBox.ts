@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 
 export type SelectionMode = 'none' | 'single' | 'multiple';
@@ -89,7 +88,7 @@ export function useListBox(props: AriaListBoxProps, ref: RefObject<HTMLElement>)
 
   return {
     listBoxProps: {
-      role: 'listbox',
+      role: 'listbox' as const,
       tabIndex: props.isDisabled ? undefined : props.shouldUseVirtualFocus ? -1 : 0,
       'aria-activedescendant': props.focusedKey,
       'aria-disabled': props.isDisabled || undefined,
@@ -122,7 +121,7 @@ export function useOption(props: AriaOptionProps) {
   return {
     optionProps: {
       id: props.id,
-      role: 'option',
+      role: 'option' as const,
       'aria-disabled': props.isDisabled || undefined,
       'aria-selected': props.isSelected,
       onClick() {

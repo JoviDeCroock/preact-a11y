@@ -1,6 +1,6 @@
-import type { RefObject } from 'preact';
 import type {
   JSX,
+  RefObject,
   TargetedEvent,
   TargetedFocusEvent,
   TargetedKeyboardEvent,
@@ -163,7 +163,7 @@ export function useAutocomplete(
   const filter = props.filter;
   return {
     inputProps: {
-      role: 'combobox',
+      role: 'combobox' as const,
       value: state.inputValue,
       enterKeyHint: 'go',
       autoComplete: 'off',

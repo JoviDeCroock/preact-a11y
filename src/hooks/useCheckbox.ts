@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { RefObject } from 'preact';
-import type { JSX, TargetedEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedEvent } from '../preactTypes';
 
 export interface AriaCheckboxProps {
   isSelected?: boolean;

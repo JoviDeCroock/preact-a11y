@@ -4,7 +4,7 @@
  * Modified by JoviDeCroock for Preact A11y in 2026.
  */
 
-import type { RefObject } from 'preact';
+import type { RefObject } from '../preactTypes';
 
 export type CollectionKey = string | number;
 export type Orientation = 'horizontal' | 'vertical';

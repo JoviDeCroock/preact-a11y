@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useButton } from '../hooks/useButton';
 import {
   useGridList,
@@ -34,7 +33,7 @@ export function useTree(props: AriaTreeProps, ref: RefObject<HTMLElement>) {
   return {
     gridProps: {
       ...grid.gridProps,
-      role: 'treegrid',
+      role: 'treegrid' as const,
       onKeyDown(event: TargetedKeyboardEvent<HTMLElement>) {
         const fromTree = event.target === event.currentTarget;
         const key = props.focusedKey;

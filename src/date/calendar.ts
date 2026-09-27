@@ -1,5 +1,5 @@
-import type { ComponentChildren, RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { ComponentChildren } from 'preact';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useId } from '../utils/useId';
@@ -117,7 +117,7 @@ export function useCalendar(props: AriaCalendarProps, state: CalendarState): Cal
   return {
     calendarProps: {
       id,
-      role: 'group',
+      role: 'group' as const,
       'aria-label': props['aria-label'] ?? (props['aria-labelledby'] ? undefined : title),
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': state.isInvalid && props.errorMessage != null ? errorId : undefined,
@@ -194,7 +194,7 @@ export function useCalendarGrid(
 
   return {
     gridProps: {
-      role: 'grid',
+      role: 'grid' as const,
       'aria-label': props['aria-label'] ?? calendarTitle({ start, end }, locale),
       'aria-readonly': true,
     } satisfies WithoutRef<JSX.TableHTMLAttributes<HTMLTableElement>>,
@@ -293,7 +293,7 @@ export function useCalendarCell(
 
   return {
     cellProps: {
-      role: 'gridcell',
+      role: 'gridcell' as const,
       'aria-selected': selected,
       'aria-disabled': disabled || undefined,
     } satisfies WithoutRef<JSX.TdHTMLAttributes<HTMLTableCellElement>>,
@@ -333,7 +333,7 @@ export function useCalendarHeading(props: AriaCalendarHeadingProps = {}): Calend
   return {
     headingProps: {
       id,
-      role: 'heading',
+      role: 'heading' as const,
       'aria-level': props.level ?? 2,
       'aria-live': 'polite',
       'aria-atomic': true,
@@ -375,7 +375,7 @@ export function useCalendarMonthPicker(
   });
   return {
     gridProps: {
-      role: 'grid',
+      role: 'grid' as const,
       'aria-label': props['aria-label'] ?? 'Choose month',
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     items,
@@ -407,7 +407,7 @@ export function useCalendarYearPicker(
   );
   return {
     gridProps: {
-      role: 'grid',
+      role: 'grid' as const,
       'aria-label': props['aria-label'] ?? 'Choose year',
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     items,

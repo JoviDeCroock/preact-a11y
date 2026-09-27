@@ -43,7 +43,7 @@ function CollectionDndProbe({
   const [draggingKeys, setDraggingKeys] = useState(new Set<CollectionKey>());
   const [target, setTarget] = useState<DropTarget | null>(null);
 
-  const dragStateRef = useRef<DraggableCollectionState>();
+  const dragStateRef = useRef<DraggableCollectionState | undefined>(undefined);
   if (!dragStateRef.current) {
     dragStateRef.current = {
       collection,
@@ -69,7 +69,7 @@ function CollectionDndProbe({
   dragStateRef.current.draggingKeys = draggingKeys;
   const dragState = dragStateRef.current;
 
-  const dropStateRef = useRef<DroppableCollectionState>();
+  const dropStateRef = useRef<DroppableCollectionState | undefined>(undefined);
   if (!dropStateRef.current) {
     dropStateRef.current = {
       collection,

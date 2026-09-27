@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useCheckbox, type AriaCheckboxProps } from '../hooks/useCheckbox';
 
@@ -14,7 +13,7 @@ export function useCheckboxGroup(props: AriaCheckboxGroupProps = {}) {
   return {
     groupProps: {
       ...fieldProps,
-      role: 'group',
+      role: 'group' as const,
       'aria-disabled': props.isDisabled || undefined,
       'aria-readonly': props.isReadOnly || undefined,
     } satisfies JSX.HTMLAttributes<HTMLDivElement>,

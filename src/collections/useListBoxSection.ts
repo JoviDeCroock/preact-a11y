@@ -18,16 +18,16 @@ export function useListBoxSection(props: AriaListBoxSectionProps): ListBoxSectio
   const headingId = useId();
   const hasHeading = props.heading != null;
   return {
-    itemProps: { role: 'presentation' },
+    itemProps: { role: 'presentation' as const },
     headingProps: hasHeading
       ? {
           id: headingId,
-          role: 'presentation',
+          role: 'presentation' as const,
           onMouseDown: (event: TargetedMouseEvent<HTMLElement>) => event.preventDefault(),
         }
       : {},
     groupProps: {
-      role: 'group',
+      role: 'group' as const,
       'aria-label': props['aria-label'],
       'aria-labelledby': hasHeading ? headingId : undefined,
     },

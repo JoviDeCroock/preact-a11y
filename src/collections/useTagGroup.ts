@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedFocusEvent, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedFocusEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useRef, useState } from 'preact/hooks';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useButton } from '../hooks/useButton';
@@ -99,7 +98,7 @@ export function useTagGroup(props: AriaTagGroupProps, ref: RefObject<HTMLElement
   return {
     gridProps: {
       ...fieldProps,
-      role: props.tagCount ? 'grid' : 'group',
+      role: props.tagCount ? ('grid' as const) : ('group' as const),
       tabIndex: props.isDisabled ? undefined : 0,
       'aria-activedescendant': props.tagCount ? props.focusedKey : undefined,
       'aria-disabled': props.isDisabled || undefined,

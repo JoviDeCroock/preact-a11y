@@ -32,7 +32,7 @@ export function useDisclosure(props: AriaDisclosureProps = {}) {
     } satisfies JSX.ButtonHTMLAttributes<HTMLButtonElement>,
     panelProps: {
       id: panelId,
-      role: 'region',
+      role: 'region' as const,
       hidden: !isExpanded,
       'aria-labelledby': buttonId,
     } satisfies JSX.HTMLAttributes<HTMLDivElement>,

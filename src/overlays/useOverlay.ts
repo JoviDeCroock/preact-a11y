@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 
 const overlayStack: Element[] = [];

@@ -19,8 +19,8 @@ export function useComboBox(props: AriaComboBoxProps) {
   return {
     inputProps: {
       id: props.inputId,
-      role: 'combobox',
-      type: 'text',
+      role: 'combobox' as const,
+      type: 'text' as const,
       autoComplete: 'off',
       disabled: props.isDisabled,
       readOnly: props.isReadOnly,
@@ -66,7 +66,7 @@ export function useComboBox(props: AriaComboBoxProps) {
     } satisfies JSX.ButtonHTMLAttributes<HTMLButtonElement>,
     listBoxProps: {
       id: props.listBoxId,
-      role: 'listbox',
+      role: 'listbox' as const,
       'aria-labelledby': props.labelId,
     } satisfies JSX.HTMLAttributes<HTMLDivElement>,
   };

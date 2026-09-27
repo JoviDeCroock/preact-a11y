@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useToggleButton, type AriaToggleButtonProps } from '../hooks/useToggleButton';
 
 export interface AriaToggleButtonGroupProps {
@@ -16,7 +15,7 @@ export function useToggleButtonGroup(
   const orientation = props.orientation ?? 'horizontal';
   return {
     groupProps: {
-      role: 'group',
+      role: 'group' as const,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-disabled': props.isDisabled || undefined,

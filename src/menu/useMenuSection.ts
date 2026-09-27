@@ -24,10 +24,10 @@ export function useMenuSection(props: AriaMenuSectionProps): MenuSectionAria {
   const headingId = useId();
   const hasHeading = props.heading != null;
   return {
-    itemProps: { role: 'presentation' },
-    headingProps: hasHeading ? { id: headingId, role: 'presentation' } : {},
+    itemProps: { role: 'presentation' as const },
+    headingProps: hasHeading ? { id: headingId, role: 'presentation' as const } : {},
     groupProps: {
-      role: 'group',
+      role: 'group' as const,
       'aria-label': props['aria-label'],
       'aria-labelledby': hasHeading ? headingId : undefined,
     },

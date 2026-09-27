@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { useId } from '../utils/useId';
 
@@ -47,7 +46,7 @@ export function useToast(props: AriaToastProps, _ref?: RefObject<HTMLElement>) {
 
   return {
     toastProps: {
-      role: 'alertdialog',
+      role: 'alertdialog' as const,
       tabIndex: 0,
       'aria-modal': 'false',
       'aria-label': props['aria-label'],
@@ -61,7 +60,7 @@ export function useToast(props: AriaToastProps, _ref?: RefObject<HTMLElement>) {
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     contentProps: {
-      role: props.priority === 'assertive' ? 'alert' : 'status',
+      role: props.priority === ('assertive' as const) ? ('alert' as const) : ('status' as const),
       'aria-atomic': 'true',
       'aria-hidden': isVisible ? undefined : 'true',
     } satisfies JSX.HTMLAttributes<HTMLElement>,

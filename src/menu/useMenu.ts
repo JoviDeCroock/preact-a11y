@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 
 export interface AriaMenuProps {
@@ -83,7 +82,7 @@ export function useMenu(props: AriaMenuProps, ref: RefObject<HTMLElement>) {
 
   return {
     menuProps: {
-      role: 'menu',
+      role: 'menu' as const,
       tabIndex: props.isDisabled ? undefined : 0,
       'aria-activedescendant': props.focusedKey,
       'aria-disabled': props.isDisabled || undefined,
@@ -116,10 +115,10 @@ export function useMenuItem(props: AriaMenuItemProps) {
       id: props.id,
       role:
         props.type === 'checkbox'
-          ? 'menuitemcheckbox'
+          ? ('menuitemcheckbox' as const)
           : props.type === 'radio'
-            ? 'menuitemradio'
-            : 'menuitem',
+            ? ('menuitemradio' as const)
+            : ('menuitem' as const),
       'aria-checked': selectable ? (props.isSelected ?? false) : undefined,
       'aria-disabled': props.isDisabled || undefined,
       onClick() {

@@ -97,8 +97,8 @@ export function useNumberField(props: AriaNumberFieldProps = {}) {
     errorMessageProps,
     inputProps: {
       ...fieldProps,
-      role: 'spinbutton',
-      type: 'text',
+      role: 'spinbutton' as const,
+      type: 'text' as const,
       inputMode: 'decimal',
       value: inputValue,
       disabled: props.isDisabled,

@@ -1,6 +1,6 @@
-import type { RefObject } from 'preact';
 import type {
   JSX,
+  RefObject,
   TargetedFocusEvent,
   TargetedKeyboardEvent,
   TargetedPointerEvent,
@@ -48,7 +48,7 @@ export function usePreviewTrigger(
     triggerRef,
   } = props;
   const popoverId = useId(props.id);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const pointerInside = useRef(false);
   const longPressed = useRef(false);
 
@@ -146,7 +146,7 @@ export function usePreviewTrigger(
     ) as JSX.HTMLAttributes<HTMLElement>,
     popoverProps: {
       id: popoverId,
-      role: 'dialog',
+      role: 'dialog' as const,
       tabIndex: -1,
       isNonModal: true,
       onpointerenter(event: TargetedPointerEvent<HTMLElement>) {

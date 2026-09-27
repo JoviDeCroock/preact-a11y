@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedKeyboardEvent, TargetedPointerEvent } from '../preactTypes';
 import { useEffect, useRef } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useId } from '../utils/useId';
@@ -56,7 +55,7 @@ export function useSubmenuTrigger(
   const triggerId = useId(props.triggerId);
   const submenuId = useId(props.submenuId);
   const { direction } = useLocale();
-  const openTimer = useRef<ReturnType<typeof setTimeout>>();
+  const openTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   function cancelOpen() {
     if (openTimer.current !== undefined) clearTimeout(openTimer.current);

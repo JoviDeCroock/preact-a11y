@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedEvent, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useId, useState } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
 import { useNumberFormatter } from '../i18n/formatters';
@@ -52,7 +51,7 @@ export function useSliderThumb(
     inputProps: {
       ref: inputRef,
       id: inputId,
-      type: 'range',
+      type: 'range' as const,
       min,
       max,
       step: state.step,

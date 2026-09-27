@@ -1,4 +1,4 @@
-import type { JSX as PreactJSX } from 'preact';
+import type { JSX as PreactJSX, Ref } from 'preact';
 
 type Booleanish = boolean | 'false' | 'true';
 
@@ -71,6 +71,9 @@ export interface AriaAttributes {
   'aria-valuetext'?: string;
 }
 
+/** Nullable ref object: Preact 10's `RefObject`, and what Preact 11's `useRef(null)` returns. */
+export type RefObject<T> = { current: T | null };
+
 export type TargetedEvent<
   Target extends EventTarget = EventTarget,
   TypedEvent extends Event = Event,
@@ -103,50 +106,79 @@ export type FocusEventHandler<Target extends EventTarget> = EventHandler<
 
 type EventPropName<Attributes> = Extract<keyof Attributes, `on${string}`>;
 
-type WithoutThis<Handler> =
+type WithoutThis<Handler, Target extends EventTarget> =
   Exclude<Handler, undefined> extends (this: never, event: infer EventType) => infer Result
     ? EventType extends Event
-      ? EventHandler<EventType> | Extract<Handler, undefined>
+      ? EventHandler<TargetedEvent<Target, EventType>> | Extract<Handler, undefined>
       : ((event: EventType) => Result) | Extract<Handler, undefined>
     : Handler;
 
-type StableEventAttributes<Attributes> = {
-  [Key in EventPropName<Attributes>]?: WithoutThis<Attributes[Key]>;
+type StableEventAttributes<Attributes, Target extends EventTarget> = {
+  [Key in EventPropName<Attributes>]?: WithoutThis<Attributes[Key], Target>;
+};
+
+/**
+ * Preact 11 narrows some attributes per element (`role` everywhere, `type` and `list` on `<input>`,
+ * `href` on `<a>`) and models `<a>`/`<input>` as unions discriminated by them. A headless prop bag
+ * cannot know which element it is spread onto, so these stay as unchecked as Preact 10's `string`.
+ * Write literals for them with `as const` so inferred prop bags keep the narrow type.
+ */
+// oxlint-disable-next-line typescript/no-explicit-any
+type Discriminant = any;
+
+/** Attributes typed here rather than read from Preact, so every supported version agrees on them. */
+type OwnedAttributes<Target extends EventTarget> = AriaAttributes & {
+  ref?: Ref<Target>;
+  role?: Discriminant;
+  [attribute: `data-${string}`]: unknown;
+  enterKeyHint?: 'done' | 'enter' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  oncompositionend?: EventHandler<TargetedCompositionEvent<Target>>;
+  oncompositionstart?: EventHandler<TargetedCompositionEvent<Target>>;
+  onFocusIn?: FocusEventHandler<Target>;
+  onFocusOut?: FocusEventHandler<Target>;
+  onfocusin?: FocusEventHandler<Target>;
+  onfocusout?: FocusEventHandler<Target>;
+  onpointerenter?: EventHandler<TargetedPointerEvent<Target>>;
+  onpointerleave?: EventHandler<TargetedPointerEvent<Target>>;
+  referrerPolicy?:
+    | 'no-referrer'
+    | 'no-referrer-when-downgrade'
+    | 'origin'
+    | 'origin-when-cross-origin'
+    | 'same-origin'
+    | 'strict-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'unsafe-url';
 };
 
 type StableAttributes<Attributes, Target extends EventTarget> = Omit<
   Attributes,
-  EventPropName<Attributes> | keyof AriaAttributes
+  EventPropName<Attributes> | keyof OwnedAttributes<Target>
 > &
-  StableEventAttributes<Attributes> &
-  AriaAttributes & {
-    [attribute: `data-${string}`]: unknown;
-    enterKeyHint?: 'done' | 'enter' | 'go' | 'next' | 'previous' | 'search' | 'send';
-    onFocusIn?: FocusEventHandler<Target>;
-    onFocusOut?: FocusEventHandler<Target>;
-    onfocusin?: FocusEventHandler<Target>;
-    onfocusout?: FocusEventHandler<Target>;
-    onpointerenter?: EventHandler<TargetedPointerEvent<Target>>;
-    onpointerleave?: EventHandler<TargetedPointerEvent<Target>>;
-    referrerPolicy?:
-      | 'no-referrer'
-      | 'no-referrer-when-downgrade'
-      | 'origin'
-      | 'origin-when-cross-origin'
-      | 'same-origin'
-      | 'strict-origin'
-      | 'strict-origin-when-cross-origin'
-      | 'unsafe-url';
-  };
+  StableEventAttributes<Omit<Attributes, keyof OwnedAttributes<Target>>, Target> &
+  OwnedAttributes<Target>;
+
+/**
+ * Preact's own attributes for an intrinsic element. Preact 11 dropped `JSX.HTMLAttributes` and
+ * friends, while `JSX.IntrinsicElements` exists on every supported version.
+ */
+type IntrinsicAttributes<Tag extends keyof PreactJSX.IntrinsicElements> =
+  PreactJSX.IntrinsicElements[Tag];
 
 type ElementAttributes<
+  Tag extends keyof PreactJSX.IntrinsicElements,
   Target extends EventTarget,
   Attributes extends object = Record<never, never>,
-> = StableAttributes<Omit<PreactJSX.HTMLAttributes<Target>, keyof Attributes>, Target> & Attributes;
+> = StableAttributes<Omit<IntrinsicAttributes<Tag>, keyof Attributes>, Target> & Attributes;
+
+type PreactCSSProperties = Exclude<
+  Extract<IntrinsicAttributes<'div'>['style'], object>,
+  { peek(): unknown }
+>;
 
 interface AnchorAttributes {
   download?: unknown;
-  href?: string;
+  href?: Discriminant;
   hrefLang?: string;
   media?: string;
   ping?: string;
@@ -179,7 +211,7 @@ interface InputAttributes {
   disabled?: boolean;
   form?: string;
   inputMode?: string;
-  list?: string;
+  list?: Discriminant;
   max?: number | string;
   maxLength?: number;
   min?: number | string;
@@ -192,7 +224,7 @@ interface InputAttributes {
   required?: boolean;
   size?: number;
   step?: number | string;
-  type?: string;
+  type?: Discriminant;
   value?: string | number;
 }
 
@@ -234,39 +266,34 @@ interface TableCellAttributes {
 /** Version-stable Preact JSX types used by the public primitive contracts. */
 export namespace JSX {
   export type AnchorHTMLAttributes<Target extends EventTarget = HTMLAnchorElement> =
-    ElementAttributes<Target, AnchorAttributes>;
+    ElementAttributes<'a', Target, AnchorAttributes>;
   export type ButtonHTMLAttributes<Target extends EventTarget = HTMLButtonElement> =
-    ElementAttributes<Target, ButtonAttributes>;
-  export type CSSProperties = PreactJSX.CSSProperties;
-  export type HTMLAttributes<Target extends EventTarget = HTMLElement> = StableAttributes<
-    PreactJSX.HTMLAttributes<Target>,
+    ElementAttributes<'button', Target, ButtonAttributes>;
+  /**
+   * Preact 10 declares this on `JSX`, Preact 11 on the package root, so it is read off `style`.
+   * An interface keeps declarations naming this type instead of the build-time Preact's.
+   */
+  export interface CSSProperties extends PreactCSSProperties {}
+  export type HTMLAttributes<Target extends EventTarget = HTMLElement> = ElementAttributes<
+    'div',
     Target
   >;
-  export type InputHTMLAttributes<Target extends EventTarget = HTMLInputElement> = StableAttributes<
-    Omit<PreactJSX.HTMLAttributes<Target>, keyof InputAttributes>,
-    Target
-  > &
-    InputAttributes;
+  export type InputHTMLAttributes<Target extends EventTarget = HTMLInputElement> =
+    ElementAttributes<'input', Target, InputAttributes>;
   export type IntrinsicElements = PreactJSX.IntrinsicElements;
   export type KeyboardEventHandler<Target extends EventTarget> = EventHandler<
     TargetedKeyboardEvent<Target>
   >;
-  export type LabelHTMLAttributes<Target extends EventTarget = HTMLLabelElement> = StableAttributes<
-    Omit<PreactJSX.HTMLAttributes<Target>, keyof LabelAttributes>,
-    Target
-  > &
-    LabelAttributes;
+  export type LabelHTMLAttributes<Target extends EventTarget = HTMLLabelElement> =
+    ElementAttributes<'label', Target, LabelAttributes>;
   export type OutputHTMLAttributes<Target extends EventTarget = HTMLOutputElement> =
-    ElementAttributes<Target, OutputAttributes>;
+    ElementAttributes<'output', Target, OutputAttributes>;
   export type SelectHTMLAttributes<Target extends EventTarget = HTMLSelectElement> =
-    ElementAttributes<Target, SelectAttributes>;
-  export type TableHTMLAttributes<Target extends EventTarget = HTMLTableElement> = StableAttributes<
-    Omit<PreactJSX.HTMLAttributes<Target>, keyof TableAttributes>,
-    Target
-  > &
-    TableAttributes;
+    ElementAttributes<'select', Target, SelectAttributes>;
+  export type TableHTMLAttributes<Target extends EventTarget = HTMLTableElement> =
+    ElementAttributes<'table', Target, TableAttributes>;
   export type TdHTMLAttributes<Target extends EventTarget = HTMLTableCellElement> =
-    ElementAttributes<Target, TableCellAttributes>;
+    ElementAttributes<'td', Target, TableCellAttributes>;
   export type ThHTMLAttributes<Target extends EventTarget = HTMLTableCellElement> =
-    ElementAttributes<Target, TableCellAttributes>;
+    ElementAttributes<'th', Target, TableCellAttributes>;
 }

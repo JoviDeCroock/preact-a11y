@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useEffect } from 'preact/hooks';
 import { mergeProps } from '../utils/mergeProps';
 import { ariaHideOutside } from './ariaHideOutside';

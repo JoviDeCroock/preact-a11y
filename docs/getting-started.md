@@ -8,8 +8,8 @@ Install Preact and Preact A11y together:
 pnpm add preact preact-a11y
 ```
 
-Preact `>=10.11.0 <11` is supported. The package ships ESM, CommonJS, and TypeScript declarations
-and has no React dependency.
+Preact `^10.11.0` and Preact 11 are supported. The package ships ESM, CommonJS, and TypeScript
+declarations and has no React dependency.
 
 ## Use an unstyled component
 

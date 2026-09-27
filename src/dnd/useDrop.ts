@@ -1,5 +1,4 @@
-import type { RefObject } from 'preact';
-import type { JSX, TargetedDragEvent, TargetedKeyboardEvent } from '../preactTypes';
+import type { JSX, RefObject, TargetedDragEvent, TargetedKeyboardEvent } from '../preactTypes';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { readFromDataTransfer } from './dataTransfer';
 import {
@@ -68,7 +67,7 @@ export function useDrop(options: DropOptions): DropResult {
   const optionsRef = useRef(options);
   optionsRef.current = options;
   const [isDropTarget, setDropTarget] = useState(false);
-  const activationTimer = useRef<ReturnType<typeof setTimeout>>();
+  const activationTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const operationFor = (types: DragTypes, allowed: DropOperation[], x: number, y: number) => {
     if (optionsRef.current.isDisabled) return 'cancel';

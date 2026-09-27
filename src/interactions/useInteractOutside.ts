@@ -1,5 +1,5 @@
-import type { RefObject } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
+import type { RefObject } from '../preactTypes';
 
 export interface InteractOutsideProps {
   ref: RefObject<Element>;

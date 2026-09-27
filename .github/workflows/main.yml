@@ -47,6 +47,14 @@ jobs:
         env:
           PREACT_A11Y_PREACT_SPEC: 10.11.0
 
+      - name: Verify Preact 11
+        run: |
+          pnpm add --save-dev --ignore-scripts preact@11.0.0-rc.2
+          pnpm typecheck
+          pnpm test
+          pnpm test:consumer
+          pnpm test:e2e
+
   release:
     name: Prepare release
     needs: checks

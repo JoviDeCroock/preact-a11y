@@ -6,7 +6,7 @@
 
 [![CI](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml/badge.svg)](https://github.com/JoviDeCroock/preact-a11y/actions/workflows/main.yml)
 [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
-[![Preact 10.11+](https://img.shields.io/badge/Preact-10.11%2B-673ab8.svg)](https://preactjs.com/)
+[![Preact 10.11+ and 11](https://img.shields.io/badge/Preact-10.11%2B%20%7C%2011-673ab8.svg)](https://preactjs.com/)
 
 [Getting started](./docs/getting-started.md) · [Components](#two-levels-of-control) ·
 [Documentation](./docs/README.md) · [Contributing](./CONTRIBUTING.md)
@@ -49,7 +49,8 @@ bringing React into your bundle.
 pnpm add preact preact-a11y
 ```
 
-Preact `>=10.11.0 <11` is supported. The package ships ESM, CommonJS, and TypeScript declarations.
+Preact `^10.11.0` and Preact 11 are supported. The package ships ESM, CommonJS, and TypeScript
+declarations.
 
 ## Two levels of control
 
@@ -154,7 +155,8 @@ pnpm check
 
 The full gate runs oxfmt, oxlint, strict TypeScript, unit tests, production package checks,
 clean-consumer ESM/CommonJS/type checks, API inventory, Playwright in Chromium and Firefox, mobile
-touch coverage, and axe-core audits. CI separately verifies the declared Preact 10.11.0 floor.
+touch coverage, and axe-core audits. CI separately verifies the declared Preact 10.11.0 floor
+and runs the type checks, unit tests, and consumer check against Preact 11.
 
 ## License
 

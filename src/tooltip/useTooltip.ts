@@ -12,7 +12,7 @@ export function useTooltip(props: AriaTooltipProps = {}) {
   return {
     tooltipProps: {
       id,
-      role: 'tooltip',
+      role: 'tooltip' as const,
       'aria-label': props['aria-label'],
     } satisfies JSX.HTMLAttributes<HTMLDivElement>,
   };

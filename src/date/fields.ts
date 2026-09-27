@@ -1,5 +1,5 @@
-import type { ComponentChildren, RefObject } from 'preact';
-import type { JSX, TargetedKeyboardEvent } from '../preactTypes';
+import type { ComponentChildren } from 'preact';
+import type { JSX, RefObject, TargetedKeyboardEvent } from '../preactTypes';
 import { useField, type AriaFieldProps } from '../forms/useField';
 import { useId } from '../utils/useId';
 
@@ -62,7 +62,7 @@ export function useDateField(
     errorMessageProps: field.errorMessageProps,
     fieldProps: {
       ...field.fieldProps,
-      role: 'group',
+      role: 'group' as const,
       'aria-disabled': props.isDisabled || undefined,
       'aria-readonly': props.isReadOnly || undefined,
       onFocus() {
@@ -158,7 +158,7 @@ export function useDateSegment(
   return {
     segmentProps: editable
       ? ({
-          role: 'spinbutton',
+          role: 'spinbutton' as const,
           tabIndex: disabled ? undefined : 0,
           inputMode: 'numeric',
           contentEditable: !disabled && !readOnly,
@@ -221,7 +221,7 @@ function usePickerProps(props: AriaDatePickerProps, state: DatePickerState): Dat
     errorMessageProps: field.errorMessageProps,
     groupProps: {
       ...field.fieldProps,
-      role: 'group',
+      role: 'group' as const,
     } satisfies WithoutRef<JSX.HTMLAttributes<HTMLDivElement>>,
     fieldProps: {
       'aria-labelledby': field.fieldProps['aria-labelledby'],
@@ -239,7 +239,7 @@ function usePickerProps(props: AriaDatePickerProps, state: DatePickerState): Dat
     } satisfies JSX.ButtonHTMLAttributes<HTMLButtonElement>,
     dialogProps: {
       id: dialogId,
-      role: 'dialog',
+      role: 'dialog' as const,
       'aria-modal': true,
       'aria-labelledby': buttonId,
       onKeyDown(event: TargetedKeyboardEvent<HTMLElement>) {

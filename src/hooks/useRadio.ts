@@ -22,7 +22,7 @@ export function useRadio(props: AriaRadioProps) {
       disabled: props.isDisabled,
       name: props.name,
       required: props.isRequired,
-      type: 'radio',
+      type: 'radio' as const,
       value: props.value,
       'aria-readonly': props.isReadOnly || undefined,
       onClick(event) {

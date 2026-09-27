@@ -12,7 +12,7 @@ export interface AriaTabListProps {
 export function useTabList(props: AriaTabListProps = {}) {
   return {
     tabListProps: {
-      role: 'tablist',
+      role: 'tablist' as const,
       'aria-orientation': props.orientation ?? 'horizontal',
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
@@ -55,7 +55,7 @@ export function useTab(props: AriaTabProps) {
   return {
     tabProps: {
       id: props.id,
-      role: 'tab',
+      role: 'tab' as const,
       type: 'button',
       tabIndex: props.isSelected ? 0 : -1,
       'aria-controls': props.panelId,
@@ -94,7 +94,7 @@ export function useTabPanel(props: AriaTabPanelProps) {
   return {
     tabPanelProps: {
       id: props.id,
-      role: 'tabpanel',
+      role: 'tabpanel' as const,
       tabIndex: 0,
       hidden: !props.isSelected,
       'aria-labelledby': props.tabId,

@@ -17,6 +17,7 @@ import {
 import type { SelectionMode } from '../collections/useListBox';
 import { mergeRefs } from '../utils/mergeRefs';
 import { VisuallyHidden } from '../visually-hidden';
+import { px } from '../utils/px';
 
 export interface SortDescriptor {
   column: string;
@@ -281,7 +282,7 @@ export function TableColumn({
       data-column-index={columnIndex}
       data-row-index={0}
       data-table-cell
-      style={width == null ? undefined : { width }}
+      style={width == null ? undefined : { width: px(width) }}
       tabIndex={-1}
     >
       {children}
@@ -403,8 +404,8 @@ export function TableCell({ columnId, children, isRowHeader, className }: TableC
     'data-row-index': row.rowIndex - 1,
     'data-table-cell': true,
     ref: localRef,
-    role: isRowHeader ? 'rowheader' : 'gridcell',
-    style: { width: table.getWidth(columnId) },
+    role: isRowHeader ? ('rowheader' as const) : ('gridcell' as const),
+    style: { width: px(table.getWidth(columnId)) },
   } as JSX.TdHTMLAttributes<HTMLTableCellElement>;
   return isRowHeader ? <th {...common}>{children}</th> : <td {...common}>{children}</td>;
 }

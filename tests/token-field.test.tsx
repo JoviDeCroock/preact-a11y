@@ -113,9 +113,10 @@ describe('token field primitives', () => {
     });
 
     const text = field.querySelector<HTMLElement>('[data-preact-a11y-text]')!;
-    fireEvent.compositionStart(field);
+    // `fireEvent.composition*` guesses Preact 10's `CompositionStart` casing; dispatch the real events.
+    field.dispatchEvent(new CompositionEvent('compositionstart', { bubbles: true }));
     text.textContent = 'Bonjour docs';
-    fireEvent.compositionEnd(field);
+    field.dispatchEvent(new CompositionEvent('compositionend', { bubbles: true }));
     await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('Bonjour docs'));
   });
 

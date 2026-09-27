@@ -4,10 +4,10 @@
  * Modified by JoviDeCroock for Preact A11y in 2026.
  */
 
-import type { RefObject } from 'preact';
-import type { JSX } from '../preactTypes';
+import type { JSX, RefObject } from '../preactTypes';
 import { useCallback, useLayoutEffect, useState } from 'preact/hooks';
 import { useLocale } from '../i18n/I18nProvider';
+import { px } from '../utils/px';
 
 export type Placement =
   | 'bottom'
@@ -227,9 +227,9 @@ export function useOverlayPosition(props: AriaPositionProps) {
     overlayProps: {
       style: {
         position: 'fixed',
-        left: position?.left,
-        top: position?.top,
-        maxHeight: position?.maxHeight,
+        left: px(position?.left),
+        top: px(position?.top),
+        maxHeight: px(position?.maxHeight),
         visibility: position ? undefined : 'hidden',
       },
       'data-placement': position?.placement,
@@ -237,8 +237,8 @@ export function useOverlayPosition(props: AriaPositionProps) {
     arrowProps: {
       style: {
         position: 'absolute',
-        left: position?.arrowLeft,
-        top: position?.arrowTop,
+        left: px(position?.arrowLeft),
+        top: px(position?.arrowTop),
       },
     } satisfies JSX.HTMLAttributes<HTMLElement>,
     placement: position?.placement ?? null,

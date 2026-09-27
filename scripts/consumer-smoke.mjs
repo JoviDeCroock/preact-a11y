@@ -64,7 +64,25 @@ writeFileSync(
 
 writeFileSync(
   join(fixture, 'index.tsx'),
-  `import {useButton, type AriaButtonProps} from 'preact-a11y';
+  `import {
+  useButton,
+  useCheckbox,
+  useDialog,
+  useDisclosure,
+  useFocusRing,
+  useLandmark,
+  useLink,
+  useNumberField,
+  usePress,
+  useProgressBar,
+  useRadio,
+  useSearchField,
+  useSeparator,
+  useSwitch,
+  useTextField,
+  useVisuallyHidden,
+  type AriaButtonProps,
+} from 'preact-a11y';
 import {Button} from 'preact-a11y/components';
 import {useRef} from 'preact/hooks';
 
@@ -76,6 +94,50 @@ export function HookButton(props: AriaButtonProps) {
 
 export function ComponentButton() {
   return <Button onPress={() => undefined}>Component button</Button>;
+}
+
+// Prop bags must stay spreadable onto the elements they are meant for, including Preact 11's
+// per-element ARIA roles and its discriminated <a>/<input> attribute unions.
+export function SpreadTargets() {
+  const mainRef = useRef<HTMLElement>(null);
+  const checkboxRef = useRef<HTMLInputElement>(null);
+  const {linkProps} = useLink({href: '/docs'});
+  const {pressProps} = usePress({});
+  const {focusProps} = useFocusRing();
+  const {landmarkProps} = useLandmark({role: 'main'}, mainRef);
+  const textField = useTextField({type: 'email'});
+  const searchField = useSearchField();
+  const numberField = useNumberField();
+  const {inputProps: checkboxProps} = useCheckbox({}, checkboxRef);
+  const {inputProps: switchProps} = useSwitch();
+  const {inputProps: radioProps} = useRadio({value: 'a'});
+  const disclosure = useDisclosure();
+  const {separatorProps} = useSeparator();
+  const {progressBarProps} = useProgressBar({value: 1});
+  const dialog = useDialog();
+  const {visuallyHiddenProps} = useVisuallyHidden();
+  return (
+    <main {...landmarkProps} ref={mainRef}>
+      <a {...linkProps}>Docs</a>
+      <button {...pressProps} {...focusProps}>Press</button>
+      <input {...textField.inputProps} />
+      <label {...textField.labelProps}>Email</label>
+      <input {...searchField.inputProps} />
+      <button {...searchField.clearButtonProps}>Clear</button>
+      <input {...numberField.inputProps} />
+      <input {...checkboxProps} ref={checkboxRef} />
+      <input {...switchProps} />
+      <input {...radioProps} />
+      <button {...disclosure.buttonProps}>Toggle</button>
+      <div {...disclosure.panelProps} />
+      <hr {...separatorProps} />
+      <div {...progressBarProps} />
+      <section {...dialog.dialogProps}>
+        <h2 {...dialog.titleProps}>Title</h2>
+      </section>
+      <span {...visuallyHiddenProps}>Hidden</span>
+    </main>
+  );
 }
 `,
 );
