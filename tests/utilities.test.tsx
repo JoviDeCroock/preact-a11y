@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/preact';
+import { useEffect } from 'preact/hooks';
 import { describe, expect, it, vi } from 'vitest';
 import { SSRProvider, chain, mergeProps, useId, useIsSSR, useObjectRef } from '../src';
 
@@ -74,5 +75,29 @@ describe('framework utilities', () => {
 
     expect(values[0]).toBe(true);
     expect(values.at(-1)).toBe(false);
+  });
+});
+
+describe('test environment', () => {
+  let mounted = false;
+  let cleaned = false;
+  function Effect() {
+    useEffect(
+      () => () => {
+        cleaned = true;
+      },
+      [],
+    );
+    return null;
+  }
+
+  it('mounts a component with a passive effect', () => {
+    render(<Effect />);
+    mounted = true;
+  });
+
+  it('runs its unmount cleanup before the next test starts', () => {
+    // Preact 11 defers it until after paint; tests/setup.ts flushes it inside act().
+    expect(cleaned).toBe(mounted);
   });
 });
