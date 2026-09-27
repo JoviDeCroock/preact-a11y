@@ -151,7 +151,10 @@ export function useSlider(props: AriaSliderProps = {}, trackRef: RefObject<HTMLD
         event.currentTarget.releasePointerCapture?.(event.pointerId);
       },
       ref: trackRef,
-    } as JSX.HTMLAttributes<HTMLDivElement> & { 'data-orientation': SliderOrientation },
+    } as JSX.HTMLAttributes<HTMLDivElement> & {
+      'data-orientation': SliderOrientation;
+      ref: RefObject<HTMLDivElement>;
+    },
     labelProps,
     outputProps: {
       'aria-live': 'off',

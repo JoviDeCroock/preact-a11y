@@ -9,10 +9,11 @@ Support Preact 11 (11.0.0-rc.2 and later) alongside Preact 10.11+.
 - `role`, input `type` and `list`, and anchor `href` accept any value, so prop bags stay spreadable
   onto Preact 11's per-element ARIA types.
 - Prop bag and component prop types no longer declare `ref`, which Preact 10 never passes to
-  function components and the components overwrite on Preact 11. Use `elementRef`; the slider
-  thumb's `inputProps` still carries its input ref.
+  function components and the components overwrite on Preact 11. Use `elementRef`; the slider's
+  `trackProps` and thumb `inputProps` still carry the refs they were given.
 - `JSX.InputHTMLAttributes` narrows `defaultValue` to `string` and `JSX.SelectHTMLAttributes`
-  accepts `string[]` values, so both spread onto `<input>`/`<select>` on every supported Preact.
+  narrows `value` to `string | number`, so both spread onto `<input>`/`<select>` on every
+  supported Preact.
 - Ref parameters use the newly exported `RefObject` (`{ current: T | null }`), which accepts
   Preact 11's `useRef(null)`.
 - Overlay, table, and visually hidden lengths are written in `px`, because Preact 11 no longer

@@ -247,7 +247,7 @@ interface SelectAttributes {
   name?: string;
   required?: boolean;
   size?: number;
-  value?: string | number | string[];
+  value?: string | number;
 }
 
 interface TableAttributes {
